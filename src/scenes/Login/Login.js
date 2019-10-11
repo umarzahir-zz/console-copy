@@ -1,19 +1,10 @@
 import React, {Component} from 'react';
-import axios from "axios";
-export default class Login extends Component{
+import { PropTypes } from 'prop-types';
+import { connect } from "react-redux";
+import { login } from "../../actions/userActions.js";
+class Login extends Component{
     componentDidMount(){
-        axios.get('https://ivol-server.herokuapp.com/api/test')
-            .then(function (response) {
-                // handle success
-                console.log(response);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-            .finally(function () {
-                // always executed
-            });
+        this.props.login();
     }
     render(){
         return(
@@ -21,3 +12,12 @@ export default class Login extends Component{
         )
     }
 }
+
+// const mapStateToProps = () => {
+// }
+
+postMessage.propTypes = {
+    login: PropTypes.func.isRequired
+}
+
+export default connect(null, { login })(Login);

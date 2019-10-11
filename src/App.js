@@ -10,23 +10,19 @@ export default class App extends Component {
     return (
       <Provider store = { store }>
         <BrowserRouter>
-        <div className="App">
-        <ul>
-                            <li>
-                                <Link to="/">Login</Link>
-                            </li>
-                            <li>
-                                <Link to="/signin">Signin</Link>
-                            </li>
-                        </ul>
-          <Routes/>
-        </div>
+          <div className="App">
+            <ul>
+                <li>
+                    <Link to="/">Login</Link>
+                </li>
+                <li>
+                    <Link to="/signin">Signin</Link>
+                </li>
+            </ul>
+            <Routes/>
+          </div>
         </BrowserRouter>
-        
       </Provider>
     );
-  }
-  
+  } 
 }
-
-
