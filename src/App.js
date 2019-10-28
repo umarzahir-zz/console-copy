@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
-import './App.css';
-import { BrowserRouter, Link } from 'react-router-dom';
-import { Provider } from "react-redux";
-import { store } from "./store.js";
-import Routes from './Routes';
+import AppNavbar from './components/AppNavbar';
+import ShoppingList from './components/ShoppingList';
+import ItemModal from './components/ItemModal';
+import { Container } from 'reactstrap';
+import Routes from './Routes.js'
+import { Provider } from 'react-redux';
+import store from './store';
+import { loadUser } from './actions/authActions';
 
-export default class App extends Component {
-  render(){
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+
+class App extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
+
+  render() {
     return (
-      <Provider store = { store }>
-        <BrowserRouter>
-          <div className="App">
-            <ul>
-                <li>
-                    <Link to="/">Login</Link>
-                </li>
-                <li>
-                    <Link to="/signin">Signin</Link>
-                </li>
-            </ul>
+      <Provider store={store}>
+        <div className='App'>
+          <AppNavbar />
+          <Container>
             <Routes/>
-          </div>
-        </BrowserRouter>
+          </Container>
+        </div>
       </Provider>
     );
-  } 
+  }
 }
+
+export default App;

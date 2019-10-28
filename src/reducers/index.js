@@ -1,9 +1,10 @@
-import { combineReducers } from "redux";
-import { userReducer } from './userReducer.js'
-import { opportunityReducer } from './opportunityReducer.js'
+import { combineReducers } from 'redux';
+import errorReducer from './errorReducer';
+import authReducer from './authReducer';
+import opportunityReducer from './opportunityReducer';
 
-export const rootReducer = combineReducers({
-    user: userReducer,
-    opportunity: opportunityReducer
-
-})
+export default combineReducers({
+  opportunity: opportunityReducer,
+  error: errorReducer,
+  auth: authReducer,
+});
