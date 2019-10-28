@@ -1,4 +1,7 @@
 export const ADD_OPPORTUNITY = 'ADD_OPPORTUNITY';
+export const FETCH_OPPORTUNITIES = 'FETCH_OPPORTUNITIES';
+export const LOGIN = 'LOGIN';
+export const SIGNUP = 'SIGNUP';
 export const USER_LOADING = "USER_LOADING";
 export const USER_LOADED = "USER_LOADED";
 export const AUTH_ERROR = "AUTH_ERROR";

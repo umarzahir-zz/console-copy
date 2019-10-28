@@ -5,7 +5,7 @@ const initialState = {
     opportunity: {}
 }
 
-export const opportunityReducer = (state = initialState, action) => {
+const opportunityReducer = (state = initialState, action) => {
     switch(action.type){
         case FETCH_OPPORTUNITIES:
             {
@@ -17,3 +17,4 @@ export const opportunityReducer = (state = initialState, action) => {
             return state;
     }
 }
+export default opportunityReducer;

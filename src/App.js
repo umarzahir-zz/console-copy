@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import AppNavbar from './components/AppNavbar';
-import ShoppingList from './components/ShoppingList';
-import ItemModal from './components/ItemModal';
 import { Container } from 'reactstrap';
 import Routes from './Routes.js'
 import { Provider } from 'react-redux';
@@ -22,7 +20,7 @@ class App extends Component {
         <div className='App'>
           <AppNavbar />
           <Container>
-            <Routes/>
+            {/* <Routes/> */}
           </Container>
         </div>
       </Provider>
