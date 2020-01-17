@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/authActions';
 import { BrowserRouter } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import AppRouter from "./AppRouter";
 class App extends Component {
