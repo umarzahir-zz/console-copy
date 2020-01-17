@@ -2,10 +2,47 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap');
 
 body{
-    font-family: 'Rubik', sans-serif !important;
+    font-family: 'Rubik', sans-serif ;
 }
 .content{
     padding: 15px;
+}
+article{
+    width: 100%;
+    margin-left: 250px;
+    text-align: left;
+}
+.page_title{
+    text-transform: uppercase;
+    color: #555;
+    border:1px solid #ddd;
+    padding: 20px 25px;
+    border-radius: 10px;
+}
+.page_title h1{
+    margin: 0;
+    font-weight: 400;
+}
+.center-content{
+    color: #ddd;
+    border:1px solid #ddd;
+    padding: 20px 25px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.gray-button{
+    background-color: #999 ;
+    color: #555 ;
+    border-color:  #999 ;
+    text-transform: capitalize;
+}
+.gray-button:hover{
+    background-color: #ccc ;
+    color: #555 ;
+    border-color:  #999 ;
+}
+.result-list{
+    padding-left:0px;
 }
 /*navigaton css starts here*/
 .side-menu{
@@ -17,6 +54,13 @@ body{
     left: 0;
     width: 250px;
     border: 1px solid #aaa;
+    border-left: 0;
+}
+.logo{
+    padding: 30px 10px;
+    background-color: #555;
+    color: #999;
+    text-transform: uppercase;
 }
 .side-menu-list{
     padding: 0;
@@ -27,7 +71,7 @@ body{
     border-bottom: 1px solid #aaa;
 }
 .side-menu-item a{
-    color:#999;
+    color:#555;
     text-transform: capitalize;
     padding:15px 10px;
     display: inline-block;
@@ -39,6 +83,51 @@ body{
     background-color: #999;
     text-decoration: none;
    
+}
+.data-form{
+    border: 1px solid #999;
+    padding: 15px;
+    border-radius: 10px;
+}
+.nofound{
+    text-align: center;
+    color: #555;
+}
+.nofound h3{
+    margin: 0;
+    font-weight: 500;
+}
+.result{
+    border: 1px solid #999;
+    padding: 15px;
+    border-radius: 10px;
+}
+.list-title{
+    margin: 0;
+}
+.list-button .gray-button{
+    padding: 0;
+    height: 35px;
+    width: 35px;
+    margin-left: 10px;
+}
+.list-title{
+    color: #555;
+}
+.result-list .list-group-item{
+    border-radius:10px;
+    margin-bottom: 10px;
+    border: 1px solid;
+}
+/* .result-list .list-group-item:last-child{
+    margin-bottom: 0px;
+} */
+.custom-pagination{
+    justify-content: center;
+    margin-bottom: 0;
+}
+.custom-pagination .page-item .page-link{
+    border-color: #ddd;
 }
 /*navigaton css ends here*/
 
@@ -71,5 +160,74 @@ body{
 }
 /*signup and login css ends here*/
 /*admin dashboard css starts here*/
-
+.filter{
+    margin-bottom: 30px;
+}
+.filter .form-group{
+    margin-bottom: 0;
+}
+.card-outer{
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-outer .card{
+    text-align: center;
+    text-transform: capitalize;
+    background-color: #f3f3f3;
+    width: 100%;
+}
+.card-outer .card-title{
+    color: #555;
+    font-weight: 300;
+}
+.card-outer .card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 /*admin dashboard css ends here*/
+/*manage opportunity css starts here*/
+.opportunity-form .form-group label{
+    text-transform: capitalize;
+    color: #555;
+}
+
+.profilepic-outer{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.profilepic-outer img{
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+}
+
+/*manage opportunity css ends here*/
+/*profile opportunity css starts here*/
+.profile .card-img-top{
+    
+    width: 100px;
+}
+.profile .card{
+    color: #aaa;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.profile .card p{
+    margin-bottom: 0;
+}
+.profile .card .card-body{
+    padding-bottom: 0px;
+}
+.profile .card .card-title{
+    margin-bottom: 0;
+    text-transform: capitalize;
+    color: #555;
+    
+}
+.pro-icon{
+    color: #999;
+    margin-right: 10px;
+}
+/*profile opportunity css ends here*/
