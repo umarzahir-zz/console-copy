@@ -1,7 +1,8 @@
 import React, {Component}  from "react";
 import  Navigation from "../../components/Navigation/index.js";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
 export default class ManageOpprtunity extends Component{
 
     render(){
@@ -17,6 +18,10 @@ export default class ManageOpprtunity extends Component{
                                 <div className="dashboard">
                                     <div className="page_title">
                                         <h1>manage opportunity</h1>
+                                    </div>
+
+                                    <div className="col-12 text-right mt-4 pr-0">
+                                        <Link to="/AddOpportunity" className="btn btn-primary gray-button">Add Opportunity</Link>
                                     </div>
 
                                     <div className="center-content">
