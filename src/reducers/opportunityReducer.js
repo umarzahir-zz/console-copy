@@ -2,7 +2,13 @@ import { FETCH_OPPORTUNITIES } from "../actions/types.js";
 
 const initialState = {
     opportunities: [],
-    opportunity: {}
+    opportunity: {},
+    opportunityName: "",
+            opportunityLevel:"",
+            peopleRequired:"",
+            date: new Date(),
+            calendar: false
+
 }
 
 const opportunityReducer = (state = initialState, action) => {

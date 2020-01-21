@@ -1,4 +1,5 @@
 import React, {Component}  from "react";
+import {Link} from 'react-router-dom';
 import  Navigation from "../../components/Navigation/index.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons'
@@ -27,7 +28,7 @@ export default class ManageTask extends Component{
                                                     <div className="form-group profile-pic d-flex flex-wrap">
                                                         <label>volunteer images</label>
                                                         <span className="profilepic-outer">
-                                                            <img src={require('../../images/user.png')} />
+                                                            <img src={require('../../images/user.png')} alt=""/>
                                                         </span>
                                                         <button className="btn btn-primary gray-button">upload</button>
                                                     </div>
@@ -85,11 +86,11 @@ export default class ManageTask extends Component{
                                                             </ul>
                                                             <nav aria-label="Page navigation example">
                                                                 <ul className="pagination custom-pagination">
-                                                                    <li className="page-item"><a class="page-link gray-button" href="#">Previous</a></li>
-                                                                    <li className="page-item"><a class="page-link gray-button" href="#">1</a></li>
-                                                                    <li className="page-item"><a class="page-link gray-button" href="#">2</a></li>
-                                                                    <li className="page-item"><a class="page-link gray-button" href="#">3</a></li>
-                                                                    <li className="page-item"><a class="page-link gray-button" href="#">Next</a></li>
+                                                                    <li className="page-item"><Link class="page-link gray-button" to="#">Previous</Link></li>
+                                                                    <li className="page-item"><Link class="page-link gray-button" to="#">1</Link></li>
+                                                                    <li className="page-item"><Link class="page-link gray-button" to="#">2</Link></li>
+                                                                    <li className="page-item"><Link class="page-link gray-button" to="#">3</Link></li>
+                                                                    <li className="page-item"><Link class="page-link gray-button" to="#">Next</Link></li>
                                                                 </ul>
                                                             </nav>
                                                         {/* <div className="nofound col-12 p-0">
