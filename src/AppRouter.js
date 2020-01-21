@@ -11,6 +11,7 @@ import ManageVolunteer from "./scenes/ManageVolunteer/index.js";
 import Profile from './scenes/Profile';
 import ManageSkills from './scenes/ManageSkills';
 import ManageTask from './scenes/ManageTask';
+import ImageUpload from './scenes/ImageUpload/ImageUpload';
 export default class AppRouter extends Component {
     render() {
         return (
@@ -26,6 +27,7 @@ export default class AppRouter extends Component {
                     <Route exact path='/profile' component={Profile}/>
                     <Route exact path='/managevolunteer' component={ManageVolunteer}/>
                     <Route exact path='/manageskills' component={ManageSkills}/>
+                    <Route exact path='/imageupload' component={ImageUpload}/>
                     <Route exact path='/' component={ManageTask}/>
                 </Switch>
             </div>
