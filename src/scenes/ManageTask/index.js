@@ -55,7 +55,7 @@ export default class ManageTask extends Component{
                                                                             <FontAwesomeIcon icon={faPen} />
                                                                         </button>
                                                                         <button className="btn btn-primary gray-button">
-                                                                            <FontAwesomeIcon icon={faTrash}/>
+                                                                             <FontAwesomeIcon icon={faTrash}/>
                                                                         </button>
                                                                     </div>
                                                                 </li>
