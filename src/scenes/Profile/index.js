@@ -25,7 +25,7 @@ export default class Profile extends Component{
                                                 <div className="col-6">
                                                     <div className="profile">
                                                     <div class="card">
-                                                        <img className="card-img-top" src={require("../../images/user.png")}/>
+                                                        <img className="card-img-top" src={require("../../images/user.png")} alt=""/>
                                                         <div class="card-body">
                                                             <h5 class="card-title">Muhammad salis</h5>
                                                             <p>Admin</p>

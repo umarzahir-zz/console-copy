@@ -1,6 +1,6 @@
 import React, {Component}  from "react";
 import  Navigation from "../../components/Navigation/index.js";
-import  DashboardChart from "../../components/Charts/index.js";
+// import  DashboardChart from "../../components/Charts/index.js";
 
 
 export default class AdminDashboard extends Component{

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
-import { loadUser } from './actions/authActions';
+// import { loadUser } from './actions/authActions';
 import { BrowserRouter } from "react-router-dom";
 import './App.css';
 import AppRouter from "./AppRouter";
