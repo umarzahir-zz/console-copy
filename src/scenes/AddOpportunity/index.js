@@ -15,10 +15,14 @@ class AddOpportunity extends Component {
             date: new Date(),
             calendar: false,
             imageSrc: require('../../images/user.png'),
+            imageUrl: null,
             imageData: null
 
         }
 
+    }
+    handleUpload = (event) => {
+        event.preventDefault()
     }
 
     showCalender = () => {
@@ -42,13 +46,14 @@ class AddOpportunity extends Component {
     handleImage = (event) => {
 
         console.log(event.target.files[0])
-        this.setState({ imageData: event.target.files[0], imageSrc: require(event.target.files[0].name) })
+        const tempUrl = URL.createObjectURL(event.target.files[0])
+        this.setState({ imageData: event.target.files[0], imageUrl: tempUrl })
 
-    }       
+    }
     render() {
-        console.log(this.state.date)  
-            
+        console.log(this.state.date)
 
+        const uploadbuttonClass = this.state.imageUrl ? "btn btn-success " : "btn btn-danger disabled "
 
         const justDate = this.state.date.toString().split(' ')[0] + " " + this.state.date.toString().split(' ')[1] + " " + this.state.date.toString().split(' ')[2] + " " + this.state.date.toString().split(' ')[3]
 
@@ -70,14 +75,15 @@ class AddOpportunity extends Component {
 
 
                                         <div className="opportunity-form col-12 p-0">
-                                            <form className="col-6 data-form">
+                                            <form className="col-6 data-form" encType="multi">
                                                 <div className="form-group profile-pic d-flex flex-wrap">
                                                     <label>opportunity image</label>
                                                     <span className="profilepic-outer">
-                                                        <input type='file' name='file' onChange={this.handleImage} ></input>
-                                                        <img src={this.state.imageSrc} alt="image" />
+                                                        <input type='file' name='file' accept="image/*" onChange={this.handleImage} ></input>
+                                                        {this.state.imageUrl ? <img src={this.state.imageUrl} alt="image" /> : <img src={this.state.imageSrc} alt="image" />}
+
                                                     </span>
-                                                    <button className="btn btn-primary gray-button">upload</button>
+                                                    <button onClick={this.handleUpload} className={uploadbuttonClass}>upload</button>
                                                 </div>
                                                 <div className="form-group">
                                                     <label>Opportunity Name</label>
