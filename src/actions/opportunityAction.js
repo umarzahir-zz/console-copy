@@ -1,7 +1,7 @@
 import  axios  from "axios";
 
 import { ADD_OPPORTUNITY } from "./types";
-
+import {MANAGE_OPPORTUNITY} from './types';
 export const opportunityData = (formData) =>{
 
     console.log("this is the data that we are sendig to api", formData)
@@ -20,6 +20,23 @@ export const opportunityData = (formData) =>{
 
     }
    
+}
+
+export const manageOpportunity = () => {
+    return (dispatch) => {
+        axios.get('https://ivol-server.herokuapp.com/api/opportunity')
+        .then(res=>{
+            console.log('response of manage oppotunites', res )
+            dispatch({
+                type:MANAGE_OPPORTUNITY,
+                payload:res.data
+            })
+        })
+        .catch({
+    
+        })
+    }
+    
 }
 
 

@@ -1,11 +1,17 @@
 import React, {Component}  from "react";
-
 import  Navigation from "../../components/Navigation/index.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
-export default class ManageOpprtunity extends Component{
+import  {manageOpportunity} from '../../actions/opportunityAction';
+import { connect } from "react-redux";
+class ManageOpprtunity extends Component{
 
+      componentDidMount=()=>{
+      
+            this.props.getOpportunityData()
+     
+      }
     render(){
         return(
             <div className="wrapper">
@@ -91,10 +97,31 @@ export default class ManageOpprtunity extends Component{
 
                                 </div>
                             </div>
+                       
                         </article>
                     </div>
                </div>
+               {/* {  this.props.opportunityData.map(ind=>{
+                   return(
+                       <h1>{ind.title}</h1>
+                   )
+               })} */}
             </div>
+
         )
     }
 }
+const mapPropsToState = (state)=> {
+    console.log("gettingn state", state.opportunities)
+    return{
+        opportunityData: state.opportunities
+        
+    }
+}
+const mapDispatchToProps = (dispatch) =>{
+    return {
+        getOpportunityData: () => dispatch (manageOpportunity())   
+    }
+    
+}
+export default connect(mapPropsToState,mapDispatchToProps)(ManageOpprtunity)
