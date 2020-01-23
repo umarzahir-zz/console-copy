@@ -1,26 +1,26 @@
-import React, {Component}  from "react";
-import  Navigation from "../../components/Navigation/index.js";
+import React, { Component } from "react";
+import Navigation from "../../components/Navigation/index.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
-import  {manageOpportunity} from '../../actions/opportunityAction';
+import { manageOpportunity } from '../../actions/opportunityAction';
 import { connect } from "react-redux";
-class ManageOpprtunity extends Component{
+class ManageOpprtunity extends Component {
 
-      componentDidMount=()=>{
-      
-            this.props.getOpportunityData()
-     
-      }
-    render(){
-        return(
+    componentDidMount = () => {
+
+        this.props.getOpportunityData()
+
+    }
+    render() {
+        return (
             <div className="wrapper">
                 <div className="container-fluid">
                     <div className="row">
                         <aside>
-                            <Navigation/> 
+                            <Navigation />
                         </aside>
-                        <article>       
+                        <article>
                             <div className="content">
                                 <div className="dashboard">
                                     <div className="page_title">
@@ -32,96 +32,74 @@ class ManageOpprtunity extends Component{
                                     </div>
 
                                     <div className="center-content">
-                                            <div className="opportunity-form col-12 p-0">
-                                                <div className="row">
-                                                  
-                                                    <div className=" col-6">
-                                                        <div className="result">
-                                                            <ul className="list-group result-list">
-                                                                <li className="list-group-item d-flex justify-content-between align-items-center">
-                                                                    <p className="list-title">Agency</p>
-                                                                    <div className="list-button">
-                                                                        <button className="btn btn-primary gray-button">
-                                                                            <FontAwesomeIcon icon={faPen} />
-                                                                        </button>
-                                                                        <button className="btn btn-primary gray-button">
-                                                                            <FontAwesomeIcon icon={faTrash}/>
-                                                                        </button>
-                                                                    </div>
-                                                                </li>
-                                                                <li className="list-group-item d-flex justify-content-between align-items-center">
-                                                                    <p className="list-title">KHG</p>
-                                                                    <div className="list-button">
-                                                                        <button className="btn btn-primary gray-button">
-                                                                            <FontAwesomeIcon icon={faPen} />
-                                                                        </button>
-                                                                        <button className="btn btn-primary gray-button">
-                                                                            <FontAwesomeIcon icon={faTrash}/>
-                                                                        </button>
-                                                                    </div>
-                                                                </li>
-                                                                <li className="list-group-item d-flex justify-content-between align-items-center">
-                                                                    <p className="list-title">KHG</p>
-                                                                    <div className="list-button">
-                                                                        <button className="btn btn-primary gray-button">
-                                                                            <FontAwesomeIcon icon={faPen} />
-                                                                        </button>
-                                                                        <button className="btn btn-primary gray-button">
-                                                                            <FontAwesomeIcon icon={faTrash}/>
-                                                                        </button>
-                                                                    </div>
-                                                                </li>
-                                                               
+                                        <div className="opportunity-form col-12 p-0">
+                                            <div className="row">
+
+                                                <div className=" col-6">
+                                                    <div className="result">
+                                                        <ul className="list-group result-list">
+                                                            {this.props.allOpportunities && this.props.allOpportunities.map(opportunity => {
+                                                                return (
+                                                                    <li key={opportunity._id} className="list-group-item d-flex justify-content-between align-items-center">
+                                                                        <p className="list-title">{opportunity.title}</p>
+                                                                        <div className="list-button">
+                                                                            <button className="btn btn-primary gray-button">
+                                                                                <FontAwesomeIcon icon={faPen} />
+                                                                            </button>
+                                                                            <button className="btn btn-primary gray-button">
+                                                                                <FontAwesomeIcon icon={faTrash} />
+                                                                            </button>
+                                                                        </div>
+                                                                    </li>
+                                                                )
+                                                            })}
+
+                                                        </ul>
+                                                        <nav aria-label="Page navigation example">
+                                                            <ul className="pagination custom-pagination">
+                                                                <li className="page-item"><Link className="page-link gray-button" to="#">Previous</Link></li>
+                                                                <li className="page-item"><Link className="page-link gray-button" to="#">1</Link></li>
+                                                                <li className="page-item"><Link className="page-link gray-button" to="#">2</Link></li>
+                                                                <li className="page-item"><Link className="page-link gray-button" to="#">3</Link></li>
+                                                                <li className="page-item"><Link className="page-link gray-button" to="#">Next</Link></li>
                                                             </ul>
-                                                            <nav aria-label="Page navigation example">
-                                                                <ul className="pagination custom-pagination">
-                                                                    <li className="page-item"><Link class="page-link gray-button" to="#">Previous</Link></li>
-                                                                    <li className="page-item"><Link class="page-link gray-button" to="#">1</Link></li>
-                                                                    <li className="page-item"><Link class="page-link gray-button" to="#">2</Link></li>
-                                                                    <li className="page-item"><Link class="page-link gray-button" to="#">3</Link></li>
-                                                                    <li className="page-item"><Link class="page-link gray-button" to="#">Next</Link></li>
-                                                                </ul>
-                                                            </nav>
+                                                        </nav>
                                                         {/* <div className="nofound col-12 p-0">
                                                             <h3>No admin found</h3>
                                                         </div> */}
-                                                        </div>
-                                                        
-                                                        
                                                     </div>
+
+
                                                 </div>
                                             </div>
-                                      
+                                        </div>
+
 
                                     </div>
 
                                 </div>
                             </div>
-                       
+
                         </article>
                     </div>
-               </div>
-               {/* {  this.props.opportunityData.map(ind=>{
-                   return(
-                       <h1>{ind.title}</h1>
-                   )
-               })} */}
+                </div>
+
             </div>
 
         )
     }
 }
-const mapPropsToState = (state)=> {
-    console.log("gettingn state", state.opportunities)
-    return{
-        opportunityData: state.opportunities
-        
-    }
-}
-const mapDispatchToProps = (dispatch) =>{
+const mapPropsToState = (state) => {
+    console.log("gettingn state", state.opportunity.opportunities)
     return {
-        getOpportunityData: () => dispatch (manageOpportunity())   
+        allOpportunities: state.opportunity.opportunities
+
     }
-    
 }
-export default connect(mapPropsToState,mapDispatchToProps)(ManageOpprtunity)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getOpportunityData: () => dispatch(manageOpportunity())
+    }
+
+}
+export default connect(mapPropsToState, mapDispatchToProps)(ManageOpprtunity)

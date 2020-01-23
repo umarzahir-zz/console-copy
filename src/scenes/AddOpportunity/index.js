@@ -80,7 +80,7 @@ class AddOpportunity extends Component {
                                                     <label>opportunity image</label>
                                                     <span className="profilepic-outer">
                                                         <input type='file' name='file' accept="image/*" onChange={this.handleImage} ></input>
-                                                        {this.state.imageUrl ? <img src={this.state.imageUrl} alt="image" /> : <img src={this.state.imageSrc} alt="image" />}
+                                                        {this.state.imageUrl ? <img src={this.state.imageUrl} alt="" /> : <img src={this.state.imageSrc} alt="" />}
 
                                                     </span>
                                                     <button onClick={this.handleUpload} className={uploadbuttonClass}>upload</button>
