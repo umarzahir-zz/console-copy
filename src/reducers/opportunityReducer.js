@@ -2,7 +2,7 @@ import { FETCH_OPPORTUNITIES } from "../actions/types.js";
 
 const initialState = {
     opportunities: [],
-    opportunity: {},
+    
     opportunityName: "",
             opportunityLevel:"",
             peopleRequired:"",
@@ -19,8 +19,18 @@ const opportunityReducer = (state = initialState, action) => {
                 console.log(action.payload);
                 return state;
             }
+            case "MANAGE_OPPORTUNITY":
+                {
+                    console.log("data to be stored", action.payload)
+                    console.log(typeof(action.payload))
+                    return{
+                        opportunities: action.payload 
+                        
+                    }
+                    
+                }
         default:
-            return state;
+            return {...state}
     }
 }
 export default opportunityReducer;
