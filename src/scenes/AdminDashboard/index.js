@@ -1,19 +1,21 @@
-import React, {Component}  from "react";
-import  Navigation from "../../components/Navigation/index.js";
+import React, { Component } from "react";
+import Navigation from "../../components/Navigation/index.js";
 // import  DashboardChart from "../../components/Charts/index.js";
+import Pie from '../../components/PieChart/pie'
 
 
-export default class AdminDashboard extends Component{
+export default class AdminDashboard extends Component {
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="wrapper">
+
                 <div className="container-fluid">
                     <div className="row">
                         <aside>
-                            <Navigation/> 
+                            <Navigation />
                         </aside>
-                        <article>       
+                        <article>
                             <div className="content">
                                 <div className="dashboard">
                                     <div className="page_title">
@@ -24,7 +26,7 @@ export default class AdminDashboard extends Component{
                                         <div className="filter">
                                             <div className="row">
                                                 <form className="d-flex flew-wrap w-100 ">
-                                                    
+
                                                     <div className="form-group col-4">
                                                         <select className="form-control">
                                                             <option>Alisson</option>
@@ -51,14 +53,14 @@ export default class AdminDashboard extends Component{
                                                     </div>
                                                 </form>
                                             </div>
-                                            
+
                                         </div>
-                                        {/* <div className="">
-                                            <DashboardChart/>
-                                        </div> */}
+                                        <div className="">
+                                            <Pie />
+                                        </div>
                                         <div className="row">
                                             <div className="dash-card d-flex flex-wrap w-100">
-                                            
+
                                                 <div className="card-outer col-3">
                                                     <div className="card">
                                                         <div className="card-body">
@@ -130,7 +132,7 @@ export default class AdminDashboard extends Component{
                             </div>
                         </article>
                     </div>
-               </div>
+                </div>
             </div>
         )
     }
