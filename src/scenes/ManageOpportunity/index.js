@@ -5,12 +5,16 @@ import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 import { manageOpportunity } from '../../actions/opportunityAction';
 import { connect } from "react-redux";
+import { delteOpportunity } from '../../actions/opportunityAction'
 class ManageOpprtunity extends Component {
 
     componentDidMount = () => {
 
         this.props.getOpportunityData()
 
+    }
+    handleOppDelete = (id) => {
+        this.props.callDeleteOppAction(id)
     }
     render() {
         return (
@@ -46,7 +50,7 @@ class ManageOpprtunity extends Component {
                                                                             <button className="btn btn-primary gray-button">
                                                                                 <FontAwesomeIcon icon={faPen} />
                                                                             </button>
-                                                                            <button className="btn btn-primary gray-button">
+                                                                            <button onClick={() => this.handleOppDelete(opportunity._id)} className="btn btn-primary gray-button">
                                                                                 <FontAwesomeIcon icon={faTrash} />
                                                                             </button>
                                                                         </div>
@@ -98,7 +102,8 @@ const mapPropsToState = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        getOpportunityData: () => dispatch(manageOpportunity())
+        getOpportunityData: () => dispatch(manageOpportunity()),
+        callDeleteOppAction: (id) => dispatch(delteOpportunity(id))
     }
 
 }

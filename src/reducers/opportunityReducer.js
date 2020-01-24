@@ -31,8 +31,13 @@ const opportunityReducer = (state = initialState, action) => {
                 }
 
             }
+        case "UPDATE_OPP": {
+            return {
+                opportunities: [...action.payload],
+            }
+        }
         default:
             return { ...state }
-    }
+    } 
 }
 export default opportunityReducer;

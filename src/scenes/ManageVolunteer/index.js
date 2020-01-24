@@ -39,9 +39,9 @@ export default class ManageVolunteer extends Component {
                                             <div className="row">
                                                 <div className="col-6">
                                                     <form className="data-form">
-                                                        <div className="form-group profile-pic d-fl ex flex-wrap">
+                                                        <div className="form-group profile-pic d-flex flex-wrap">
                                                             <label>volunteer images</label>
-                                                            <span className="profilepic-outer">  
+                                                            <span className="profilepic-outer">
                                                                 <input onChange={this.handleImageUpload} type='file' name='file' accept='image/*' ></input>
                                                                 {iurl ? <img src={iurl} alt="" /> : <img src={source} alt="" />}
                                                             </span>
