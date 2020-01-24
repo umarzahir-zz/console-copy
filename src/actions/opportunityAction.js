@@ -39,4 +39,22 @@ export const manageOpportunity = () => {
 
 }
 
+export const delteOpportunity = (id) => {
+    console.log(id)
+    return (dispatch, getState) => {
+        axios.delete('https://ivol-server.herokuapp.com/api/opportunity/delete/' + id)
+            .then(res => {
+                console.log(res)
+                axios.get('https://ivol-server.herokuapp.com/api/opportunity')
+                    .then(res => {
+                        console.log(res.data)
+                        dispatch({ type: "UPDATE_OPP", payload: res.data })
+                    })
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+
+}
+
 
