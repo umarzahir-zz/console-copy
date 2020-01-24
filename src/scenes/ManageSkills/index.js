@@ -4,7 +4,7 @@ import Navigation from "../../components/Navigation/index.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons'
 export default class ManageSkills extends Component {
-    state = { imageSrc: require('../../images/user.png'), imageUrl: null }
+    state = { imageSrc: require('../../images/user.png'), imageUrl: null, }
 
     handleImageUpload = (event) => {
         this.setState({ imageUrl: URL.createObjectURL(event.target.files[0]) })
