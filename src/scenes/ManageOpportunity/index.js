@@ -6,8 +6,15 @@ import { Link } from "react-router-dom";
 import { manageOpportunity } from '../../actions/opportunityAction';
 import { connect } from "react-redux";
 import { delteOpportunity } from '../../actions/opportunityAction'
+import EditModel from './editModel'
 class ManageOpprtunity extends Component {
-
+    state = { show: false, oppTitle: "dummy" }
+    handleShow = (title) => {
+        this.setState({ show: true, oppTitle: title })
+    }
+    handleClose = () => {
+        this.setState({ show: false })
+    }
     componentDidMount = () => {
 
         this.props.getOpportunityData()
@@ -20,6 +27,7 @@ class ManageOpprtunity extends Component {
         return (
             <div className="wrapper">
                 <div className="container-fluid">
+                    <EditModel show={this.state.show} handleClose={this.handleClose} title={this.state.oppTitle} ></EditModel>
                     <div className="row">
                         <aside>
                             <Navigation />
@@ -47,7 +55,7 @@ class ManageOpprtunity extends Component {
                                                                     <li key={opportunity._id} className="list-group-item d-flex justify-content-between align-items-center">
                                                                         <p className="list-title">{opportunity.title}</p>
                                                                         <div className="list-button">
-                                                                            <button className="btn btn-primary gray-button">
+                                                                            <button onClick={() => this.handleShow(opportunity.title)} className="btn btn-primary gray-button">
                                                                                 <FontAwesomeIcon icon={faPen} />
                                                                             </button>
                                                                             <button onClick={() => this.handleOppDelete(opportunity._id)} className="btn btn-primary gray-button">
