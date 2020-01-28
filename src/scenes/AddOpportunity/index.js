@@ -40,22 +40,15 @@ class AddOpportunity extends Component {
     }
     handleFormButton = (event) => {
         event.preventDefault()
-        const data = new FormData({
-            title: this.state.title,
-            opportunityLevel: this.state.opportunityLevel,
-            peopleRequired: this.state.peopleRequired,
-            date: new Date(),
-            imageData: this.state.imageData
-
-        })
-        this.props.sendFormData(data)
+       
+        this.props.sendFormData({title: this.state.title, file: this.state.imageData})
     }
     onChange = date => this.setState({ date })
     handleImage = (event) => {
 
         console.log(event.target.files[0])
         const tempUrl = URL.createObjectURL(event.target.files[0])
-        this.setState({ imageData: event.target.files[0], imageUrl: tempUrl })
+        this.setState({ imageData: event.target, imageUrl: tempUrl })
 
     }
     render() {
