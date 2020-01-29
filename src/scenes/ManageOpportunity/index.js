@@ -5,7 +5,7 @@ import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 import { manageOpportunity } from '../../actions/opportunityAction';
 import { connect } from "react-redux";
-import { delteOpportunity } from '../../actions/opportunityAction'
+import { deleteOpportunity } from '../../actions/opportunityAction'
 import EditModal from './editModal'
 import { Spinner } from 'react-bootstrap'
 class ManageOpprtunity extends Component {
@@ -94,7 +94,7 @@ const mapPropsToState = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         getOpportunityData: () => dispatch(manageOpportunity()),
-        callDeleteOppAction: (id) => dispatch(delteOpportunity(id))
+        callDeleteOppAction: (id) => dispatch(deleteOpportunity(id))
     }
 
 }
