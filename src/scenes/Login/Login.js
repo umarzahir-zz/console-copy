@@ -11,8 +11,9 @@ class Login extends Component{
         return(
             <div className="d-flex m-auto form-container text-left flex-wrap">
             <div className="w-100">
-            <div className="">
-                <h1>Sign-in</h1>
+            <div className="d-flex align-items-center justify-content-between">
+                <h1>Sign In</h1>      
+                <div className=''>Not a Member? <Link className="link" to="/register"><b>Sign up</b></Link></div>                  
             </div>
             <form className="col-12 form">
                 <div className="form-group">
@@ -25,9 +26,8 @@ class Login extends Component{
                 </div>
                 <div className="form-footer w-100 d-flex">
                     <button type="submit" className="btn btn-primary form-button">Submit</button>
-                    <Link className="link" to="/">Signup</Link>
-                    </div>
-                
+                    <Link className="link" to="/">Login</Link>
+                    </div> 
             </form>    
             </div>
         </div>
