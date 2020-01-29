@@ -6,7 +6,7 @@ export default class Register extends Component{
             <div className="d-flex m-auto form-container text-left flex-wrap">
                 <div className="w-100">
                 <div className="">
-                    <h1>Create Account</h1>
+                    <h1>New Admin Account</h1>
                 </div>
                 <form className="col-12 form">
                     <div className="form-group">
@@ -14,14 +14,13 @@ export default class Register extends Component{
                         <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" className="form-control" id="exampleInputPassword1"/>
-                        <label for="exampleInputPassword2">Repeat Password</label>
-                        <input type="password" className="form-control" id="exampleInputPassword2"/>
+                        <label for="password1">Password</label>
+                        <input type="password" className="form-control" id="password1" />
+                        <label for="password2">Repeat Password</label>
+                        <input type="password" className="form-control" id="password2" />
                     </div>
                     <div className="form-footer w-100 d-flex">
-                    <button type="submit" className="btn btn-primary form-button">Submit</button>
-                    <Link className="link" to="/login">Register</Link>
+                    <Link type="submit" to='/login' className="btn btn-primary form-button">Submit</Link>
                     </div>
                 </form>    
                 </div>

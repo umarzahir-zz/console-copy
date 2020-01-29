@@ -12,8 +12,8 @@ class Login extends Component{
             <div className="d-flex m-auto form-container text-left flex-wrap">
             <div className="w-100">
             <div className="d-flex align-items-center justify-content-between">
-                <h1>Sign In</h1>      
-                <div className=''>Not a Member? <Link className="link" to="/register"><b>Sign up</b></Link></div>                  
+                <h1>Login</h1>      
+                <div className=''>Not a Member yet? <Link className="link" to="/register"><b><u>Sign up</u></b></Link></div>                  
             </div>
             <form className="col-12 form">
                 <div className="form-group">
@@ -25,8 +25,7 @@ class Login extends Component{
                     <input type="password" className="form-control" id="exampleInputPassword1"/>
                 </div>
                 <div className="form-footer w-100 d-flex">
-                    <button type="submit" className="btn btn-primary form-button">Submit</button>
-                    <Link className="link" to="/">Login</Link>
+                    <Link type="submit" to='/' className="btn btn-primary form-button">Login</Link>
                     </div> 
             </form>    
             </div>
