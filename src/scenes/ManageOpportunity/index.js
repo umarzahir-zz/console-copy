@@ -7,6 +7,7 @@ import { manageOpportunity } from '../../actions/opportunityAction';
 import { connect } from "react-redux";
 import { delteOpportunity } from '../../actions/opportunityAction'
 import EditModel from './editModel'
+import { Spinner } from 'react-bootstrap'
 class ManageOpprtunity extends Component {
     state = { show: false, oppTitle: "dummy" }
     handleShow = (title) => {
@@ -50,7 +51,7 @@ class ManageOpprtunity extends Component {
                                                 <div className=" col-6">
                                                     <div className="result">
                                                         <ul className="list-group result-list">
-                                                            {this.props.allOpportunities && this.props.allOpportunities.map(opportunity => {
+                                                            {this.props.allOpportunities ? this.props.allOpportunities.map(opportunity => {
                                                                 return (
                                                                     <li key={opportunity._id} className="list-group-item d-flex justify-content-between align-items-center">
                                                                         <p className="list-title">{opportunity.title}</p>
@@ -64,7 +65,7 @@ class ManageOpprtunity extends Component {
                                                                         </div>
                                                                     </li>
                                                                 )
-                                                            })}
+                                                            }) : <Spinner animation="grow" />}
 
                                                         </ul>
                                                         <nav aria-label="Page navigation example">
