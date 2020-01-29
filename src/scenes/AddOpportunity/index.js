@@ -40,14 +40,14 @@ class AddOpportunity extends Component {
     }
     handleFormButton = (event) => {
         event.preventDefault()
-        const data = new FormData({
+        const data = {
             title: this.state.title,
             opportunityLevel: this.state.opportunityLevel,
             peopleRequired: this.state.peopleRequired,
             date: new Date(),
-            imageData: this.state.imageData
+            // imageData: this.state.imageData
 
-        })
+        }
         this.props.sendFormData(data)
     }
     onChange = date => this.setState({ date })
