@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { manageOpportunity } from '../../actions/opportunityAction';
 import { connect } from "react-redux";
 import { delteOpportunity } from '../../actions/opportunityAction'
-import EditModel from './editModel'
+import EditModal from './editModal'
 import { Spinner } from 'react-bootstrap'
 class ManageOpprtunity extends Component {
     state = { show: false, oppTitle: "dummy" }
@@ -17,9 +17,7 @@ class ManageOpprtunity extends Component {
         this.setState({ show: false })
     }
     componentDidMount = () => {
-
         this.props.getOpportunityData()
-
     }
     handleOppDelete = (id) => {
         this.props.callDeleteOppAction(id)
@@ -28,7 +26,7 @@ class ManageOpprtunity extends Component {
         return (
             <div className="wrapper">
                 <div className="container-fluid">
-                    <EditModel show={this.state.show} handleClose={this.handleClose} title={this.state.oppTitle} ></EditModel>
+                    <EditModal show={this.state.show} handleClose={this.handleClose} title={this.state.oppTitle} ></EditModal>
                     <div className="row">
                         <aside>
                             <Navigation />
@@ -39,15 +37,12 @@ class ManageOpprtunity extends Component {
                                     <div className="page_title">
                                         <h1>manage opportunity</h1>
                                     </div>
-
                                     <div className="col-12 text-right mt-4 pr-0">
                                         <Link to="/AddOpportunity" className="btn btn-primary gray-button">Add Opportunity</Link>
                                     </div>
-
                                     <div className="center-content">
                                         <div className="opportunity-form col-12 p-0">
                                             <div className="row">
-
                                                 <div className=" col-6">
                                                     <div className="result">
                                                         <ul className="list-group result-list">
@@ -66,7 +61,6 @@ class ManageOpprtunity extends Component {
                                                                     </li>
                                                                 )
                                                             }) : <Spinner animation="grow" />}
-
                                                         </ul>
                                                         <nav aria-label="Page navigation example">
                                                             <ul className="pagination custom-pagination">
@@ -77,28 +71,17 @@ class ManageOpprtunity extends Component {
                                                                 <li className="page-item"><Link className="page-link gray-button" to="#">Next</Link></li>
                                                             </ul>
                                                         </nav>
-                                                        {/* <div className="nofound col-12 p-0">
-                                                            <h3>No admin found</h3>
-                                                        </div> */}
                                                     </div>
-
-
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
-
                                 </div>
                             </div>
-
                         </article>
                     </div>
                 </div>
-
             </div>
-
         )
     }
 }
@@ -106,7 +89,6 @@ const mapPropsToState = (state) => {
     console.log("gettingn state", state.opportunity.opportunities)
     return {
         allOpportunities: state.opportunity.opportunities
-
     }
 }
 const mapDispatchToProps = (dispatch) => {

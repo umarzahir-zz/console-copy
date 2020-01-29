@@ -17,7 +17,11 @@ cache:
 test_async:
   script:
     - npm install
+  only:
+    - test
 
 test_db:
   script:
     - npm install
+  only:
+    - test
