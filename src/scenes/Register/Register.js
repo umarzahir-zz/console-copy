@@ -10,13 +10,13 @@ export default class Register extends Component{
                 </div>
                 <form className="col-12 form">
                     <div className="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
+                        <label htmlFor="exampleInputEmail1">Email address</label>
                         <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
-                    <div class="form-group">
-                        <label for="password1">Password</label>
+                    <div className="form-group">
+                        <label htmlFor="password1">Password</label>
                         <input type="password" className="form-control" id="password1" />
-                        <label for="password2">Repeat Password</label>
+                        <label htmlFor="password2">Repeat Password</label>
                         <input type="password" className="form-control" id="password2" />
                     </div>
                     <div className="form-footer w-100 d-flex">
