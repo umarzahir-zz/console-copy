@@ -14,7 +14,6 @@ export const opportunityData = (formData) => {
      console.log(another);
      
     return (dispatch, getState) => {
-<<<<<<< HEAD
         axios.post('http://localhost:5000/api/opportunity/create', another, {
             headers: {
              'accept': 'application/json',
@@ -24,10 +23,6 @@ export const opportunityData = (formData) => {
            })
             .then(res => {
                 console.log('inside then case', ...data)
-=======
-        axios.post('http://localhost:5000/api/opportunity/', formData)
-            .then(res => {
->>>>>>> dev
                 dispatch({
                     type: ADD_OPPORTUNITY,
                     payload: res.data
