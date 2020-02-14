@@ -14,6 +14,7 @@ export const opportunityData = (formData) => {
      console.log(another);
      
     return (dispatch, getState) => {
+<<<<<<< HEAD
         axios.post('http://localhost:5000/api/opportunity/create', another, {
             headers: {
              'accept': 'application/json',
@@ -23,24 +24,25 @@ export const opportunityData = (formData) => {
            })
             .then(res => {
                 console.log('inside then case', ...data)
+=======
+        axios.post('http://localhost:5000/api/opportunity/', formData)
+            .then(res => {
+>>>>>>> dev
                 dispatch({
                     type: ADD_OPPORTUNITY,
                     payload: res.data
                 })
             })
             .catch(err => {
-
+                console.log(err);
             })
-
     }
-
 }
 
 export const manageOpportunity = () => {
     return (dispatch) => {
         axios.get('https://ivol-server.herokuapp.com/api/opportunity')
             .then(res => {
-                console.log('response of manage oppotunites', res)
                 dispatch({
                     type: MANAGE_OPPORTUNITY,
                     payload: res.data
@@ -53,15 +55,13 @@ export const manageOpportunity = () => {
 
 }
 
-export const delteOpportunity = (id) => {
+export const deleteOpportunity = (id) => {
     console.log(id)
     return (dispatch, getState) => {
         axios.delete('https://ivol-server.herokuapp.com/api/opportunity/delete/' + id)
             .then(res => {
-                console.log(res)
                 axios.get('https://ivol-server.herokuapp.com/api/opportunity')
                     .then(res => {
-                        console.log(res.data)
                         dispatch({ type: "UPDATE_OPP", payload: res.data })
                     })
             }).catch(err => {

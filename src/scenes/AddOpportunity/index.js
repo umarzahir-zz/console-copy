@@ -16,8 +16,9 @@ class AddOpportunity extends Component {
             calendar: false,
             imageSrc: require('../../images/user.png'),
             imageUrl: null,
-            imageData: null
-
+            imageData: null,
+            latitude: 33.6844,     // *north
+            longitude: 73.0497     // *east
         }
 
     }
@@ -34,14 +35,30 @@ class AddOpportunity extends Component {
 
     }
     titleChange = (event) => {
-        console.log(event.target.value);
         this.setState({ [event.target.name]: event.target.value });
-
+        console.log(this.state);
+        
     }
     handleFormButton = (event) => {
         event.preventDefault()
+<<<<<<< HEAD
        
         this.props.sendFormData({title: this.state.title, file: this.state.imageData})
+=======
+        const data = {
+            title: this.state.title,
+            opportunityLevel: this.state.opportunityLevel,
+            peopleRequired: this.state.peopleRequired,
+            date: new Date(),
+            location: [
+                this.state.latitude,
+                this.state.longitude
+            ],
+            imageData: this.state.imageData
+
+        }
+        this.props.sendFormData(data)
+>>>>>>> dev
     }
     onChange = date => this.setState({ date })
     handleImage = (event) => {
@@ -90,7 +107,7 @@ class AddOpportunity extends Component {
                                                     <label>Opportunity Name</label>
                                                     <input className="form-control"
                                                         type="text" value={this.state.title}
-                                                        placeholder="Oppotunity name"
+                                                        placeholder="Opportunity name"
                                                         name="title"
                                                         onChange={this.titleChange} />
 
@@ -111,6 +128,19 @@ class AddOpportunity extends Component {
                                                         placeholder="People required"
                                                         name="peopleRequired"
                                                         value={this.state.peopleRequired}
+                                                        onChange={this.titleChange} />
+                                                </div>
+                                                <div className="form-group">
+                                                    <label>Location</label>
+                                                    <input className="form-control"
+                                                        placeholder="Latitude"
+                                                        name="latitude"
+                                                        value={this.state.latitude}
+                                                        onChange={this.titleChange} />
+                                                    <input className="form-control"
+                                                        placeholder="Longitude"
+                                                        name="longitude"
+                                                        value={this.state.longitude}
                                                         onChange={this.titleChange} />
                                                 </div>
                                                 <div className="form-group">

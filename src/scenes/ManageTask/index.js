@@ -4,13 +4,10 @@ import Navigation from "../../components/Navigation/index.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons'
 export default class ManageTask extends Component {
-
     state = { imgSrc: require('../../images/user.png'), imgUrl: null }
     handleImageChange = (event) => {
         this.setState({ imgUrl: URL.createObjectURL(event.target.files[0]) })
     }
-
-
     render() {
         const uploadBtnClass = this.state.imgUrl ? 'btn btn-primary' : 'btn btn-danger disabled'
         return (
@@ -26,7 +23,6 @@ export default class ManageTask extends Component {
                                     <div className="page_title">
                                         <h1>manage tasks</h1>
                                     </div>
-
                                     <div className="center-content">
                                         <div className="opportunity-form col-12 p-0">
                                             <div className="row">
@@ -36,21 +32,18 @@ export default class ManageTask extends Component {
                                                             <label>volunteer images</label>
                                                             <span className="profilepic-outer">
                                                                 <input type='file' name='file' onChange={this.handleImageChange} accept='image/*' ></input>
-                                                                {this.state.imgUrl ? <img src={this.state.imgUrl} ></img> : <img src={this.state.imgSrc} alt="" />}
-
+                                                                {this.state.imgUrl ? <img src={this.state.imgUrl} alt="" /> : <img src={this.state.imgSrc} alt="" />}
                                                             </span>
                                                             <button className={uploadBtnClass}>upload</button>
                                                         </div>
                                                         <div className="form-group">
                                                             <label>Skill name</label>
-                                                            <input className="form-control" type="text" placeholder="Skill name" />
+                                                            <input className="form-control" type="text" placeholder="Skill name"/>
                                                         </div>
                                                         <div className="form-group">
-                                                            <label>skill descrition</label>
+                                                            <label>Skill Description</label>
                                                             <textarea className="form-control" placeholder="Description" rows="5">
-
                                                             </textarea>
-
                                                         </div>
                                                         <button className="btn btn-primary gray-button">add volunteer</button>
                                                     </form>
@@ -91,7 +84,6 @@ export default class ManageTask extends Component {
                                                                     </button>
                                                                 </div>
                                                             </li>
-
                                                         </ul>
                                                         <nav aria-label="Page navigation example">
                                                             <ul className="pagination custom-pagination">
@@ -102,19 +94,11 @@ export default class ManageTask extends Component {
                                                                 <li className="page-item"><Link class="page-link gray-button" to="#">Next</Link></li>
                                                             </ul>
                                                         </nav>
-                                                        {/* <div className="nofound col-12 p-0">
-                                                            <h3>No admin found</h3>
-                                                        </div> */}
                                                     </div>
-
-
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
-
                                 </div>
                             </div>
                         </article>

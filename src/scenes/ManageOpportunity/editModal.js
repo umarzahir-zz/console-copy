@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { Button, Modal, Row, Col } from 'react-bootstrap'
 
 
-export default class editModel extends Component {
+export default class EditModal extends Component {
     render() {
-
         return (
             <div>
                 <Modal backdrop="static" centered show={this.props.show} onHide={this.props.handleClose} >
