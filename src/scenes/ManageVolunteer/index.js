@@ -3,12 +3,25 @@ import { Link } from "react-router-dom";
 import Navigation from "../../components/Navigation/index.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons'
-export default class ManageVolunteer extends Component {
+import { connect } from "react-redux";
+import {volunteerview} from '../../actions/volunteerAction';
+class ManageVolunteer extends Component {
 
     state = {
         imageSrc: require('../../images/user.png'),
         imageUrl: null
     }
+    componentDidMount = () => {
+        console.log("mount vol")
+        this.props.getAllVol()
+        console.log(this.props.allVol)
+    }
+    componentDidUpdate = () => {
+        if(this.props.allVol === undefined) {
+            this.props.getAllVol()
+        }
+    }
+    
 
     handleImageUpload = (event) => {
         //temprory path to show uploaded image to user
@@ -17,6 +30,7 @@ export default class ManageVolunteer extends Component {
     }
 
     render() {
+        console.log(this.props.allVol)
         const source = this.state.imageSrc
         const iurl = this.state.imageUrl
         const uploadBtnClass = iurl ? 'btn btn-success' : 'btn btn-danger disabled'
@@ -76,39 +90,26 @@ export default class ManageVolunteer extends Component {
                                                 <div className=" col-6">
                                                     <div className="result">
                                                         <ul className="list-group result-list">
-                                                            <li className="list-group-item d-flex justify-content-between align-items-center">
-                                                                <p className="list-title">Ali</p>
-                                                                <div className="list-button">
-                                                                    <button className="btn btn-primary gray-button">
-                                                                        <FontAwesomeIcon icon={faPen} />
-                                                                    </button>
-                                                                    <button className="btn btn-primary gray-button">
-                                                                        <FontAwesomeIcon icon={faTrash} />
-                                                                    </button>
-                                                                </div>
-                                                            </li>
-                                                            <li className="list-group-item d-flex justify-content-between align-items-center">
-                                                                <p className="list-title">Zarar</p>
-                                                                <div className="list-button">
-                                                                    <button className="btn btn-primary gray-button">
-                                                                        <FontAwesomeIcon icon={faPen} />
-                                                                    </button>
-                                                                    <button className="btn btn-primary gray-button">
-                                                                        <FontAwesomeIcon icon={faTrash} />
-                                                                    </button>
-                                                                </div>
-                                                            </li>
-                                                            <li className="list-group-item d-flex justify-content-between align-items-center">
-                                                                <p className="list-title">Salis</p>
-                                                                <div className="list-button">
-                                                                    <button className="btn btn-primary gray-button">
-                                                                        <FontAwesomeIcon icon={faPen} />
-                                                                    </button>
-                                                                    <button className="btn btn-primary gray-button">
-                                                                        <FontAwesomeIcon icon={faTrash} />
-                                                                    </button>
-                                                                </div>
-                                                            </li>
+                                                            {this.props.allVol && this.props.allVol.map((vol) => 
+                                                            {
+                                                                return(
+                                                                    <li className="list-group-item d-flex justify-content-between align-items-center">
+                                                                    <p className="list-title">{vol.name}</p>
+                                                                    <div className="list-button">
+                                                                        <button className="btn btn-primary gray-button">
+                                                                            <FontAwesomeIcon icon={faPen} />
+                                                                        </button>
+                                                                        <button className="btn btn-primary gray-button">
+                                                                            <FontAwesomeIcon icon={faTrash} />
+                                                                        </button>
+                                                                    </div>
+                                                                </li>
+                                                                )
+                                                            }
+                                                                
+                                                                )}
+                                                            
+                                                           
 
                                                         </ul>
                                                         <nav aria-label="Page navigation example">
@@ -142,3 +143,15 @@ export default class ManageVolunteer extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    console.log(state.vol)
+    return{
+        allVol: state.vol.allVoluntear
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return{
+        getAllVol: () => {dispatch(volunteerview())}
+    }
+}
+export default connect (mapStateToProps, mapDispatchToProps)(ManageVolunteer)
