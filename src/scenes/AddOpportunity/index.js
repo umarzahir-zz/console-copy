@@ -73,7 +73,7 @@ class AddOpportunity extends Component {
 
         console.log("image upload", event.target.files[0])
         const tempUrl = URL.createObjectURL(event.target.files[0])
-        this.setState({ imageData: event.target.files[0], imageUrl: tempUrl })
+        this.setState({ imageData: event.target, imageUrl: tempUrl })
 
 
     }
