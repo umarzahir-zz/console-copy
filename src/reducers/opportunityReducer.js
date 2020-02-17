@@ -19,13 +19,6 @@ const opportunityReducer = (state = initialState, action) => {
             return {
                 opportunities: [...action.payload],
             }
-<<<<<<< HEAD
-        case "ADD_OPPORTUNITY":
-            {
-                console.log("inside opp reducer",action.payload)
-            }
-=======
-
 
         case "ADD_OPPORTUNITY":
             return state
@@ -33,7 +26,6 @@ const opportunityReducer = (state = initialState, action) => {
 
 
 
->>>>>>> dev
         case "UPDATE_OPP": {
             return {
                 opportunities: [...action.payload],
