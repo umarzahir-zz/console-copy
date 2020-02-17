@@ -15,16 +15,25 @@ const opportunityReducer = (state = initialState, action) => {
                 return state;
             }
         case "MANAGE_OPPORTUNITY":
-            {
-                return {
-                    opportunities: [...action.payload],
-                }
 
+            return {
+                opportunities: [...action.payload],
             }
+<<<<<<< HEAD
         case "ADD_OPPORTUNITY":
             {
                 console.log("inside opp reducer",action.payload)
             }
+=======
+
+
+        case "ADD_OPPORTUNITY":
+            return state
+
+
+
+
+>>>>>>> dev
         case "UPDATE_OPP": {
             return {
                 opportunities: [...action.payload],
@@ -32,6 +41,6 @@ const opportunityReducer = (state = initialState, action) => {
         }
         default:
             return { ...state }
-    } 
+    }
 }
 export default opportunityReducer;

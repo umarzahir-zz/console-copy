@@ -9,9 +9,9 @@ import { deleteOpportunity } from '../../actions/opportunityAction'
 import EditModal from './editModal'
 import { Spinner } from 'react-bootstrap'
 class ManageOpprtunity extends Component {
-    state = { show: false, oppTitle: "dummy" }
-    handleShow = (title) => {
-        this.setState({ show: true, oppTitle: title })
+    state = { show: false, oppTitle: "dummy", id: '' }
+    handleShow = (title, id) => {
+        this.setState({ show: true, oppTitle: title, id: id })
     }
     handleClose = () => {
         this.setState({ show: false })
@@ -26,7 +26,7 @@ class ManageOpprtunity extends Component {
         return (
             <div className="wrapper">
                 <div className="container-fluid">
-                    <EditModal show={this.state.show} handleClose={this.handleClose} title={this.state.oppTitle} ></EditModal>
+                    <EditModal show={this.state.show} handleClose={this.handleClose} title={this.state.oppTitle} id={this.state.id} ></EditModal>
                     <div className="row">
                         <aside>
                             <Navigation />
@@ -51,7 +51,7 @@ class ManageOpprtunity extends Component {
                                                                     <li key={opportunity._id} className="list-group-item d-flex justify-content-between align-items-center">
                                                                         <p className="list-title">{opportunity.title}</p>
                                                                         <div className="list-button">
-                                                                            <button onClick={() => this.handleShow(opportunity.title)} className="btn btn-primary gray-button">
+                                                                            <button onClick={() => this.handleShow(opportunity.title, opportunity._id)} className="btn btn-primary gray-button">
                                                                                 <FontAwesomeIcon icon={faPen} />
                                                                             </button>
                                                                             <button onClick={() => this.handleOppDelete(opportunity._id)} className="btn btn-primary gray-button">

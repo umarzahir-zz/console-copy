@@ -37,32 +37,47 @@ class AddOpportunity extends Component {
     titleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
         console.log(this.state);
-        
+
     }
     handleFormButton = (event) => {
+        const location = [this.state.latitude, this.state.longitude]
         event.preventDefault()
-        const data = {
-            title: this.state.title,
-            opportunityLevel: this.state.opportunityLevel,
-            peopleRequired: this.state.peopleRequired,
-            date: new Date(),
-            location: [
-                this.state.latitude,
-                this.state.longitude
-            ],
-            imageData: this.state.imageData
-
+        var fd = new FormData()
+        fd.append("file", this.state.imageData, this.state.imageData.name)
+        fd.append("title", this.state.title)
+        fd.append("opportunityLevel", this.state.opportunityLevel)
+        fd.append("peopleRequired", this.state.peopleRequired)
+        fd.append("date", new Date())
+        for (var i = 0; i <= 1; i++) {
+            fd.append("location", location[i])
         }
-        this.props.sendFormData(data)
+
+
+
+        // const data = {
+        //     title: this.state.title,
+        //     opportunityLevel: this.state.opportunityLevel,
+        //     peopleRequired: this.state.peopleRequired,
+        //     date: new Date(),
+        //     location: [
+        //         this.state.latitude,
+        //         this.state.longitude
+        //     ],
+        //     fd
+
+        // }
+        this.props.sendFormData(fd)
     }
     onChange = date => this.setState({ date })
     handleImage = (event) => {
 
-        console.log(event.target.files[0])
+        console.log("image upload", event.target.files[0])
         const tempUrl = URL.createObjectURL(event.target.files[0])
         this.setState({ imageData: event.target, imageUrl: tempUrl })
 
+
     }
+
     render() {
         console.log(this.state.date)
 
@@ -92,11 +107,11 @@ class AddOpportunity extends Component {
                                                 <div className="form-group profile-pic d-flex flex-wrap">
                                                     <label>opportunity image</label>
                                                     <span className="profilepic-outer">
-                                                        <input type='file' name='file' accept="image/*" onChange={this.handleImage} ></input>
+                                                        <input type="file" name='file' accept="image/*" onChange={this.handleImage} ></input>
                                                         {this.state.imageUrl ? <img src={this.state.imageUrl} alt="" /> : <img src={this.state.imageSrc} alt="" />}
 
                                                     </span>
-                                                    <button onClick={this.handleUpload} className={uploadbuttonClass}>upload</button>
+
                                                 </div>
                                                 <div className="form-group">
                                                     <label>Opportunity Name</label>
@@ -174,4 +189,4 @@ const mapDispatchToProps = (dispatch) => {
         sendFormData: (data) => dispatch(opportunityData(data))
     }
 }
-export default connect(null, mapDispatchToProps)(AddOpportunity)
+export default connect(null, mapDispatchToProps)(AddOpportunity)      
