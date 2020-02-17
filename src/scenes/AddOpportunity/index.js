@@ -189,4 +189,4 @@ const mapDispatchToProps = (dispatch) => {
         sendFormData: (data) => dispatch(opportunityData(data))
     }
 }
-export default connect(null, mapDispatchToProps)(AddOpportunity)
+export default connect(null, mapDispatchToProps)(AddOpportunity)      
