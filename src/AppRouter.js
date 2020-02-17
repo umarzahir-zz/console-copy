@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom';
 import Login from './scenes/Login/Login';
-import Signin from './scenes/Signin/Signin';
+import Register from './scenes/Register/Register';
 import AdminDashboard from "./scenes/AdminDashboard/index.js";
 import AddOpportunity from "./scenes/AddOpportunity/index.js";
 import ManageOpportunity from "./scenes/ManageOpportunity/index.js";
@@ -17,7 +17,7 @@ export default class AppRouter extends Component {
         return (
             <div>
                 <Switch>
-                    <Route exact path='/signin' component={Signin} />
+                    <Route exact path='/register' component={Register} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/dashboard' component={AdminDashboard} />
                     <Route exact path='/addopportunity'component={AddOpportunity}/>
