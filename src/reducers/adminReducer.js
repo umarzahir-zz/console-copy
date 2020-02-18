@@ -1,7 +1,10 @@
 
 
 
-const initialState = { adminSignupStaus: false, adminSignupMessage: null, message: false }
+const initialState = {
+    adminSignupStaus: false, adminSignupMessage: null, message: false,
+    adminLoginStatus: false, adminLoginMessage: null, messagel: false
+}
 
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -26,6 +29,32 @@ export default (state = initialState, action) => {
                 adminSignupStaus: false,
                 adminSignupMessage: action.payload,
                 message: true
+
+            }
+        case "ADMIN_LOGIN_FAIL":
+            return {
+                ...state,
+
+                adminLoginStatus: false,
+                adminLoginMessage: action.payload,
+                messagel: true
+
+            }
+        case "ADMIN_LOGIN_SUCCESS":
+            return {
+                ...state,
+
+                adminLoginStatus: false,
+                adminLoginMessage: "Login Success",
+                messagel: true
+
+            }
+        case "SIGN_IN_LOADING":
+            return {
+                ...state,
+
+                adminLoginStatus: true,
+
 
             }
         default:

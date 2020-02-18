@@ -22,3 +22,18 @@ export const adminSignup = (data) => {
             })
     }
 }
+
+export const adminLogin = (data) => {
+    console.log(data)
+    return (dispatch, getState) => {
+        dispatch({ type: "SIGN_IN_LOADING" })
+        axios.post('http://localhost:5000/api/admin/login', data)
+            .then(res => {
+                console.log("LOGIN action success")
+                dispatch({ type: "ADMIN_LOGIN_SUCCESS", payload: res })
+            }).catch(err => {
+                console.log(err)
+                dispatch({ type: "ADMIN_LOGIN_FAIL", payload: err.message })
+            })
+    }
+}
