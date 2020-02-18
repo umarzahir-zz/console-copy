@@ -1,7 +1,10 @@
 
 
 
-const initialState = { adminSignupStaus: false, adminSignupMessage: null, message: false }
+const initialState = {
+    adminSignupStaus: false, adminSignupMessage: null, message: false,
+    adminLoginStatus: false, adminLoginMessage: null, messagel: false
+}
 
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -17,7 +20,7 @@ export default (state = initialState, action) => {
                 ...state,
                 message: true,
                 adminSignupStaus: false,
-                adminSignupMessage: 'Sinpup Success'
+                adminSignupMessage: 'Signup Success'
             }
         case "ADMIN_SIGNUP_FAIL":
             return {
@@ -26,6 +29,31 @@ export default (state = initialState, action) => {
                 adminSignupStaus: false,
                 adminSignupMessage: action.payload,
                 message: true
+
+            }
+        case "ADMIN_LOGIN_FAIL":
+            console.log("login reducer fail and payload is:", action.payload)
+            return {
+                ...state,
+                adminLoginMessage: action.payload,
+                messagel: true,
+                adminLoginStatus: false,
+
+            }
+        case "ADMIN_LOGIN_SUCCESS":
+            console.log("login reducer success and the payload is :", action.payload)
+            return {
+                ...state,
+                adminLoginStatus: false,
+                adminLoginMessage: "Login Success",
+                messagel: true
+
+            }
+        case "SIGN_IN_LOADING":
+            return {
+                ...state,
+                adminLoginStatus: true,
+
 
             }
         default:

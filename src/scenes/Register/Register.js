@@ -19,6 +19,7 @@ class Register extends Component {
         this.setState({ visible: false })
     }
     render() {
+        
 
 
         return (
