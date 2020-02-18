@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
                 ...state,
                 message: true,
                 adminSignupStaus: false,
-                adminSignupMessage: 'Sinpup Success'
+                adminSignupMessage: 'Signup Success'
             }
         case "ADMIN_SIGNUP_FAIL":
             return {
@@ -32,18 +32,18 @@ export default (state = initialState, action) => {
 
             }
         case "ADMIN_LOGIN_FAIL":
+            console.log("login reducer fail and payload is:", action.payload)
             return {
                 ...state,
-
-                adminLoginStatus: false,
                 adminLoginMessage: action.payload,
-                messagel: true
+                messagel: true,
+                adminLoginStatus: false,
 
             }
         case "ADMIN_LOGIN_SUCCESS":
+            console.log("login reducer success and the payload is :", action.payload)
             return {
                 ...state,
-
                 adminLoginStatus: false,
                 adminLoginMessage: "Login Success",
                 messagel: true
@@ -52,7 +52,6 @@ export default (state = initialState, action) => {
         case "SIGN_IN_LOADING":
             return {
                 ...state,
-
                 adminLoginStatus: true,
 
 

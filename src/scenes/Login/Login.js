@@ -3,20 +3,40 @@ import { connect } from "react-redux";
 import { adminLogin } from "../../actions/adminAction";
 import { Alert } from 'reactstrap';
 import { Link } from 'react-router-dom'
+
+//do something...
+
+
 class Login extends Component {
-    state = { email: 'umk', password: '' }
+    state = { email: '', password: '' }
     componentDidMount() {
-        // this.props.login();
+        console.log("did mount", this.props.LoginMessage)
+        if (this.props.LoginMessage == "Login Success") {
+            console.log("***********   true")
+            setTimeout(() => {
+                this.props.history.push("/dashboard")
+            }, 1000);
+
+        }
+    }
+    componentDidUpdate = () => {
+        console.log("did update", this.props.LoginMessage)
+        if (this.props.LoginMessage == "Login Success") {
+            console.log("***********   true")
+            setTimeout(() => {
+                this.props.history.push("/dashboard")
+            }, 2000);
+        }
     }
     handleChange = (event) => {
-        console.log("name", event.target)
-        console.log("pass", event.target.vlaue)
-        this.setState({ [event.target.name]: event.target.vlaue })
+        this.setState({ [event.target.name]: event.target.value })
     }
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault()
         this.props.sendData(this.state)
     }
     render() {
+        console.log("login")
         console.log("email", this.state.email)
         console.log(this.state.password)
         return (
@@ -37,7 +57,7 @@ class Login extends Component {
                         </div>
                         <div className="form-footer w-100 d-flex">
                             < Alert color="info" isOpen={this.props.visible} toggle={this.onDismiss}>
-                                {this.props.signupMessage}
+                                {this.props.LoginMessage}
                             </Alert>
                             <button onClick={this.handleSubmit} >{this.props.loginStatus ? "Loading..." : "Login"}</button>
 
