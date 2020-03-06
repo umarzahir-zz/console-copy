@@ -67,8 +67,7 @@ class Login extends Component {
                 <div className="form-footer w-100 d-flex">
                     <Link type="submit" to='/' className="btn btn-primary form-button">Login</Link>
                     <Link type="submit" to='/forgotpassword' className='text-secondary'>Forgot Password?</Link>
-                    </div> 
-            </form>    
+                 </div>      
             </div>
         )
     }
