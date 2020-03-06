@@ -12,6 +12,10 @@ import Profile from './scenes/Profile';
 import ManageSkills from './scenes/ManageSkills';
 import ManageTask from './scenes/ManageTask';
 import ImageUpload from './scenes/ImageUpload/ImageUpload';
+import ForgotPassword from './scenes/ForgotPassword/index';
+import NewPassword from './scenes/NewPassword/index';
+import PasswordMsg from './scenes/PasswordMsg/index';
+
 export default class AppRouter extends Component {
     render() {
         return (
@@ -20,8 +24,8 @@ export default class AppRouter extends Component {
                     <Route exact path='/register' component={Register} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/dashboard' component={AdminDashboard} />
-                    <Route exact path='/addopportunity'component={AddOpportunity}/>
-                    <Route exact path='/manageopportunity'component={ManageOpportunity}/>
+                    <Route exact path='/addopportunity' component={AddOpportunity}/>
+                    <Route exact path='/manageopportunity' component={ManageOpportunity}/>
                     <Route exact path='/manageadmin' component={ManageAdmin}/>
                     <Route exact path='/manageagency' component={ManageAgency}/>
                     <Route exact path='/profile' component={Profile}/>
@@ -29,6 +33,9 @@ export default class AppRouter extends Component {
                     <Route exact path='/manageskills' component={ManageSkills}/>
                     <Route exact path='/imageupload' component={ImageUpload}/>
                     <Route exact path='/' component={ManageTask}/>
+                    <Route exact path='/forgotpassword' component = { ForgotPassword }/>
+                    <Route exact path='/newcredentials' component = { NewPassword }/>
+                    <Route exact path='/newMsg' component = { PasswordMsg } />
                 </Switch>
             </div>
         )

@@ -168,6 +168,111 @@ class AddOpportunity extends Component {
                                                         onClickDay={(data) => this.hideCalender(data)}
                                                     />}
                                                 </div>
+                                                <div>
+                                                        <h3 style={{color: 'black'}}>Preferences</h3>
+                                                        <div className="container row">
+                                                            <p style={{color: 'black', marginLeft: 12}}>Indoor  </p>
+                                                            <input style={{marginLeft: 10}} type='radio'></input>
+                                                            <p style={{color: 'black', marginLeft: 12}}>Outdoor  </p>
+                                                            <input style={{marginLeft: 10}} type='radio'></input>
+                                                            <p style={{color: 'black', marginLeft: 12}}>Both  </p>
+                                                            <input style={{marginLeft: 10}} type='radio'></input>
+                                                        </div>
+                                                        <div className="container row">
+                                                            <p style={{color: 'black', marginLeft: 12}}>Active  </p>
+                                                            <input style={{marginLeft: 10}} type='radio'></input>
+                                                            <p style={{color: 'black', marginLeft: 12}}>Mellow  </p>
+                                                            <input style={{marginLeft: 10}} type='radio'></input>
+                                                            <p style={{color: 'black', marginLeft: 12}}>Both  </p>
+                                                            <input style={{marginLeft: 10}} type='radio'></input>
+                                                        </div>
+                                                        <div className="container row">
+                                                            <p style={{color: 'black', marginLeft: 12}}>Mind  </p>
+                                                            <input style={{marginLeft: 10}} type='radio'></input>
+                                                            <p style={{color: 'black', marginLeft: 12}}>Body  </p>
+                                                            <input style={{marginLeft: 10}} type='radio'></input>
+                                                            <p style={{color: 'black', marginLeft: 12}}>Both  </p>
+                                                            <input style={{marginLeft: 10}} type='radio'></input>
+                                                        </div>
+                                                        <div className="container row">
+                                                            <p style={{color: 'black', marginLeft: 12}}>Independant  </p>
+                                                            <input style={{marginLeft: 10}} type='radio'></input>
+                                                            <p style={{color: 'black', marginLeft: 12}}>Social  </p>
+                                                            <input style={{marginLeft: 10}} type='radio'></input>
+                                                            <p style={{color: 'black', marginLeft: 12}}>Both  </p>
+                                                            <input style={{marginLeft: 10}} type='radio'></input>
+                                                        </div>
+                                                </div>
+                                                <div>
+                                                        <h3 style={{color: 'black'}}>Availability</h3>
+                                                        <div className="container row">
+                                                            <div className="container row">
+                                                                <p style={{color: "black", marginRight: 10}}>Mon</p>
+                                                                <p>Morning</p>
+                                                                <input style={{marginLeft: 5, marginRight: 55}} type='radio' aria-label="Radio button for following text input"></input>
+                                                                <p>Midday</p>
+                                                                <input style={{marginLeft: 5, marginRight: 55}} type='radio' aria-label="Radio button for following text input"></input>
+                                                                <p>Evening</p>
+                                                                <input style={{marginLeft: 5}} type='radio' aria-label="Radio button for following text input"></input>
+                                                            </div>
+                                                            <div className="container row">
+                                                                <p style={{color: "black", marginRight: 10}}>Tue</p>
+                                                                <p>Morning</p>
+                                                                <input style={{marginLeft: 5, marginRight: 55}} type='radio'></input>
+                                                                <p>Midday</p>
+                                                                <input style={{marginLeft: 5, marginRight: 55}} type='radio'></input>
+                                                                <p>Evening</p>
+                                                                <input style={{marginLeft: 5}} type='radio'></input>
+                                                            </div>
+                                                            <div className="container row">
+                                                                <p style={{color: "black", marginRight: 10}}>Wed</p>
+                                                                <p>Morning</p>
+                                                                <input style={{marginLeft: 5, marginRight: 55}} type='radio'></input>
+                                                                <p>Midday</p>
+                                                                <input style={{marginLeft: 5, marginRight: 55}} type='radio'></input>
+                                                                <p>Evening</p>
+                                                                <input style={{marginLeft: 5}} type='radio'></input>
+                                                            </div>
+                                                            <div className="container row">
+                                                                <p style={{color: "black", marginRight: 10}}>Thurs</p>
+                                                                <p>Morning</p>
+                                                                <input style={{marginLeft: 5, marginRight: 55}} type='radio'></input>
+                                                                <p>Midday</p>
+                                                                <input style={{marginLeft: 5, marginRight: 55}} type='radio'></input>
+                                                                <p>Evening</p>
+                                                                <input style={{marginLeft: 5}} type='radio'></input>
+                                                            </div>
+                                                            <div className="container row">
+                                                                <p style={{color: "black", marginRight: 10}}>Fri</p>
+                                                                <p>Morning</p>
+                                                                <input style={{marginLeft: 5, marginRight: 55}} type='radio'></input>
+                                                                <p>Midday</p>
+                                                                <input style={{marginLeft: 5, marginRight: 55}} type='radio'></input>
+                                                                <p>Evening</p>
+                                                                <input style={{marginLeft: 5}} type='radio'></input>
+                                                            </div>
+                                                            <div className="container row">
+                                                                <p style={{color: "black", marginRight: 10}}>Sat</p>
+                                                                <p>Morning</p>
+                                                                <input style={{marginLeft: 5, marginRight: 55}} type='radio'></input>
+                                                                <p>Midday</p>
+                                                                <input style={{marginLeft: 5, marginRight: 55}} type='radio'></input>
+                                                                <p>Evening</p>
+                                                                <input style={{marginLeft: 5}} type='radio'></input>
+                                                            </div>
+                                                            <div className="container row">
+                                                                <p style={{color: "black", marginRight: 10}}>Sun</p>
+                                                                <p>Morning</p>
+                                                                <input style={{marginLeft: 5, marginRight: 55}} type='radio'></input>
+                                                                <p>Midday</p>
+                                                                <input style={{marginLeft: 5, marginRight: 55}} type='radio'></input>
+                                                                <p>Evening</p>
+                                                                <input style={{marginLeft: 5}} type='radio'></input>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        
+                                                </div>
                                                 <button onClick={this.handleFormButton} type="submit" className="btn btn-primary gray-button" >Add Opportunity</button>
                                             </form>
                                         </div>
