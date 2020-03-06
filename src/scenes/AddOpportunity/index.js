@@ -43,7 +43,7 @@ class AddOpportunity extends Component {
         const location = [this.state.latitude, this.state.longitude]
         event.preventDefault()
         var fd = new FormData()
-        fd.append("file", this.state.imageData, this.state.imageData.name)
+        fd.append("file", this.state.imageData)
         fd.append("title", this.state.title)
         fd.append("opportunityLevel", this.state.opportunityLevel)
         fd.append("peopleRequired", this.state.peopleRequired)
@@ -81,7 +81,7 @@ class AddOpportunity extends Component {
     render() {
         console.log(this.state.date)
 
-        const uploadbuttonClass = this.state.imageUrl ? "btn btn-success " : "btn btn-danger disabled "
+        // const uploadbuttonClass = this.state.imageUrl ? "btn btn-success " : "btn btn-danger disabled "
 
         const justDate = this.state.date.toString().split(' ')[0] + " " + this.state.date.toString().split(' ')[1] + " " + this.state.date.toString().split(' ')[2] + " " + this.state.date.toString().split(' ')[3]
 
