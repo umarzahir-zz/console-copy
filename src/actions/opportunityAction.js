@@ -5,10 +5,6 @@ import { MANAGE_OPPORTUNITY } from './types';
 export const opportunityData = (formData) => {
 
     console.log("this is the data that we are sendig to api", formData)
-
-
-
-
     return (dispatch, getState) => {
         axios.post('http://localhost:5000/api/opportunity/create', formData, {}
             // headers: {

@@ -80,18 +80,43 @@ class AddOpportunity extends Component {
         this.setState({ [event.target.name]: event.target.value });
         console.log(this.state);
     }
+    daysNames = ["monday", "tuesday", "wednesday", "thursday", "friday", "satarday", "sunday"]
+    timeSlot = ["one", "two", "three", "four"]
     handleFormButton = (event) => {
-        const location = [this.state.latitude, this.state.longitude]
         event.preventDefault()
+        const days = {}
+        days.monday = this.state.monday
+        days.tuesday = this.state.tuesday
+        days.wednesday = this.state.wednesday
+        days.thursday = this.state.thursday
+        days.friday = this.state.friday
+        days.satarday = this.state.satarday
+        days.sunday = this.state.sunday
+        const Preferences = {}
+        Preferences.one = this.state.one
+        Preferences.two = this.state.two
+        Preferences.three = this.state.three
+        Preferences.four = this.state.four
+         console.log(days.monday)
+        // console.log(Preferences)
+        const location = [this.state.latitude, this.state.longitude]
+        
         var fd = new FormData()
         fd.append("file", this.state.imageData)
         fd.append("title", this.state.title)
         fd.append("opportunityLevel", this.state.opportunityLevel)
         fd.append("peopleRequired", this.state.peopleRequired)
         fd.append("date", new Date())
+        for (let i = 0; i <= 6; i++){
+            fd.append("days", JSON.stringify( days[this.daysNames[i]]))
+        }
+        for (let i = 0; i <= 3; i++){
+            fd.append("preferences", JSON.stringify(Preferences[this.timeSlot[i]]))
+        }
         for (var i = 0; i <= 1; i++) {
             fd.append("location", location[i])
         }
+        
         // const data = {
         //     title: this.state.title,
         //     opportunityLevel: this.state.opportunityLevel,
@@ -222,7 +247,7 @@ class AddOpportunity extends Component {
     render() {
         // console.log(this.state.date)
         // const uploadbuttonClass = this.state.imageUrl ? "btn btn-success " : "btn btn-danger disabled "
-        console.log(this.state.four)
+        // console.log(this.state.four)
         const justDate = this.state.date.toString().split(' ')[0] + " " + this.state.date.toString().split(' ')[1] + " " + this.state.date.toString().split(' ')[2] + " " + this.state.date.toString().split(' ')[3]
 
         return (
