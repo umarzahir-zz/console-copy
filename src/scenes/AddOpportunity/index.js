@@ -20,7 +20,7 @@ class AddOpportunity extends Component {
             latitude: 33.6844,     // *north
             longitude: 73.0497,  // *east
 
-           
+
 
             one: [false, false, true],
             two: [false, false, true],
@@ -84,39 +84,34 @@ class AddOpportunity extends Component {
     timeSlot = ["one", "two", "three", "four"]
     handleFormButton = (event) => {
         event.preventDefault()
-        const days = {}
-        days.monday = this.state.monday
-        days.tuesday = this.state.tuesday
-        days.wednesday = this.state.wednesday
-        days.thursday = this.state.thursday
-        days.friday = this.state.friday
-        days.satarday = this.state.satarday
-        days.sunday = this.state.sunday
-        const Preferences = {}
-        Preferences.one = this.state.one
-        Preferences.two = this.state.two
-        Preferences.three = this.state.three
-        Preferences.four = this.state.four
-         console.log(days.monday)
+        const days = {
+            monday: this.state.monday, tuesday: this.state.tuesday, wednesday: this.state.wednesday,
+            thursday: this.state.thursday, friday: this.state.friday, satarday: this.state.satarday,
+            sunday: this.state.sunday
+        }
+        const Preferences = { one: this.state.one, two: this.state.two, three: this.state.three, four: this.state.four }
+        // Preferences.one = this.state.one
+        // Preferences.two = this.state.two
+        // Preferences.three = this.state.three
+        // Preferences.four = this.state.four
+        console.log(days.monday)
         // console.log(Preferences)
         const location = [this.state.latitude, this.state.longitude]
-        
+
         var fd = new FormData()
         fd.append("file", this.state.imageData)
         fd.append("title", this.state.title)
         fd.append("opportunityLevel", this.state.opportunityLevel)
         fd.append("peopleRequired", this.state.peopleRequired)
         fd.append("date", new Date())
-        for (let i = 0; i <= 6; i++){
-            fd.append("days", JSON.stringify( days[this.daysNames[i]]))
-        }
-        for (let i = 0; i <= 3; i++){
-            fd.append("preferences", JSON.stringify(Preferences[this.timeSlot[i]]))
-        }
+
+        fd.append("days", JSON.stringify(days))
+        fd.append("preferences", JSON.stringify(Preferences))
+
         for (var i = 0; i <= 1; i++) {
             fd.append("location", location[i])
         }
-        
+
         // const data = {
         //     title: this.state.title,
         //     opportunityLevel: this.state.opportunityLevel,
