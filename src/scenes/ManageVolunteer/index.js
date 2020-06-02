@@ -4,7 +4,7 @@ import Navigation from "../../components/Navigation/index.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { connect } from "react-redux";
-import {volunteerview} from '../../actions/volunteerAction';
+import { volunteerview } from '../../actions/volunteerAction';
 class ManageVolunteer extends Component {
 
     state = {
@@ -17,11 +17,11 @@ class ManageVolunteer extends Component {
         console.log(this.props.allVol)
     }
     componentDidUpdate = () => {
-        if(this.props.allVol === undefined) {
+        if (this.props.allVol === undefined) {
             this.props.getAllVol()
         }
     }
-    
+
 
     handleImageUpload = (event) => {
         //temprory path to show uploaded image to user
@@ -51,7 +51,7 @@ class ManageVolunteer extends Component {
                                     <div className="center-content">
                                         <div className="opportunity-form col-12 p-0">
                                             <div className="row">
-                                                <div className="col-6">
+                                                {/* <div className="col-6">
                                                     <form className="data-form">
                                                         <div className="form-group profile-pic d-flex flex-wrap">
                                                             <label>volunteer images</label>
@@ -86,30 +86,29 @@ class ManageVolunteer extends Component {
                                                         </div>
                                                         <button className="btn btn-primary gray-button">add volunteer</button>
                                                     </form>
-                                                </div>
+                                                </div> */}
                                                 <div className=" col-6">
                                                     <div className="result">
                                                         <ul className="list-group result-list">
-                                                            {this.props.allVol && this.props.allVol.map((vol) => 
-                                                            {
-                                                                return(
+                                                            {this.props.allVol && this.props.allVol.map((vol) => {
+                                                                return (
                                                                     <li className="list-group-item d-flex justify-content-between align-items-center">
-                                                                    <p className="list-title">{vol.name}</p>
-                                                                    <div className="list-button">
-                                                                        <button className="btn btn-primary gray-button">
-                                                                            <FontAwesomeIcon icon={faPen} />
-                                                                        </button>
-                                                                        <button className="btn btn-primary gray-button">
-                                                                            <FontAwesomeIcon icon={faTrash} />
-                                                                        </button>
-                                                                    </div>
-                                                                </li>
+                                                                        <p className="list-title">{vol.name}</p>
+                                                                        <div className="list-button">
+                                                                            <button className="btn btn-primary gray-button">
+                                                                                <FontAwesomeIcon icon={faPen} />
+                                                                            </button>
+                                                                            <button className="btn btn-primary gray-button">
+                                                                                <FontAwesomeIcon icon={faTrash} />
+                                                                            </button>
+                                                                        </div>
+                                                                    </li>
                                                                 )
                                                             }
-                                                                
-                                                                )}
-                                                            
-                                                           
+
+                                                            )}
+
+
 
                                                         </ul>
                                                         <nav aria-label="Page navigation example">
@@ -145,13 +144,13 @@ class ManageVolunteer extends Component {
 }
 const mapStateToProps = (state) => {
     console.log(state.vol)
-    return{
+    return {
         allVol: state.vol.allVoluntear
     }
 }
 const mapDispatchToProps = (dispatch) => {
-    return{
-        getAllVol: () => {dispatch(volunteerview())}
+    return {
+        getAllVol: () => { dispatch(volunteerview()) }
     }
 }
-export default connect (mapStateToProps, mapDispatchToProps)(ManageVolunteer)
+export default connect(mapStateToProps, mapDispatchToProps)(ManageVolunteer)
