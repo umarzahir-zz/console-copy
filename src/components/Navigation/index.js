@@ -1,13 +1,13 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 export default class Navigation extends Component {
-    render(){
-        return(
+    render() {
+        return (
             <div className="side-menu">
                 <div className="logo w-100% text-center">
                     <h2>Ivolunteer</h2>
                 </div>
-                
+
                 <ul className="side-menu-list">
                     <li className="side-menu-item">
                         <Link to="/manageadmin">manage admin</Link>
@@ -15,9 +15,9 @@ export default class Navigation extends Component {
                     <li className="side-menu-item">
                         <Link to="/manageagency">manage agency</Link>
                     </li>
-                    <li className="side-menu-item">
+                    {/* <li className="side-menu-item">
                         <Link to="/profile">profile</Link>
-                    </li>
+                    </li> */}
                     <li className="side-menu-item">
                         <Link to="/dashboard">dashboard</Link>
                     </li>
@@ -27,9 +27,9 @@ export default class Navigation extends Component {
                     <li className="side-menu-item">
                         <Link to="/managevolunteer">manage volunteer</Link>
                     </li>
-                    <li className="side-menu-item">
+                    {/* <li className="side-menu-item">
                         <Link to="/manageskills">manage skills</Link>
-                    </li>
+                    </li> */}
                     <li className="side-menu-item">
                         <Link to="">manage tasks</Link>
                     </li>
