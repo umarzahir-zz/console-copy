@@ -77,7 +77,7 @@ export default class AdminDashboard extends Component {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className="card-outer col-3">
+                                                {/* <div className="card-outer col-3">
                                                     <div className="card">
                                                         <div className="card-body">
                                                             <h5 className="card-title">task created</h5>
@@ -92,7 +92,7 @@ export default class AdminDashboard extends Component {
                                                             <h6 className="card-subtitle mb-2 text-muted">83</h6>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                                 <div className="card-outer col-3">
                                                     <div className="card">
                                                         <div className="card-body">
@@ -101,22 +101,22 @@ export default class AdminDashboard extends Component {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className="card-outer col-3">
+                                                {/* <div className="card-outer col-3">
                                                     <div className="card">
                                                         <div className="card-body">
                                                             <h5 className="card-title">number of downloads </h5>
                                                             <h6 className="card-subtitle mb-2 text-muted">83</h6>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div className="card-outer col-3">
+                                                </div> */}
+                                                {/* <div className="card-outer col-3">
                                                     <div className="card">
                                                         <div className="card-body">
                                                             <h5 className="card-title">task rejected</h5>
                                                             <h6 className="card-subtitle mb-2 text-muted">83</h6>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                                 <div className="card-outer col-3">
                                                     <div className="card">
                                                         <div className="card-body">

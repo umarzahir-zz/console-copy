@@ -30,9 +30,9 @@ export default class Navigation extends Component {
                     {/* <li className="side-menu-item">
                         <Link to="/manageskills">manage skills</Link>
                     </li> */}
-                    <li className="side-menu-item">
+                    {/* <li className="side-menu-item">
                         <Link to="">manage tasks</Link>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         )
