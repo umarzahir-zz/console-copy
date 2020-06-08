@@ -34,7 +34,7 @@ export default class ManageSkills extends Component {
                                                 <div className="col-6">
                                                     <form className="data-form">
                                                         <div className="form-group profile-pic d-flex flex-wrap">
-                                                            <label>volunteer images</label>
+                                                            <label>Skill image</label>
                                                             <span className="profilepic-outer">
                                                                 <input type='file' name='file' accept='image/*' onChange={this.handleImageUpload} ></input>
                                                                 {iurl ? <img src={iurl} alt="" /> : <img src={source} alt="" />}
@@ -52,7 +52,7 @@ export default class ManageSkills extends Component {
                                                             </textarea>
 
                                                         </div>
-                                                        <button className="btn btn-primary gray-button">add volunteer</button>
+                                                        <button className="btn btn-primary gray-button">add Skill</button>
                                                     </form>
                                                 </div>
                                                 <div className=" col-6">
