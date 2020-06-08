@@ -18,6 +18,7 @@ article{
     border:1px solid #ddd;
     padding: 20px 25px;
     border-radius: 10px;
+    text-align: center;
 }
 .page_title h1{
     margin: 0;
