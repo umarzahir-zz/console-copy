@@ -29,7 +29,7 @@ export default class ManageTask extends Component {
                                                 <div className="col-6">
                                                     <form className="data-form">
                                                         <div className="form-group profile-pic d-flex flex-wrap">
-                                                            <label>volunteer images</label>
+                                                            <label>Task images</label>
                                                             <span className="profilepic-outer">
                                                                 <input type='file' name='file' onChange={this.handleImageChange} accept='image/*' ></input>
                                                                 {this.state.imgUrl ? <img src={this.state.imgUrl} alt="" /> : <img src={this.state.imgSrc} alt="" />}
@@ -37,15 +37,15 @@ export default class ManageTask extends Component {
                                                             <button className={uploadBtnClass}>upload</button>
                                                         </div>
                                                         <div className="form-group">
-                                                            <label>Skill name</label>
+                                                            <label>Task name</label>
                                                             <input className="form-control" type="text" placeholder="Skill name"/>
                                                         </div>
                                                         <div className="form-group">
-                                                            <label>Skill Description</label>
+                                                            <label>Task Description</label>
                                                             <textarea className="form-control" placeholder="Description" rows="5">
                                                             </textarea>
                                                         </div>
-                                                        <button className="btn btn-primary gray-button">add volunteer</button>
+                                                        <button className="btn btn-primary gray-button">Add Task</button>
                                                     </form>
                                                 </div>
                                                 <div className=" col-6">
