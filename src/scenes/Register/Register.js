@@ -76,7 +76,7 @@ class Register extends Component {
                         </div>                        
                         <div className="form-footer w-100 d-flex">
 
-                            < Alert color="info" isOpen={this.props.visible} toggle={this.onDismiss}>
+                            <Alert color="info" isOpen={this.props.visible} toggle={this.onDismiss}>
                                 {this.props.signupMessage}
                             </Alert>
 
