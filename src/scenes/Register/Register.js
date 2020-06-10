@@ -46,8 +46,7 @@ class Register extends Component {
         console.log(files);
         console.log("Image data", e.target.files[0])
         const tempUrl = URL.createObjectURL(e.target.files[0])
-        this.setState({ imageData: e.target, imageUrl: tempUrl })
-        console.log('Second log ', e.target.files[0]);
+        this.setState({ imageData: e.target, imageUrl: tempUrl });
     }
     render() {
         return (
