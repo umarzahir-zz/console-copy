@@ -26,10 +26,16 @@ class Register extends Component {
         const { password, confirmPassword} = this.state;
         if(password !== confirmPassword)
         {
-            alert("The Passwords Dont Match. Please Try again!")
+            this.setState({
+                error: "The Passwords do not match!"
+            })
+            //alert("The Passwords Dont Match. Please Try again!")
             event.preventDefault();
         }
         else {
+            this.setState({
+                error: ""
+            })
             this.props.signup(this.state)
         }
         
@@ -67,6 +73,7 @@ class Register extends Component {
                         <div className="form-group">
                             <label htmlFor="password1">Password</label>
                             <input onChange={this.handleChange} name="password" type="password" value={this.state.password} className="form-control" id="password1" required/>
+                            <p className="text-danger font-weight-bold">{this.state.error}</p>
                             <label htmlFor="password2">Repeat Password</label>
                             <input onChange={this.handleChange} name="confirmPassword" type="password" value={this.state.confirmPassword} className="form-control" id="password2" required/>
                             <label>Upload Image</label>
