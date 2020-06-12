@@ -8,24 +8,35 @@ class Register extends Component {
     constructor(props) {
         super(props);
         this.onChange = this.onChange.bind(this);
-
         this.state = {
+            name: '',
             email: '',
             password: '',
             confirmPassword: '',
             imageUrl: null,
-            selectedFile: null
+            selectedFile: null,
+            imageData: null,
+            error: ''
         }
     }
 
 
     handleSignup = (event) => {
-        event.preventDefault()
-        console.log("signup event".event)
-        this.props.signup(this.state)
+        event.preventDefault();
+        console.log("signup event", event)
+        const { password, confirmPassword } = this.state;
+        if (password !== confirmPassword) {
+            alert("The Passwords Dont Match. Please Try again!")
+
+        }
+        else {
+            this.props.signup(this.state)
+        }
+
     }
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
+        console.log(event.target.value)
     }
     onDismiss = () => {
         this.setState({ visible: false })
@@ -42,25 +53,23 @@ class Register extends Component {
                     <div className="">
                         <h1>New Agency Account</h1>
                     </div>
-                    <form className="col-12 form">
+                    <form onSubmit={this.handleSignup} className="col-12 form">
                         <div className="form-group">
-                            <label htmlFor="exampleInputEmail1">Name</label>
-                            <input onChange={this.handleChange} name="name" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label htmlFor="name">Name</label>
+                            <input onChange={this.handleChange} name="name" value={this.state.name} type="text" className="form-control" id="name" aria-describedby="emailHelp" required />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="exampleInputEmail1">Email address</label>
-                            <input onChange={this.handleChange} name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label htmlFor="email">Email address</label>
+                            <input onChange={this.handleChange} name="email" value={this.state.email} type="email" className="form-control" id="email" aria-describedby="emailHelp" required />
                         </div>
                         <div className="form-group">
                             <label htmlFor="password1">Password</label>
-                            <input onChange={this.handleChange} name="password" type="password" className="form-control" id="password1" />
+                            <input onChange={this.handleChange} name="password" type="password" value={this.state.password} className="form-control" id="password1" required />
                             <label htmlFor="password2">Repeat Password</label>
-                            <input onChange={this.handleChange} name="confirmPassword" type="password" className="form-control" id="password2" />
+                            <input onChange={this.handleChange} name="confirmPassword" type="password" value={this.state.confirmPassword} className="form-control" id="password2" required />
                             <label>Upload Image</label>
 
-                            {/* <input type="file" name='image' accept="image/*" onChange={this.handleImage} ></input> */}
-
-                            <input type="file" name="fileData" accept="image/*" onChange={(e) => this.onChange(e)} />
+                            <input type="file" name="image" accept="image/*" onChange={this.onChange} required />
                             {this.state.imageUrl ? <img style={{ width: "70%", paddingTop: 10 }} src={this.state.imageUrl} alt="" /> : <img src={this.state.imageSrc} alt="" />}
                         </div>
                         <div className="form-footer w-100 d-flex">
@@ -70,14 +79,14 @@ class Register extends Component {
                             </Alert>
 
 
-                            <button onClick={this.handleSignup} >
+                            <button type="submit" >
                                 {this.props.signupState ? "Loading" : "SignUp"}
                             </button>
                             {/* <Link type="submit" to='/login' className="btn btn-primary form-button">Submit</Link> */}
                         </div>
                     </form>
                 </div>
-            </div >
+            </div>
         )
     }
 }

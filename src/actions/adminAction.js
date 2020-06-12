@@ -46,9 +46,14 @@ export const adminSignup = (data) => {
 
             }).catch(err => {
                 console.log(err.response)
-                if (err.response.status === 400) {
+                if (err.response && err.response.status === 400) {
                     dispatch({ type: "ADMIN_SIGNUP_FAIL", payload: err.response.data.message })
                 }
+                if (!err.response) {
+                    console.log(err)
+                    dispatch({ type: "ADMIN_SIGNUP_FAIL", payload: "Network Error" })
+                }
+
             })
 
     }
