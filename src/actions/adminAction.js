@@ -1,25 +1,61 @@
 import axios from 'axios'
 
 export const adminSignup = (data) => {
+    console.log(data.selectedFile.name)
     console.log(data)
+    const textData = {
+        name: data.name,
+        email: data.email,
+        password: data.password
+    }
+    const imageData = new FormData()
+    imageData.append('email', data.email)
+    imageData.append('fileData', data.selectedFile, data.selectedFile.name)
     return (dispatch, getState) => {
         //dispatch loading 
         dispatch({ type: "SIGN_UP_LOADING" })
-        //api call
-        console.log(data)
-        const formatData = {
-            email: data.email,
-            password1: data.password,
-            password2: data.confirmPassword
-        }
-        axios.post('http://localhost:5000/api/admin/register', formatData)
-            .then(res => {
-                console.log("signup action success")
-                dispatch({ type: "ADMIN_SIGNUP_SUCCESS", payload: res })
+        // axios all. 
+
+
+        axios.post('http://localhost:5000/api/admin/createagency', textData)
+
+
+            .then((text) => {
+                console.log("then axios")
+                console.log(text)
+                if (text.status === 200) {
+                    console.log("agency text signup  success.", text.data.message)
+                    dispatch({ type: "ADMIN_SIGNUP_SUCCESS", payload: text.data.message })
+                    axios.post('http://localhost:5000/api/admin/agencyimage', imageData,
+                        // {
+                        //     headers:
+                        //     {
+                        //         Accept: 'application/json',
+                        //         'Content-Type': 'multipart/form-data',
+                        //     }
+                        // }
+                    ).then(image => {
+                        if (image.status === 200) console.log("Agency image upaload to aws s3 bucket success.")
+                        if (image.status !== 200) console.log('Agency image uploat to aws Failed.*')
+                    }).catch(err => console.log("agency image error ", err))
+                }
+                if (text.status === 400) {
+                    console.log('agnecy text singup failed.*', text)
+                    dispatch({ type: "ADMIN_SIGNUP_FAIL" })
+                }
+
             }).catch(err => {
-                console.log(err)
-                dispatch({ type: "ADMIN_SIGNUP_FAIL", payload: err.message })
+                console.log(err.response)
+                if (err.response && err.response.status === 400) {
+                    dispatch({ type: "ADMIN_SIGNUP_FAIL", payload: err.response.data.message })
+                }
+                if (!err.response) {
+                    console.log(err)
+                    dispatch({ type: "ADMIN_SIGNUP_FAIL", payload: "Network Error" })
+                }
+
             })
+
     }
 }
 
