@@ -30,6 +30,9 @@ class Register extends Component {
 
         }
         else {
+            this.setState({
+                error: ""
+            })
             this.props.signup(this.state)
         }
 
@@ -64,7 +67,8 @@ class Register extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="password1">Password</label>
-                            <input onChange={this.handleChange} name="password" type="password" value={this.state.password} className="form-control" id="password1" required />
+                            <input onChange={this.handleChange} name="password" type="password" value={this.state.password} className="form-control" id="password1" required/>
+                            <p className="text-danger font-weight-bold">{this.state.error}</p>
                             <label htmlFor="password2">Repeat Password</label>
                             <input onChange={this.handleChange} name="confirmPassword" type="password" value={this.state.confirmPassword} className="form-control" id="password2" required />
                             <label>Upload Image</label>
@@ -74,7 +78,7 @@ class Register extends Component {
                         </div>
                         <div className="form-footer w-100 d-flex">
 
-                            < Alert color="info" isOpen={this.props.visible} toggle={this.onDismiss}>
+                            <Alert color="info" isOpen={this.props.visible} toggle={this.onDismiss}>
                                 {this.props.signupMessage}
                             </Alert>
 
