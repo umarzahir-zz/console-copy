@@ -5,7 +5,12 @@ export default class Navigation extends Component {
         return (
             <div className="side-menu">
                 <div className="logo w-100% text-center">
-                    <h2>Ivolunteer</h2>
+                    <h2 >Ivolunteer</h2>
+                    <div className="border rounded">
+                        <div>Ali Zahid Shahab</div>
+                        <div style={{"font-size": 10, "text-transform": "lowercase"}}>ali.zahid@konghamstageek.com</div>
+                        <div style={{"font-size": 12}}>Kong, Hamsta & Geek</div>
+                    </div>
                 </div>
 
                 <ul className="side-menu-list">
