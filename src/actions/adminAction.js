@@ -100,7 +100,7 @@ export const ResetPasswordLink = (email) => {
   return (dispatch, getState) => {
     // Api post call
     axios
-      .post(server.concat(apiPath), email)
+      .post(server.concat(apiPath), {email})
       .then((res) => {
         console.log(`forgto password action then... ${res}`);
       })

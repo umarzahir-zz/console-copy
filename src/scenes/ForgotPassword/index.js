@@ -11,7 +11,7 @@ class ForgotPassword extends Component {
     event.preventDefault();
     console.log(`submit button clicked.`);
     this.props.sendLink(this.state.email);
-    this.props.navigation.navigate('/newmsg"');
+    // this.props.navigation.navigate('/newmsg"');
   };
   render() {
     return (
@@ -32,13 +32,13 @@ class ForgotPassword extends Component {
               />
             </div>
             <div className="form-footer w-100 d-flex">
-              <Link
+              {/* <Link
                 type="submit"
                 to="/newmsg"
                 className="btn btn-primary form-button"
-              >
+              > */}
                 <button type="submit">submit</button>
-              </Link>
+              {/* </Link> */}
 
               {/* <Link
                 type="submit"
@@ -54,7 +54,11 @@ class ForgotPassword extends Component {
     );
   }
 }
-const mapStateToProps = (state) => {};
+const mapStateToProps = (state) => {
+    return{
+
+    }
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     sendLink: (email) => dispatch(ResetPasswordLink(email)),
