@@ -94,6 +94,7 @@ export const adminLogin = (data) => {
 
 // Forgot password integration.
 export const ResetPasswordLink = (email) => {
+  console.log(`Reset password link sending Action ... ${email}`);
   const apiPath = "api/admin/forgotpassword";
   const server = "http://localhost:5000/";
   return (dispatch, getState) => {
