@@ -11,6 +11,7 @@ class ForgotPassword extends Component {
     event.preventDefault();
     console.log(`submit button clicked.`);
     this.props.sendLink(this.state.email);
+    this.props.history.push("/newmsg")
     // this.props.navigation.navigate('/newmsg"');
   };
   render() {
@@ -33,7 +34,6 @@ class ForgotPassword extends Component {
             </div>
             <div className="form-footer w-100 d-flex">
               {/* <Link
-                type="submit"
                 to="/newmsg"
                 className="btn btn-primary form-button"
               > */}

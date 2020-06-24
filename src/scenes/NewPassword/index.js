@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import { Link } from "react-router-dom";
+import {connect} from 'react-redux'
+import {ResetPassword} from '../../actions/adminAction'
 
-export default class NewPassword extends Component {
+ class NewPassword extends Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -9,7 +10,9 @@ export default class NewPassword extends Component {
         this.state = {
             password1: '',
             password2: '',
-            error: ''
+            error: '',
+            id: null,
+            token: null
         }
     }
     handleChange = (event) => {
@@ -17,6 +20,8 @@ export default class NewPassword extends Component {
         console.log(event.target.value)
     }
     handleSignup = (event) => {
+        event.preventDefault();
+        console.log("new password submitted", this.state)
         console.log("signup event", event)
         const { password1, password2} = this.state;
         if(password1 !== password2)
@@ -25,14 +30,22 @@ export default class NewPassword extends Component {
             this.setState({
                 error: "The Passwords do not match!"
             });
-            event.preventDefault();
+           
         }
         else {
             this.setState({
                 error: ""
             });
+            this.props.resetPassword(this.state)
         }
         
+    }
+    componentDidMount = () => {
+        console.log(`Component Did Mount.`)
+        let urlParams = new URLSearchParams(window.location.search)
+        console.log('id ::: ',urlParams.get('id')); 
+        console.log('token :::',urlParams.get('token')); 
+        this.setState({id: urlParams.get('id'), token: urlParams.get('token')  })
     }
     render() {
         
@@ -42,7 +55,7 @@ export default class NewPassword extends Component {
                 <div className="">
                     <h1 className="text-middle">Enter new Password</h1>
                 </div>
-                <form className="col-12 form">
+                <form onSubmit={this.handleSignup} className="col-12 form">
                     <div className="form-group">
                         <label htmlFor="password1">Password</label>
                         <input type="password" name="password1" onChange={this.handleChange} className="form-control" id="password1" required/>
@@ -52,7 +65,7 @@ export default class NewPassword extends Component {
                     </div>
                     <div className="form-footer w-100 d-flex">
                     
-                    <button type="submit" className="btn btn-primary form-button" onClick={this.handleSignup} >Submit</button>
+                    <button type="submit" className="btn btn-primary form-button" >Submit</button>
                     </div>
                 </form>    
                 </div>
@@ -60,3 +73,14 @@ export default class NewPassword extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return{
+
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return{
+        resetPassword: (data) => dispatch(ResetPassword(data))
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(NewPassword)

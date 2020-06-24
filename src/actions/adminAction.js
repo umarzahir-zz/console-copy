@@ -102,10 +102,22 @@ export const ResetPasswordLink = (email) => {
     axios
       .post(server.concat(apiPath), {email})
       .then((res) => {
-        console.log(`forgto password action then... ${res}`);
+        console.log(`forgto password action then... ${res.data.message}`);
       })
       .catch((err) => {
-        console.log(`forgto password action catch... ${err}`);
+        console.log(`forgto password action catch... ${err.response.data.message}`);
       });
   };
 };
+
+
+export const ResetPassword = (data)=> {
+  console.log(`Reset Password Action...${data}`)
+  const apiPath = "api/admin/resetpassword";
+  const server = "http://localhost:5000/";
+  return(dispatch,getState)=> {
+    axios.post(server.concat(apiPath), data).then((res)=>{
+      console.log(`${res.data.message}`)
+    }).catch((err)=> console.log(`Failed! . Password Reset Failed..`))
+  }
+}
