@@ -17,7 +17,10 @@ export const adminSignup = (data) => {
     // axios all.
 
     axios
-      .post("http://localhost:5000/api/admin/createagency", textData)
+      .post(
+        "https://ivol-server.herokuapp.com/api/admin/createagency",
+        textData
+      )
 
       .then((text) => {
         console.log("then axios");
@@ -30,7 +33,7 @@ export const adminSignup = (data) => {
           });
           axios
             .post(
-              "http://localhost:5000/api/admin/agencyimage",
+              "https://ivol-server.herokuapp.com/api/admin/agencyimage",
               imageData
               // {
               //     headers:
@@ -73,7 +76,7 @@ export const adminLogin = (data) => {
   return (dispatch, getState) => {
     dispatch({ type: "SIGN_IN_LOADING" });
     axios
-      .post("http://localhost:5000/api/admin/login", data)
+      .post("https://ivol-server.herokuapp.com/api/admin/login", data)
       .then((res) => {
         if (res.status === 200)
           dispatch({ type: "ADMIN_LOGIN_SUCCESS", payload: res.data.message });
@@ -96,28 +99,32 @@ export const adminLogin = (data) => {
 export const ResetPasswordLink = (email) => {
   console.log(`Reset password link sending Action ... ${email}`);
   const apiPath = "api/admin/forgotpassword";
-  const server = "http://localhost:5000/";
+  const server = "https://ivol-server.herokuapp.com/";
   return (dispatch, getState) => {
     // Api post call
     axios
-      .post(server.concat(apiPath), {email})
+      .post(server.concat(apiPath), { email })
       .then((res) => {
         console.log(`forgto password action then... ${res.data.message}`);
       })
       .catch((err) => {
-        console.log(`forgto password action catch... ${err.response.data.message}`);
+        console.log(
+          `forgto password action catch... ${err.response.data.message}`
+        );
       });
   };
 };
 
-
-export const ResetPassword = (data)=> {
-  console.log(`Reset Password Action...${data}`)
+export const ResetPassword = (data) => {
+  console.log(`Reset Password Action...${data}`);
   const apiPath = "api/admin/resetpassword";
-  const server = "http://localhost:5000/";
-  return(dispatch,getState)=> {
-    axios.post(server.concat(apiPath), data).then((res)=>{
-      console.log(`${res.data.message}`)
-    }).catch((err)=> console.log(`Failed! . Password Reset Failed..`))
-  }
-}
+  const server = "https://ivol-server.herokuapp.com/";
+  return (dispatch, getState) => {
+    axios
+      .post(server.concat(apiPath), data)
+      .then((res) => {
+        console.log(`${res.data.message}`);
+      })
+      .catch((err) => console.log(`Failed! . Password Reset Failed..`));
+  };
+};
