@@ -15,6 +15,7 @@ import ImageUpload from "./scenes/ImageUpload/ImageUpload";
 import ForgotPassword from "./scenes/ForgotPassword/index";
 import NewPassword from "./scenes/NewPassword/index";
 import PasswordMsg from "./scenes/PasswordMsg/index";
+import NewAdmin from "./scenes/ManageAdmin/newAdmin";
 import { connect } from "react-redux";
 
 class AppRouter extends Component {
@@ -24,6 +25,7 @@ class AppRouter extends Component {
         <Switch>
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/newadmin" component={NewAdmin} />
           <Route exact path="/dashboard" component={AdminDashboard} />
           <Route exact path="/addopportunity" component={AddOpportunity} />
           <Route
