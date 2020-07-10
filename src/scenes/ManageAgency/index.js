@@ -3,14 +3,21 @@ import { Link } from "react-router-dom";
 import Navigation from "../../components/Navigation/index.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
-import { AgencyList } from "../../actions/adminAction";
+import { AgencyList, ResetState } from "../../actions/adminAction";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 class ManageAgency extends Component {
   componentDidMount = () => {
     this.props.getAgencyMember();
+    window.addEventListener("beforeunload", this.callEvent);
     // console.log("did mount", this.props.agencyMembersList);
   };
-
+  componentWillUnmount = () => {
+    window.removeEventListener("beforeunload", this.callEvent);
+  };
+  callEvent = (e) => {
+    e.preventDefault();
+    this.props.clearState();
+  };
   componentDidUpdate(prevProps, prevState) {
     // console.log("did update", this.props.agencyMembersList);
   }
@@ -109,6 +116,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getAgencyMember: () => {
       dispatch(AgencyList());
+    },
+    clearState: () => {
+      dispatch(ResetState());
     },
   };
 };

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./scenes/Login/Login";
+import Auth from "./components/HOC/auth";
 import Register from "./scenes/Register/Register";
 import AdminDashboard from "./scenes/AdminDashboard/index.js";
 import AddOpportunity from "./scenes/AddOpportunity/index.js";
@@ -16,6 +17,7 @@ import ForgotPassword from "./scenes/ForgotPassword/index";
 import NewPassword from "./scenes/NewPassword/index";
 import PasswordMsg from "./scenes/PasswordMsg/index";
 import NewAdmin from "./scenes/ManageAdmin/newAdmin";
+import Authhoc from "./components/HOC/auth";
 import { connect } from "react-redux";
 
 class AppRouter extends Component {
@@ -24,23 +26,32 @@ class AppRouter extends Component {
       <div>
         <Switch>
           <Route exact path="/register" component={Register} />
+          <Route exact path="/authhoc" component={Authhoc} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/newadmin" component={NewAdmin} />
-          <Route exact path="/dashboard" component={AdminDashboard} />
-          <Route exact path="/addopportunity" component={AddOpportunity} />
+          <Route exact path="/newadmin" component={Auth(NewAdmin)} />
+          <Route exact path="/dashboard" component={Auth(AdminDashboard)} />
+          <Route
+            exact
+            path="/addopportunity"
+            component={Auth(AddOpportunity)}
+          />
           <Route
             exact
             path="/manageopportunity"
-            component={ManageOpportunity}
+            component={Auth(ManageOpportunity)}
           />
-          <Route exact path="/manageadmin" component={ManageAdmin} />
-          <Route exact path="/manageagency" component={ManageAgency} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/managevolunteer" component={ManageVolunteer} />
-          <Route exact path="/manageskills" component={ManageSkills} />
+          <Route exact path="/manageadmin" component={Auth(ManageAdmin)} />
+          <Route exact path="/manageagency" component={Auth(ManageAgency)} />
+          <Route exact path="/profile" component={Auth(Profile)} />
+          <Route
+            exact
+            path="/managevolunteer"
+            component={Auth(ManageVolunteer)}
+          />
+          <Route exact path="/manageskills" component={Auth(ManageSkills)} />
           <Route exact path="/imageupload" component={ImageUpload} />
           {this.props.LoginMessage === "Login Success" ? (
-            <Route exact path="/" component={ManageTask} />
+            <Route exact path="/managetask" component={Auth(ManageTask)} />
           ) : (
             <Route exact path="/" component={Login} />
           )}

@@ -114,7 +114,11 @@ export const ResetPasswordLink = (email) => {
       });
   };
 };
-
+export const ResetState = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: "RESET_LOGINMESSAGE" });
+  };
+};
 export const ResetPassword = (data) => {
   console.log(`Reset Password Action...${data}`);
   const apiPath = "api/admin/resetpassword";
