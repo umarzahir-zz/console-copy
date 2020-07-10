@@ -128,3 +128,17 @@ export const ResetPassword = (data) => {
       .catch((err) => console.log(`Failed! . Password Reset Failed..`));
   };
 };
+
+export const AgencyList = () => {
+  return (dispatch, getState) => {
+    axios
+      .get("http://localhost:5000/api/admin/agencymember")
+      .then((user) => {
+        console.log(user.data);
+        dispatch({ type: "AGENCY_MEMBERS", payload: user.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
