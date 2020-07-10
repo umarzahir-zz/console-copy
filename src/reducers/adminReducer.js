@@ -15,7 +15,11 @@ export default (state = initialState, action) => {
         ...state,
         agencyMembers: action.payload,
       };
-
+    case "RESET_LOGINMESSAGE":
+      return {
+        ...state,
+        adminLoginMessage: null,
+      };
     case "SIGN_UP_LOADING":
       return {
         ...state,
