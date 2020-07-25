@@ -5,19 +5,15 @@ import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { manageOpportunity } from "../../actions/opportunityAction";
 import { connect } from "react-redux";
-import { deleteOpportunity } from "../../actions/opportunityAction";
+import {
+  deleteOpportunity,
+  CurrentOpportunity,
+  ActiveOpportunity,
+} from "../../actions/opportunityAction";
 import EditModal from "./editModal";
 import { Spinner } from "react-bootstrap";
 class ManageOpprtunity extends Component {
-  state = {
-    show: false,
-    oppTitle: "dummy",
-    id: "",
-    classLi: "list-title",
-  };
-  handleHover = () => {
-    this.setState({ classLi: "list-title bg-success" });
-  };
+  state = { show: false, oppTitle: "dummy", id: "" };
   handleShow = (title, id) => {
     this.setState({ show: true, oppTitle: title, id: id });
   };
@@ -75,21 +71,57 @@ class ManageOpprtunity extends Component {
                         <div className=" col-6">
                           <div className="result">
                             <ul className="list-group result-list">
-                              {this.props.allOpportunities ? (
-                                this.props.allOpportunities.map(
+                              {this.props.ActiveOpportunityData ? (
+                                this.props.ActiveOpportunityData.map(
                                   (opportunity) => {
                                     return (
                                       <li
                                         key={opportunity._id}
-                                        className="list-group-item  d-flex justify-content-between align-items-center"
+                                        className="list-group-item d-flex bg-success justify-content-between align-items-center"
                                       >
-                                        <p
-                                          onClick={() =>
-                                            this.handleSingle(opportunity)
-                                          }
-                                          onMouseOver={() => this.handleHover}
-                                          className={this.state.classLi}
-                                        >
+                                        <p className="list-title text-white ">
+                                          {opportunity.title}
+                                        </p>
+                                        <div className="list-button">
+                                          <button
+                                            onClick={() =>
+                                              this.handleShow(
+                                                opportunity.title,
+                                                opportunity._id
+                                              )
+                                            }
+                                            className="btn btn-primary gray-button"
+                                          >
+                                            <FontAwesomeIcon icon={faPen} />
+                                          </button>
+                                          <button
+                                            onClick={() =>
+                                              this.handleOppDelete(
+                                                opportunity._id
+                                              )
+                                            }
+                                            className="btn btn-primary gray-button"
+                                          >
+                                            <FontAwesomeIcon icon={faTrash} />
+                                          </button>
+                                        </div>
+                                      </li>
+                                    );
+                                  }
+                                )
+                              ) : (
+                                <Spinner animation="grow" />
+                              )}
+                              {/* current */}
+                              {this.props.CurrentOpportunityData ? (
+                                this.props.CurrentOpportunityData.map(
+                                  (opportunity) => {
+                                    return (
+                                      <li
+                                        key={opportunity._id}
+                                        className="list-group-item d-flex bg-primary justify-content-between align-items-center"
+                                      >
+                                        <p className="list-title text-white">
                                           {opportunity.title}
                                         </p>
                                         <div className="list-button">
@@ -184,14 +216,17 @@ class ManageOpprtunity extends Component {
 const mapPropsToState = (state) => {
   console.log("gettingn state", state.opportunity.opportunities);
   return {
-    allOpportunities: state.opportunity.opportunities,
+    // allOpportunities: state.opportunity.opportunities,
+    CurrentOpportunityData: state.opportunity.currentOpps,
+    ActiveOpportunityData: state.opportunity.ActiveOpps,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    getOpportunityData: () => dispatch(manageOpportunity()),
+    // getOpportunityData: () => dispatch(manageOpportunity()),
     callDeleteOppAction: (id) => dispatch(deleteOpportunity(id)),
-    // getSingleOpp: (id) => dispatch(singleOpp(id)),
+    callActiveOppps: () => dispatch(ActiveOpportunity()),
+    callCurrentOpps: () => dispatch(CurrentOpportunity()),
   };
 };
 export default connect(mapPropsToState, mapDispatchToProps)(ManageOpprtunity);

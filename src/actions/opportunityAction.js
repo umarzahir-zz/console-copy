@@ -28,7 +28,42 @@ export const opportunityData = (formData) => {
       });
   };
 };
+<<<<<<< HEAD
 
+=======
+export const ActiveOpportunity = (id) => {
+  return (dispatch, getState) => {
+    axios
+      .get("http://localhost:5000/api/opportunity/all/active")
+      .then((res) => {
+        console.log("Active opps", res);
+        dispatch({
+          type: "ACTIVE_OPPORTUNITY",
+          payload: res,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+export const CurrentOpportunity = (id) => {
+  return (dispatch, getState) => {
+    axios
+      .get("http://localhost:5000/api/opportunity/all/current")
+      .then((res) => {
+        console.log("current opps", res);
+        dispatch({
+          type: "CURRENT_OPPORTUNITY",
+          payload: res,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+>>>>>>> dev
 export const manageOpportunity = () => {
   return (dispatch) => {
     axios
