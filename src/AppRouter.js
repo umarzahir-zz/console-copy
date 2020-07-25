@@ -6,6 +6,7 @@ import Register from "./scenes/Register/Register";
 import AdminDashboard from "./scenes/AdminDashboard/index.js";
 import AddOpportunity from "./scenes/AddOpportunity/index.js";
 import ManageOpportunity from "./scenes/ManageOpportunity/index.js";
+import SingleOPP from "./scenes/ManageOpportunity/singleOpp";
 import ManageAdmin from "./scenes/ManageAdmin/index.js";
 import ManageAgency from "./scenes/ManageAgency/index.js";
 import ManageVolunteer from "./scenes/ManageVolunteer/index.js";
@@ -26,6 +27,7 @@ class AppRouter extends Component {
       <div>
         <Switch>
           <Route exact path="/register" component={Register} />
+          <Route exact path="/singleopp" component={SingleOPP} />
           <Route exact path="/authhoc" component={Authhoc} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/newadmin" component={Auth(NewAdmin)} />

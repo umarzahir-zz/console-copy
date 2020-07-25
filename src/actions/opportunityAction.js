@@ -28,6 +28,9 @@ export const opportunityData = (formData) => {
       });
   };
 };
+<<<<<<< HEAD
+
+=======
 export const ActiveOpportunity = (id) => {
   return (dispatch, getState) => {
     axios
@@ -60,6 +63,7 @@ export const CurrentOpportunity = (id) => {
       });
   };
 };
+>>>>>>> dev
 export const manageOpportunity = () => {
   return (dispatch) => {
     axios

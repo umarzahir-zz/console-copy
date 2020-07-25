@@ -21,21 +21,23 @@ class ManageOpprtunity extends Component {
     this.setState({ show: false });
   };
   componentDidMount = () => {
-    // this.props.getOpportunityData();
-    console.log("index opp mount");
-    this.props.callActiveOppps();
-    this.props.callCurrentOpps();
+    console.log(this.props);
+    this.props.getOpportunityData();
+  };
+  handleSingle = (opp) => {
+    console.log("handle single");
+    console.log(opp);
+    this.props.history.push({
+      pathname: "/singleopp",
+      state: { opp },
+    });
+    // this.props.navigation.navigate("singleopp");
+    // this.props.getSingleOpp(opp);
   };
   handleOppDelete = (id) => {
     this.props.callDeleteOppAction(id);
   };
   render() {
-    // console.log(this.props.allOpportunities);
-
-    console.log(this.props.CurrentOpportunityData);
-
-    console.log(this.props.ActiveOpportunityData);
-
     return (
       <div className="wrapper">
         <div className="container-fluid">
