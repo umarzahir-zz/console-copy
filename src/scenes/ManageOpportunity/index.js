@@ -13,9 +13,15 @@ import {
 import EditModal from "./editModal";
 import { Spinner } from "react-bootstrap";
 class ManageOpprtunity extends Component {
-  state = { show: false, oppTitle: "dummy", id: "" };
-  handleShow = (title, id) => {
-    this.setState({ show: true, oppTitle: title, id: id });
+  state = { show: false, oppTitle: "dummy", id: "", editOpp: null, prev: null };
+  handleShow = (opp) => {
+    console.log("handle show");
+    this.setState({
+      editOpp: opp,
+    });
+
+    console.log("edit model data", opp);
+    this.setState({ show: true });
   };
   handleClose = () => {
     this.setState({ show: false });
@@ -40,15 +46,20 @@ class ManageOpprtunity extends Component {
     this.props.callDeleteOppAction(id);
   };
   render() {
+    console.log("data of opp", this.state.editOpp);
+    // console.log("prev id", this.state.prev);
+    // console.log("state id", this.state.editOpp ? this.state.editOpp._id : null);
     return (
       <div className="wrapper">
         <div className="container-fluid">
-          <EditModal
-            show={this.state.show}
-            handleClose={this.handleClose}
-            title={this.state.oppTitle}
-            id={this.state.id}
-          ></EditModal>
+          {this.state.editOpp ? (
+            <EditModal
+              show={this.state.show}
+              handleClose={this.handleClose}
+              opp={this.state.editOpp}
+            ></EditModal>
+          ) : null}
+
           <div className="row">
             <aside>
               <Navigation />
@@ -92,10 +103,7 @@ class ManageOpprtunity extends Component {
                                         <div className="list-button">
                                           <button
                                             onClick={() =>
-                                              this.handleShow(
-                                                opportunity.title,
-                                                opportunity._id
-                                              )
+                                              this.handleShow(opportunity)
                                             }
                                             className="btn btn-primary gray-button"
                                           >
@@ -139,10 +147,7 @@ class ManageOpprtunity extends Component {
                                         <div className="list-button">
                                           <button
                                             onClick={() =>
-                                              this.handleShow(
-                                                opportunity.title,
-                                                opportunity._id
-                                              )
+                                              this.handleShow(opportunity)
                                             }
                                             className="btn btn-primary gray-button"
                                           >
