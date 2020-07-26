@@ -3,7 +3,7 @@ import Navigation from "../../components/Navigation/index.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { manageOpportunity } from "../../actions/opportunityAction";
+
 import { connect } from "react-redux";
 import {
   deleteOpportunity,
@@ -22,7 +22,9 @@ class ManageOpprtunity extends Component {
   };
   componentDidMount = () => {
     console.log(this.props);
-    this.props.getOpportunityData();
+
+    this.props.callActiveOppps();
+    this.props.callCurrentOpps();
   };
   handleSingle = (opp) => {
     console.log("handle single");
@@ -79,7 +81,12 @@ class ManageOpprtunity extends Component {
                                         key={opportunity._id}
                                         className="list-group-item d-flex bg-success justify-content-between align-items-center"
                                       >
-                                        <p className="list-title text-white ">
+                                        <p
+                                          onClick={() =>
+                                            this.handleSingle(opportunity)
+                                          }
+                                          className="list-title text-white "
+                                        >
                                           {opportunity.title}
                                         </p>
                                         <div className="list-button">
@@ -121,7 +128,12 @@ class ManageOpprtunity extends Component {
                                         key={opportunity._id}
                                         className="list-group-item d-flex bg-primary justify-content-between align-items-center"
                                       >
-                                        <p className="list-title text-white">
+                                        <p
+                                          onClick={() =>
+                                            this.handleSingle(opportunity)
+                                          }
+                                          className="list-title text-white"
+                                        >
                                           {opportunity.title}
                                         </p>
                                         <div className="list-button">

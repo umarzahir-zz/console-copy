@@ -6,248 +6,316 @@ export default class singleOpp extends Component {
   };
   render() {
     return (
-      <div className="container  ">
+      <div className="container bg-dark ">
         <div className="row">
           <div className="col">
             {/* opp name */}
-            <div className="col bg-success">
-              <h3>Opportunity Name</h3>
-              <p>{this.props.location.state.opp.title}</p>
+            <div className="row  ">
+              <p className="text-white pl-2 pt-3">Opportunity Name</p>
+              <p className="text-white pl-5 pt-3">
+                {this.props.location.state.opp.title}
+              </p>
             </div>
             {/* opp Level */}
-            <div className="col bg-primary">
-              <h3>Opportunity Level</h3>
-              <p>Begginer</p>
+            <div className="row  ">
+              <p className="text-white pl-2 pt-3">Opportunity Level</p>
+              <p className="text-white pl-5 pt-3">Begginer</p>
             </div>
             {/* people required */}
-            <div className="col">
-              <h3>People Required</h3>
-              <h2>
-                <span class="badge badge-secondary">10</span>
-              </h2>
-              {/* location */}
-              <div className="col">
-                <h3>Location</h3>
-                <div className="row justify-content-center mt-3  ">
-                  <p className="pr-4">
-                    Latitude:{this.props.location.state.opp.location[0]}
-                  </p>
-                  <p className="pl-4">
-                    Longitude: {this.props.location.state.opp.location[1]}
-                  </p>
-                </div>
-              </div>
-              {/* opp start date */}
-              <div className="col">
-                <h3>Opportunity Start Date</h3>
-
-                <h2>
-                  <span class="badge badge-secondary">
-                    {this.props.location.state.opp.date[0]}
-                  </span>
-                </h2>
-              </div>
-              {/* preferences */}
-              <div className="col">
-                <h3>Opportunity preferences</h3>
-                <div className="row mt-4 justify-content-around">
-                  <p>Active</p>
-                  <p>Outdoor</p>
-                  <p>Body</p>
-                </div>
-              </div>
-              {/* availablity */}
-              <div className="col  ">
-                <h3>Opportunity Availbality</h3>
-
-                <div className="row mt-4 justify-content-center ">
-                  <h2 className="pl-4">
+            <div className="row  ">
+              <p className="text-white pl-2 pt-3">People Required</p>
+              <p className="text-white pl-5 pt-3">10</p>
+            </div>
+            {/* location */}
+            <div className="row  ">
+              <p className="text-white pl-2 pt-3">Location</p>
+              <p className="text-white pl-5 pt-3">
+                Latitude:{this.props.location.state.opp.location[0]}
+              </p>
+              <p className="text-white pl-5 pt-3">
+                Longitude: {this.props.location.state.opp.location[1]}
+              </p>
+            </div>
+            {/* opp start date */}
+            <div className="row  ">
+              <p className="text-white pl-2 pt-3">Opportunity Start Date</p>
+              <p className="text-white pl-5 pt-3">
+                {" "}
+                {this.props.location.state.opp.date[0]}
+              </p>
+            </div>
+            {/* preferences */}
+            <div className="row  ">
+              <p className="text-white pl-2 pt-3">Opportunity preferences</p>
+              <p className="text-white pl-5 pt-3">Active</p>
+              <p className="text-white pl-5 pt-3">Outdoor</p>
+              <p className="text-white pl-5 pt-3">Body</p>
+            </div>
+            {/* availablity */}
+            <div className="row  ">
+              <p className="text-white pl-2 pt-3">Opportunity Availbality</p>
+            </div>
+            <div className="row  ">
+              {/* monday */}
+              <div className="row mt-4 justify-content-center ">
+                <div className="col-3">
+                  <p>
                     <span class="badge badge-secondary">Monday</span>
-                  </h2>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.monday[0].morning
                         ? "morning"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.monday[0].midday
                         ? "midday"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.monday[0].evening
                         ? "evening"
                         : ""}
                     </span>
-                  </h4>
+                  </p>
                 </div>
-                <div className="row mt-4 justify-content-center ">
-                  <h2 className="pl-4">
-                    <span class="badge badge-secondary">Tuesday</span>
-                  </h2>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+              </div>
+            </div>
+            {/* tuesday */}
+            <div className="row  ">
+              <div className="row mt-4 justify-content-center ">
+                <div className="col-3 ">
+                  <p>
+                    <span class="badge badge-secondary  ">Tuesday</span>
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.tuesday[0].morning
                         ? "morning"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2 ">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.tuesday[0].midday
                         ? "midday"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-4 ">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.tuesday[0].evening
                         ? "evening"
                         : ""}
                     </span>
-                  </h4>
+                  </p>
                 </div>
-                <div className="row mt-4 justify-content-center ">
-                  <h2 className="pl-4">
-                    <span class="badge badge-secondary">wednesday</span>
-                  </h2>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+              </div>
+            </div>
+            {/* wednesday */}
+            <div className="row  ">
+              <div className="row mt-4 justify-content-center ">
+                <div className="col-3 ">
+                  <p>
+                    <span class="badge badge-secondary justify-content-center">
+                      wednesday
+                    </span>
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.wednesday[0].morning
                         ? "morning"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.wednesday[0].midday
                         ? "midday"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.wednesday[0].evening
                         ? "evening"
                         : ""}
                     </span>
-                  </h4>
+                  </p>
                 </div>
-                <div className="row mt-4 justify-content-center ">
-                  <h2 className="pl-4">
+              </div>
+            </div>
+            {/* thursday */}
+            <div className="row  ">
+              <div className="row mt-4 justify-content-center ">
+                <div className="col-3">
+                  <p>
                     <span class="badge badge-secondary">thursday</span>
-                  </h2>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.thursday[0].morning
                         ? "morning"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2 ">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.thursday[0].midday
                         ? "midday"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2 ">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.thursday[0].evening
                         ? "evening"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
-                      {this.props.location.state.opp.days.sunday[0].midday
-                        ? "evening"
-                        : ""}
-                    </span>
-                  </h4>
+                  </p>
                 </div>
-                <div className="row mt-4 justify-content-center ">
-                  <h2 className="pl-4">
-                    <span class="badge badge-secondary">friday</span>
-                  </h2>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+              </div>
+            </div>
+            {/* friday */}
+            <div className="row  ">
+              {/* monday */}
+              <div className="row mt-4 justify-content-center ">
+                <div className="col-3">
+                  <p>
+                    <span class="badge badge-secondary">Friday</span>
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.friday[0].morning
                         ? "morning"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.friday[0].midday
                         ? "midday"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.friday[0].evening
                         ? "evening"
                         : ""}
                     </span>
-                  </h4>
+                  </p>
                 </div>
-                <div className="row mt-4 justify-content-center ">
-                  <h2 className="pl-4">
-                    <span class="badge badge-secondary">satarday</span>
-                  </h2>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+              </div>
+            </div>
+            {/* sat */}
+            <div className="row  ">
+              {/* monday */}
+              <div className="row mt-4 justify-content-center ">
+                <div className="col-3">
+                  <p>
+                    <span class="badge badge-secondary">Satarday</span>
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.satarday[0].morning
                         ? "morning"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.satarday[0].midday
                         ? "midday"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.satarday[0].evening
                         ? "evening"
                         : ""}
                     </span>
-                  </h4>
+                  </p>
                 </div>
-                <div className="row mt-4 justify-content-center ">
-                  <h2 className="pl-4">
-                    <span class="badge badge-secondary">sunday</span>
-                  </h2>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+              </div>
+            </div>
+            {/* sun */}
+            <div className="row  ">
+              {/* monday */}
+              <div className="row mt-4 justify-content-center ">
+                <div className="col-3">
+                  <p>
+                    <span class="badge badge-secondary">Sunday</span>
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.sunday[0].morning
                         ? "morning"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.sunday[0].midday
                         ? "midday"
                         : ""}
                     </span>
-                  </h4>
-                  <h4 className="pl-4 mt-1">
-                    <span class="badge badge-secondary">
+                  </p>
+                </div>
+                <div className="col-3">
+                  <p className="pl-2">
+                    <span class="text-white">
                       {this.props.location.state.opp.days.sunday[0].evening
                         ? "evening"
                         : ""}
                     </span>
-                  </h4>
+                  </p>
                 </div>
               </div>
             </div>
