@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Modal, Dropdown, Row, Col } from "react-bootstrap";
+import { Button, Modal, Badge, Dropdown, Row, Col } from "react-bootstrap";
 import { updateOpportunity } from "../../actions/opportunityAction";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Availablity from "../../components/oppMangment/availabliy";
+import {
+  faPen,
+  faTrash,
+  faCheck,
+  faTimesCircle,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 
 class EditModal extends Component {
   state = { updateTitle: "" };
@@ -116,104 +125,119 @@ class EditModal extends Component {
                     <label htmlFor="date">Availablity</label>
                   </Col>
                 </Row>
-                <Row>
-                  <Col sm="3">
+                <Availablity
+                  day="Mon"
+                  value1={this.props.opp.days.monday[0].morning}
+                  value2={this.props.opp.days.monday[0].midday}
+                  value3={this.props.opp.days.monday[0].evening}
+                ></Availablity>
+                {/* tuesday */}
+                <Availablity
+                  day="Tue"
+                  value1={this.props.opp.days.tuesday[0].morning}
+                  value2={this.props.opp.days.tuesday[0].midday}
+                  value3={this.props.opp.days.tuesday[0].evening}
+                ></Availablity>
+                {/* wednesday */}
+                <Availablity
+                  day="Wed"
+                  value1={this.props.opp.days.wednesday[0].morning}
+                  value2={this.props.opp.days.wednesday[0].midday}
+                  value3={this.props.opp.days.wednesday[0].evening}
+                ></Availablity>
+                {/* thursday */}
+                <Availablity
+                  day="Thu"
+                  value1={this.props.opp.days.thursday[0].morning}
+                  value2={this.props.opp.days.thursday[0].midday}
+                  value3={this.props.opp.days.thursday[0].evening}
+                ></Availablity>
+                {/* friday */}
+                <Availablity
+                  day="Fri"
+                  value1={this.props.opp.days.friday[0].morning}
+                  value2={this.props.opp.days.friday[0].midday}
+                  value3={this.props.opp.days.friday[0].evening}
+                ></Availablity>
+                {/* satarday */}
+                <Availablity
+                  day="Sat"
+                  value1={this.props.opp.days.satarday[0].morning}
+                  value2={this.props.opp.days.satarday[0].midday}
+                  value3={this.props.opp.days.satarday[0].evening}
+                ></Availablity>
+                {/* sunday */}
+                <Availablity
+                  day="Sun"
+                  value1={this.props.opp.days.sunday[0].morning}
+                  value2={this.props.opp.days.sunday[0].midday}
+                  value3={this.props.opp.days.sunday[0].evening}
+                ></Availablity>
+                {/* <Row>
+                  <Col sm="auto">
                     <label htmlFor="date">Monday</label>
                   </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Morning</label>
+                  <Col sm="auto">
+                    <Button variant="secondary" onClick={this.handleAvail}>
+                      Morning
+                      {this.props.opp.days.monday[0].morning ? (
+                        <FontAwesomeIcon
+                          color="yellow"
+                          size="lg"
+                          className="pl-1"
+                          icon={faCheck}
+                        />
+                      ) : (
+                        <FontAwesomeIcon
+                          color="red"
+                          size="lg"
+                          className="pl-1"
+                          icon={faTimes}
+                        />
+                      )}
+                    </Button>
                   </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Midday</label>
+                  <Col sm="auto">
+                    <Button variant="secondary" onClick={this.handleAvail}>
+                      Midday
+                      {this.props.opp.days.monday[0].midday ? (
+                        <FontAwesomeIcon
+                          color="yellow"
+                          size="lg"
+                          className="pl-1"
+                          icon={faCheck}
+                        />
+                      ) : (
+                        <FontAwesomeIcon
+                          color="red"
+                          className="pl-1"
+                          size="lg"
+                          icon={faTimes}
+                        />
+                      )}
+                    </Button>
                   </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Evening</label>
+                  <Col sm="auto">
+                    <Button variant="secondary" onClick={this.handleAvail}>
+                      Evening
+                      {this.props.opp.days.monday[0].Evening ? (
+                        <FontAwesomeIcon
+                          color="yellow"
+                          size="lg"
+                          className="pl-1"
+                          icon={faCheck}
+                        />
+                      ) : (
+                        <FontAwesomeIcon
+                          color="red"
+                          className="pl-1"
+                          size="lg"
+                          icon={faTimes}
+                        />
+                      )}
+                    </Button>
                   </Col>
-                </Row>
-                <Row>
-                  <Col sm="3">
-                    <label htmlFor="date">Monday</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Morning</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Midday</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Evening</label>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col sm="3">
-                    <label htmlFor="date">Monday</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Morning</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Midday</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Evening</label>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col sm="3">
-                    <label htmlFor="date">Monday</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Morning</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Midday</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Evening</label>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col sm="3">
-                    <label htmlFor="date">Monday</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Morning</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Midday</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Evening</label>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col sm="3">
-                    <label htmlFor="date">Monday</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Morning</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Midday</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Evening</label>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col sm="3">
-                    <label htmlFor="date">Monday</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Morning</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Midday</label>
-                  </Col>
-                  <Col sm="3">
-                    <label htmlFor="date">Evening</label>
-                  </Col>
-                </Row>
+                </Row> */}
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={this.props.handleClose}>
