@@ -1,5 +1,34 @@
 import axios from "axios";
 
+export const adminSignup1 = (data) => {
+  console.log(data);
+  return (dispatch, getState) => {
+    dispatch({ type: "SIGN_UP_LOADING" });
+    axios
+      .post("http://localhost:5000/api/admin/register", data)
+      .then((text) => {
+        console.log("then axios");
+        console.log(text);
+        if (text.status === 400) {
+          console.log("agnecy text singup failed.*", text);
+          dispatch({ type: "ADMIN_SIGNUP_FAIL" });
+        }
+      })
+      .catch((err) => {
+        console.log(err.response);
+        if (err.response && err.response.status === 400) {
+          dispatch({
+            type: "ADMIN_SIGNUP_FAIL",
+            payload: err.response.data.message,
+          });
+        }
+        if (!err.response) {
+          console.log(err);
+          dispatch({ type: "ADMIN_SIGNUP_FAIL", payload: "Network Error" });
+        }
+      });
+  };
+};
 export const adminSignup = (data) => {
   console.log(data.selectedFile.name);
   console.log(data);

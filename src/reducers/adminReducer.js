@@ -42,6 +42,7 @@ export default (state = initialState, action) => {
         message: true,
       };
     case "ADMIN_LOGIN_FAIL":
+      localStorage.setItem({ loginadmin: false });
       console.log("login reducer fail and payload is:", action.payload);
       return {
         ...state,
@@ -51,6 +52,7 @@ export default (state = initialState, action) => {
       };
     case "ADMIN_LOGIN_SUCCESS":
       console.log("login reducer success and the payload is :", action.payload);
+      localStorage.setItem({ loginadmin: true });
       return {
         ...state,
         adminLoginStatus: false,

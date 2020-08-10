@@ -1,25 +1,22 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Button, Modal, Badge, Dropdown, Row, Col } from "react-bootstrap";
-import { updateOpportunity } from "../../actions/opportunityAction";
+import { Button, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPen,
-  faTrash,
-  faCheck,
-  faTimesCircle,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 export default class availabliy extends Component {
   render() {
+    console.log("cheking  props", this.props.value1);
     return (
       <div>
-        <Row className="mb-1">
-          <Col sm="auto">
+        <Row className="mb-1 ">
+          <Col sm="3">
             <label htmlFor="date">{this.props.day}</label>
           </Col>
-          <Col sm="auto">
-            <Button variant="secondary" onClick={this.handleAvail}>
+          <Col sm="3">
+            <Button
+              name="morning"
+              variant="secondary"
+              onClick={(event) => this.props.updateState(event)}
+            >
               Morning
               {this.props.value1 ? (
                 <FontAwesomeIcon
@@ -38,8 +35,12 @@ export default class availabliy extends Component {
               )}
             </Button>
           </Col>
-          <Col sm="auto">
-            <Button variant="secondary" onClick={this.handleAvail}>
+          <Col sm="3">
+            <Button
+              name="midday"
+              onClick={(event) => this.props.updateState(event)}
+              variant="secondary"
+            >
               Midday
               {this.props.value2 ? (
                 <FontAwesomeIcon
@@ -58,8 +59,12 @@ export default class availabliy extends Component {
               )}
             </Button>
           </Col>
-          <Col sm="auto">
-            <Button variant="secondary" onClick={this.handleAvail}>
+          <Col sm="3">
+            <Button
+              name="evening"
+              onClick={(event) => this.props.updateState(event)}
+              variant="secondary"
+            >
               Evening
               {this.props.value3 ? (
                 <FontAwesomeIcon

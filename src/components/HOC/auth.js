@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 export default function (ComposedComponent) {
   class auth extends Component {
     componentWillMount = () => {
-      if (this.props.loginMessage === null) {
+      console.log("hoc data", localStorage.getItem("loginadmin"));
+
+      if (localStorage.getItem("loginadmin") === true) {
         console.log("hoc fail");
         this.props.history.push("/login");
       }
