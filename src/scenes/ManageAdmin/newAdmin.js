@@ -19,16 +19,34 @@ class newAdmin extends Component {
         <div className="row  justify-content-center mx-auto">
           <div className="col-6">
             <div>
-              <form className="data-form">
+              <form className="data-form" encType="multi">
+                <div className="form-group profile-pic d-flex flex-wrap">
+                  <label>Admin image</label>
+                  <span className="profilepic-outer">
+                    <input
+                      type="file"
+                      name="file"
+                      accept="image/*"
+                      onChange={this.handleImage}
+                    ></input>
+                    {this.state.imageUrl ? (
+                      <img src={require("../../images/user.png")} alt="" />
+                    ) : (
+                      <img src={require("../../images/user.png")} alt="" />
+                    )}
+                  </span>
+                </div>
                 {/* <div className="form-group profile-pic d-flex flex-wrap">
-                                                        <label>user name</label>
-                                                        <span className="profilepic-outer">
-                                                            <img src={require('../../images/user.png')} />
-                                                        </span>
-                                                        <button className="btn btn-primary gray-button">upload</button>
-                                                    </div> */}
-                <div className="form-group">
                   <label>user name</label>
+                  <span className="profilepic-outer">
+                    <img src={require("../../images/user.png")} />
+                  </span>
+                  <button className="btn btn-primary gray-button">
+                    upload
+                  </button>
+                </div> */}
+                <div className="form-group">
+                  <label>user Name</label>
                   <input
                     onChange={this.handleChange}
                     className="form-control"
@@ -38,24 +56,24 @@ class newAdmin extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label>user email</label>
+                  <label>Email</label>
                   <input
                     onChange={this.handleChange}
                     className="form-control"
                     type="email"
                     name="email"
-                    placeholder="User email"
+                    placeholder="Email"
                   />
                 </div>
 
                 <div className="form-group">
-                  <label>user password</label>
+                  <label>Password</label>
                   <input
                     onChange={this.handleChange}
                     name="password1"
                     className="form-control"
                     type="password"
-                    placeholder="User email"
+                    placeholder="Password"
                   />
                 </div>
                 <div className="form-group">
@@ -65,7 +83,7 @@ class newAdmin extends Component {
                     name="password2"
                     className="form-control"
                     type="password"
-                    placeholder="User email"
+                    placeholder="Confirm Password"
                   />
                 </div>
                 {/* <div className="form-group">
