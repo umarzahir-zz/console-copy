@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { AgencyList, ResetState } from "../../actions/adminAction";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 class ManageAgency extends Component {
+  state = { imageUrl: null };
   componentDidMount = () => {
     this.props.getAgencyMember();
     window.addEventListener("beforeunload", this.callEvent);
@@ -43,7 +44,8 @@ class ManageAgency extends Component {
                         <div className=" col-auto">
                           <div className="result overflow-auto h-50">
                             <ul className="list-group result-list ">
-                              {this.props.agencyMembersList ? (
+                              {/* this.props.agencyMembersList */}
+                              {false ? (
                                 this.props.agencyMembersList.map((member) => {
                                   return (
                                     <li
@@ -75,25 +77,108 @@ class ManageAgency extends Component {
                           </div>
                         </div>
                         <div className="col-auto">
-                          <form className="data-form">
+                          <form className="data-form" encType="multi">
+                            <div className="form-group profile-pic d-flex flex-wrap">
+                              <label>Agency Image</label>
+                              <span className="profilepic-outer">
+                                <input
+                                  type="file"
+                                  name="file"
+                                  accept="image/*"
+                                  onChange={this.handleImage}
+                                ></input>
+                                {this.state.imageUrl ? (
+                                  <img
+                                    src={require("../../images/user.png")}
+                                    alt=""
+                                  />
+                                ) : (
+                                  <img
+                                    src={require("../../images/user.png")}
+                                    alt=""
+                                  />
+                                )}
+                              </span>
+                            </div>
+                            {/* <div className="form-group profile-pic d-flex flex-wrap">
+                  <label>user name</label>
+                  <span className="profilepic-outer">
+                    <img src={require("../../images/user.png")} />
+                  </span>
+                  <button className="btn btn-primary gray-button">
+                    upload
+                  </button>
+                </div> */}
                             <div className="form-group">
-                              <label>first name</label>
+                              <label>Name</label>
                               <input
+                                onChange={this.handleChange}
                                 className="form-control"
                                 type="text"
-                                placeholder="First name"
+                                name="name"
+                                placeholder="Name"
                               />
                             </div>
                             <div className="form-group">
-                              <label>last name</label>
+                              <label>Email</label>
                               <input
+                                onChange={this.handleChange}
                                 className="form-control"
-                                type="text"
-                                placeholder="Last name"
+                                type="email"
+                                name="email"
+                                placeholder="Email"
                               />
                             </div>
-                            <button className="btn btn-primary gray-button">
-                              add agency
+                            <div className="form-group">
+                              <label>user Name</label>
+                              <input
+                                onChange={this.handleChange}
+                                className="form-control"
+                                type="text"
+                                name="name"
+                                placeholder="User name"
+                              />
+                            </div>
+
+                            <div className="form-group">
+                              <label>Password</label>
+                              <input
+                                onChange={this.handleChange}
+                                name="password1"
+                                className="form-control"
+                                type="password"
+                                placeholder="Password"
+                              />
+                            </div>
+                            <div className="form-group">
+                              <label>Confirm Password</label>
+                              <input
+                                onChange={this.handleChange}
+                                name="password2"
+                                className="form-control"
+                                type="password"
+                                placeholder="Confirm Password"
+                              />
+                            </div>
+                            {/* <div className="form-group">
+                              <label>role type</label>
+                              <select className="form-control">
+                                <option>Beginner</option>
+                                <option>Expert</option>
+                              </select>
+                            </div>
+                            <div className="form-group">
+                              <label>agency</label>
+                              <select className="form-control">
+                                <option>Beginner</option>
+                                <option>Expert</option>
+                              </select>
+                            </div> */}
+                            <button
+                              onClick={this.handleSave}
+                              className="btn btn-primary gray-button"
+                            >
+                              Add Agency
                             </button>
                           </form>
                         </div>
