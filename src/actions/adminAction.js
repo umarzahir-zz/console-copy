@@ -1,6 +1,14 @@
 import axios from "axios";
 
-export const adminSignup1 = (data) => {
+export const resetAdminMessage = () => (dispatch) => {
+  dispatch({ type: "ADMIN_RESET" });
+};
+export const resetAgencyMessage = () => (dispatch) => {
+  console.log("agnecy reset action");
+  dispatch({ type: "AGENCY_RESET" });
+};
+
+export const creatAdmin = (data) => {
   console.log(data);
   return (dispatch, getState) => {
     dispatch({ type: "SIGN_UP_LOADING" });
@@ -13,10 +21,12 @@ export const adminSignup1 = (data) => {
           console.log("agnecy text singup failed.*", text);
           dispatch({ type: "ADMIN_SIGNUP_FAIL" });
         }
+        dispatch({ type: "ADMIN_SIGNUP_SUCCESS" });
       })
       .catch((err) => {
         console.log(err.response);
         if (err.response && err.response.status === 400) {
+          console.log(err.response.data.message);
           dispatch({
             type: "ADMIN_SIGNUP_FAIL",
             payload: err.response.data.message,
@@ -29,25 +39,30 @@ export const adminSignup1 = (data) => {
       });
   };
 };
-export const adminSignup = (data) => {
-  console.log(data.selectedFile.name);
+export const createAgency = (data) => {
+  // console.log(data.selectedFile.name);
+
   console.log(data);
+
   const textData = {
     name: data.name,
+    userName: data.userName,
     email: data.email,
-    password: data.password,
+    password1: data.password1,
+    password2: data.password2,
   };
-  const imageData = new FormData();
-  imageData.append("email", data.email);
-  imageData.append("fileData", data.selectedFile, data.selectedFile.name);
+  // const imageData = new FormData();
+  // imageData.append("email", data.email);
+  // imageData.append("fileData", data.selectedFile, data.selectedFile.name);
   return (dispatch, getState) => {
     //dispatch loading
-    dispatch({ type: "SIGN_UP_LOADING" });
+    dispatch({ type: "CREATING_AGENCY_LOADING" });
     // axios all.
 
     axios
       .post(
-        "https://ivol-server.herokuapp.com/api/admin/createagency",
+        // "https://ivol-server.herokuapp.com/api/admin/createagency",
+        "http://localhost:5000/api/admin/createagency",
         textData
       )
 
@@ -57,45 +72,45 @@ export const adminSignup = (data) => {
         if (text.status === 200) {
           console.log("agency text signup  success.", text.data.message);
           dispatch({
-            type: "ADMIN_SIGNUP_SUCCESS",
+            type: "AGENCY_SIGNUP_SUCCESS",
             payload: text.data.message,
           });
-          axios
-            .post(
-              "https://ivol-server.herokuapp.com/api/admin/agencyimage",
-              imageData
-              // {
-              //     headers:
-              //     {
-              //         Accept: 'application/json',
-              //         'Content-Type': 'multipart/form-data',
-              //     }
-              // }
-            )
-            .then((image) => {
-              if (image.status === 200)
-                console.log("Agency image upaload to aws s3 bucket success.");
-              if (image.status !== 200)
-                console.log("Agency image uploat to aws Failed.*");
-            })
-            .catch((err) => console.log("agency image error ", err));
+          // axios
+          //   .post(
+          //     "https://ivol-server.herokuapp.com/api/admin/agencyimage",
+          //     imageData
+          //     // {
+          //     //     headers:
+          //     //     {
+          //     //         Accept: 'application/json',
+          //     //         'Content-Type': 'multipart/form-data',
+          //     //     }
+          //     // }
+          //   )
+          //   .then((image) => {
+          //     if (image.status === 200)
+          //       console.log("Agency image upaload to aws s3 bucket success.");
+          //     if (image.status !== 200)
+          //       console.log("Agency image uploat to aws Failed.*");
+          //   })
+          //   .catch((err) => console.log("agency image error ", err));
         }
         if (text.status === 400) {
           console.log("agnecy text singup failed.*", text);
-          dispatch({ type: "ADMIN_SIGNUP_FAIL" });
+          dispatch({ type: "AGENCY_SIGNUP_FAIL" });
         }
       })
       .catch((err) => {
         console.log(err.response);
         if (err.response && err.response.status === 400) {
           dispatch({
-            type: "ADMIN_SIGNUP_FAIL",
+            type: "AGENCY_SIGNUP_FAIL",
             payload: err.response.data.message,
           });
         }
         if (!err.response) {
           console.log(err);
-          dispatch({ type: "ADMIN_SIGNUP_FAIL", payload: "Network Error" });
+          dispatch({ type: "AGENCY_SIGNUP_FAIL", payload: "Network Error" });
         }
       });
   };

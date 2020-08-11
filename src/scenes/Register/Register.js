@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Alert } from "reactstrap";
 
 // import { Link } from "react-router-dom";
-import { adminSignup } from "../../actions/adminAction";
+import { creatAdmin } from "../../actions/adminAction";
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -155,7 +155,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     signup: (data) => {
-      dispatch(adminSignup(data));
+      dispatch(creatAdmin(data));
     },
   };
 };

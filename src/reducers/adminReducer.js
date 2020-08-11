@@ -1,11 +1,13 @@
 const initialState = {
-  adminSignupStaus: false,
+  isAdminLoding: false,
   adminSignupMessage: null,
   message: false,
   adminLoginStatus: false,
   adminLoginMessage: null,
   messagel: false,
   agencyMembers: null,
+  isAgencyLoding: false,
+  agencySignupMessage: null,
 };
 
 export default (state = initialState, action) => {
@@ -15,6 +17,17 @@ export default (state = initialState, action) => {
         ...state,
         agencyMembers: action.payload,
       };
+    case "ADMIN_RESET":
+      return {
+        ...state,
+        adminSignupMessage: null,
+      };
+    case "AGENCY_RESET":
+      console.log("agency reset reducer");
+      return {
+        ...state,
+        agencySignupMessage: null,
+      };
     case "RESET_LOGINMESSAGE":
       return {
         ...state,
@@ -23,23 +36,40 @@ export default (state = initialState, action) => {
     case "SIGN_UP_LOADING":
       return {
         ...state,
-        adminSignupStaus: true,
+        isAdminLoding: true,
+      };
+    case "CREATING_AGENCY_LOADING":
+      return {
+        ...state,
+        isAgencyLoding: true,
       };
     case "ADMIN_SIGNUP_SUCCESS":
       console.log("admin signup success");
       return {
         ...state,
         message: true,
-        adminSignupStaus: false,
-        adminSignupMessage: "Signup Success",
+        isAdminLoding: false,
+        adminSignupMessage: "Admin Created.",
+      };
+    case "AGENCY_SIGNUP_SUCCESS":
+      console.log("Agency signup success");
+      return {
+        ...state,
+        isAgencyLoding: false,
+        agencySignupMessage: "Agency Created.",
       };
     case "ADMIN_SIGNUP_FAIL":
       return {
         ...state,
-
-        adminSignupStaus: false,
+        isAdminLoding: false,
         adminSignupMessage: action.payload,
         message: true,
+      };
+    case "AGENCY_SIGNUP_FAIL":
+      return {
+        ...state,
+        isAgencyLoding: false,
+        agencySignupMessage: action.payload,
       };
     case "ADMIN_LOGIN_FAIL":
       localStorage.setItem({ loginadmin: false });
