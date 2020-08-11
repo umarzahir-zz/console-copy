@@ -3,22 +3,49 @@ import { Link } from "react-router-dom";
 import Navigation from "../../components/Navigation/index.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
-import { AgencyList, ResetState } from "../../actions/adminAction";
+import { Toast } from "react-bootstrap";
+import {
+  AgencyList,
+  ResetState,
+  createAgency,
+  resetAgencyMessage,
+} from "../../actions/adminAction";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 class ManageAgency extends Component {
-  state = { imageUrl: null };
+  state = {
+    imageUrl: null,
+    name: null,
+    email: null,
+    userName: null,
+    password1: null,
+    showModel: true,
+    password2: null,
+  };
+  handleClose = () => {
+    console.log("handle close called");
+    this.setState({ showModel: false });
+    this.props.reset();
+  };
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+  handleSave = (event) => {
+    event.preventDefault();
+    this.props.createAgency(this.state);
+    this.setState({ showModel: true });
+  };
   componentDidMount = () => {
-    this.props.getAgencyMember();
-    window.addEventListener("beforeunload", this.callEvent);
+    // this.props.getAgencyMember();
+    // window.addEventListener("beforeunload", this.callEvent);
     // console.log("did mount", this.props.agencyMembersList);
   };
-  componentWillUnmount = () => {
-    window.removeEventListener("beforeunload", this.callEvent);
-  };
-  callEvent = (e) => {
-    e.preventDefault();
-    this.props.clearState();
-  };
+  // componentWillUnmount = () => {
+  //   window.removeEventListener("beforeunload", this.callEvent);
+  // };
+  // callEvent = (e) => {
+  //   e.preventDefault();
+  //   this.props.clearState();
+  // };
   componentDidUpdate(prevProps, prevState) {
     // console.log("did update", this.props.agencyMembersList);
   }
@@ -135,8 +162,8 @@ class ManageAgency extends Component {
                                 onChange={this.handleChange}
                                 className="form-control"
                                 type="text"
-                                name="name"
-                                placeholder="User name"
+                                name="userName"
+                                placeholder="User Name"
                               />
                             </div>
 
@@ -174,12 +201,24 @@ class ManageAgency extends Component {
                                 <option>Expert</option>
                               </select>
                             </div> */}
+
                             <button
                               onClick={this.handleSave}
                               className="btn btn-primary gray-button"
                             >
-                              Add Agency
+                              {this.props.loading ? "...Loading" : "Add Agency"}
                             </button>
+                            {this.props.message ? (
+                              <Toast
+                                show={this.state.showModel}
+                                onClose={this.handleClose}
+                              >
+                                <Toast.Header>
+                                  <small>Agency</small>
+                                </Toast.Header>
+                                <Toast.Body>{this.props.message}</Toast.Body>
+                              </Toast>
+                            ) : null}
                           </form>
                         </div>
                       </div>
@@ -196,14 +235,22 @@ class ManageAgency extends Component {
 }
 const mapStateToProps = (state, ownProps) => ({
   agencyMembersList: state.admin.agencyMembers,
+  loading: state.admin.isAgencyLoding,
+  message: state.admin.agencySignupMessage,
 });
 const mapDispatchToProps = (dispatch) => {
   return {
+    createAgency: (data) => {
+      dispatch(createAgency(data));
+    },
     getAgencyMember: () => {
       dispatch(AgencyList());
     },
     clearState: () => {
       dispatch(ResetState());
+    },
+    reset: () => {
+      dispatch(resetAgencyMessage());
     },
   };
 };
