@@ -40,10 +40,8 @@ export const creatAdmin = (data) => {
   };
 };
 export const createAgency = (data) => {
-  // console.log(data.selectedFile.name);
-
+  console.log(data.selectedFile);
   console.log(data);
-
   const textData = {
     name: data.name,
     userName: data.userName,
@@ -51,8 +49,8 @@ export const createAgency = (data) => {
     password1: data.password1,
     password2: data.password2,
   };
-  // const imageData = new FormData();
-  // imageData.append("email", data.email);
+  const imageData = new FormData();
+  imageData.append("file", data.selectedFile);
   // imageData.append("fileData", data.selectedFile, data.selectedFile.name);
   return (dispatch, getState) => {
     //dispatch loading
@@ -63,7 +61,13 @@ export const createAgency = (data) => {
       .post(
         // "https://ivol-server.herokuapp.com/api/admin/createagency",
         "http://localhost:5000/api/admin/createagency",
-        textData
+        { textData, imageData },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
       )
 
       .then((text) => {

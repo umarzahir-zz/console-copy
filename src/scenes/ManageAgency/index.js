@@ -14,6 +14,7 @@ import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 class ManageAgency extends Component {
   state = {
     imageUrl: null,
+    selectedFile: null,
     name: null,
     email: null,
     userName: null,
@@ -25,6 +26,10 @@ class ManageAgency extends Component {
     console.log("handle close called");
     this.setState({ showModel: false });
     this.props.reset();
+  };
+  handleImage = (event) => {
+    console.log(event.target.files[0]);
+    this.setState({ selectedFile: event.target.files[0] });
   };
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
