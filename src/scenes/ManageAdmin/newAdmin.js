@@ -12,6 +12,7 @@ class newAdmin extends Component {
     userName: null,
     showModel: true,
     refresh: false,
+    selectedFile: null,
   };
 
   handleChange = (event) => {
@@ -27,6 +28,10 @@ class newAdmin extends Component {
     console.log(this.state);
     this.props.creatAdmin(this.state);
     this.setState({ showModel: true });
+  };
+  handleImage = (event) => {
+    console.log(event.target.files[0]);
+    this.setState({ selectedFile: event.target.files[0] });
   };
 
   render() {

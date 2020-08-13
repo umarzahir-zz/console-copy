@@ -9,11 +9,18 @@ export const resetAgencyMessage = () => (dispatch) => {
 };
 
 export const creatAdmin = (data) => {
+  const imageData = new FormData();
+  imageData.append("file", data.selectedFile);
+  imageData.append("name", data.name);
+  imageData.append("userName", data.userName);
+  imageData.append("email", data.email);
+  imageData.append("password1", data.password1);
+  imageData.append("password2", data.password2);
   console.log(data);
   return (dispatch, getState) => {
     dispatch({ type: "SIGN_UP_LOADING" });
     axios
-      .post("http://localhost:5000/api/admin/register", data)
+      .post("http://localhost:5000/api/admin/register", imageData, {})
       .then((text) => {
         console.log("then axios");
         console.log(text);
@@ -25,7 +32,10 @@ export const creatAdmin = (data) => {
       })
       .catch((err) => {
         console.log(err.response);
-        if (err.response && err.response.status === 400) {
+        if (
+          (err.response && err.response.status === 400) ||
+          err.response.status === 422
+        ) {
           console.log(err.response.data.message);
           dispatch({
             type: "ADMIN_SIGNUP_FAIL",
@@ -40,15 +50,6 @@ export const creatAdmin = (data) => {
   };
 };
 export const createAgency = (data) => {
-  console.log(data.selectedFile);
-  console.log(data);
-  // const textData = {
-  //   name: data.name,
-  //   userName: data.userName,
-  //   email: data.email,
-  //   password1: data.password1,
-  //   password2: data.password2,
-  // };
   const imageData = new FormData();
   imageData.append("file", data.selectedFile);
   imageData.append("name", data.name);
@@ -69,14 +70,7 @@ export const createAgency = (data) => {
         "http://localhost:5000/api/admin/createagency",
         imageData,
         {}
-        // {
-        //   headers: {
-        //     Accept: "application/json",
-        //     "Content-Type": "multipart/form-data",
-        //   },
-        // }
       )
-
       .then((text) => {
         console.log("then axios");
         console.log(text);
