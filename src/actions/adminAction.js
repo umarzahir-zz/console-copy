@@ -8,6 +8,47 @@ export const resetAgencyMessage = () => (dispatch) => {
   dispatch({ type: "AGENCY_RESET" });
 };
 
+export const adminUpdatePassReset = () => (dispatch) => {
+  console.log("admin password reset action");
+  dispatch({ type: "ADMIN_RESET" });
+};
+
+export const updateAdminCredentials = (id, password) => {
+  console.log({ id, password });
+  return (dispatch, getState) => {
+    axios
+      .put("http://localhost:5000/api/admin/updatecredentials", {
+        id,
+        password,
+      })
+      .then((admins) => {
+        console.log(admins);
+        dispatch({
+          type: "ADMINS_CREDENTIALS_UPDATE",
+        });
+      })
+      .catch((err) => {
+        // dispatch({ type: "ADMINS_LOADED", payload: err.message });
+        console.log(err.message);
+      });
+  };
+};
+
+export const getAllAdmin = () => {
+  return (dispatch, getState) => {
+    axios
+      .get("http://localhost:5000/api/admin/alladmins")
+      .then((admins) => {
+        console.log(admins.data.message);
+        dispatch({ type: "ADMINS_LOADED", payload: admins.data.message });
+      })
+      .catch((err) => {
+        // dispatch({ type: "ADMINS_LOADED", payload: err.message });
+        console.log(err.message);
+      });
+  };
+};
+
 export const creatAdmin = (data) => {
   const imageData = new FormData();
   imageData.append("file", data.selectedFile);

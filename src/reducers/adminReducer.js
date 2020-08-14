@@ -8,6 +8,8 @@ const initialState = {
   agencyMembers: null,
   isAgencyLoding: false,
   agencySignupMessage: null,
+  allAdmins: null,
+  adminCredentialsUpdate: false,
 };
 
 export default (state = initialState, action) => {
@@ -16,6 +18,21 @@ export default (state = initialState, action) => {
       return {
         ...state,
         agencyMembers: action.payload,
+      };
+    case "ADMIN_RESET":
+      return {
+        ...state,
+        adminCredentialsUpdate: false,
+      };
+    case "ADMINS_CREDENTIALS_UPDATE":
+      return {
+        ...state,
+        adminCredentialsUpdate: true,
+      };
+    case "ADMINS_LOADED":
+      return {
+        ...state,
+        allAdmins: action.payload,
       };
     case "ADMIN_RESET":
       return {
