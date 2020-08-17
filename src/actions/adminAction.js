@@ -1,4 +1,6 @@
 import axios from "axios";
+const Heroku = "https://ivol-server.herokuapp.com/";
+const Local = "http://localhost:5000/";
 
 export const resetAdminMessage = () => (dispatch) => {
   dispatch({ type: "ADMIN_RESET" });
@@ -17,7 +19,7 @@ export const updateAdminCredentials = (id, password) => {
   console.log({ id, password });
   return (dispatch, getState) => {
     axios
-      .put("http://localhost:5000/api/admin/updatecredentials", {
+      .put(Heroku.concat("api/admin/updatecredentials"), {
         id,
         password,
       })
@@ -37,7 +39,7 @@ export const updateAdminCredentials = (id, password) => {
 export const getAllAdmin = () => {
   return (dispatch, getState) => {
     axios
-      .get("http://localhost:5000/api/admin/alladmins")
+      .get(Heroku.concat("api/admin/alladmins"))
       .then((admins) => {
         console.log(admins.data.message);
         dispatch({ type: "ADMINS_LOADED", payload: admins.data.message });
@@ -61,7 +63,7 @@ export const creatAdmin = (data) => {
   return (dispatch, getState) => {
     dispatch({ type: "SIGN_UP_LOADING" });
     axios
-      .post("http://localhost:5000/api/admin/register", imageData, {})
+      .post(Heroku.concat("api/admin/register"), imageData, {})
       .then((text) => {
         console.log("then axios");
         console.log(text);
@@ -106,12 +108,7 @@ export const createAgency = (data) => {
     // axios all.
 
     axios
-      .post(
-        // "https://ivol-server.herokuapp.com/api/admin/createagency",
-        "http://localhost:5000/api/admin/createagency",
-        imageData,
-        {}
-      )
+      .post(Heroku.concat("api/admin/createagency"), imageData, {})
       .then((text) => {
         console.log("then axios");
         console.log(text);
@@ -166,17 +163,23 @@ export const adminLogin = (data) => {
   return (dispatch, getState) => {
     dispatch({ type: "SIGN_IN_LOADING" });
     axios
-      .post("https://ivol-server.herokuapp.com/api/admin/login", data)
+      .post(Heroku.concat("api/admin/login"), data)
       .then((res) => {
-        if (res.status === 200)
+        // console.log("login success");
+        if (res.status === 200) {
+          console.log("login success");
           dispatch({ type: "ADMIN_LOGIN_SUCCESS", payload: res.data.message });
-        else
+        } else {
+          console.log("login failed");
+
           return dispatch({
             type: "ADMIN_LOGIN_FAIL",
             payload: res.data.message,
           });
+        }
       })
       .catch((err) => {
+        console.log(err);
         dispatch({
           type: "ADMIN_LOGIN_FAIL",
           payload: err.response.data.message,
@@ -226,7 +229,7 @@ export const ResetPassword = (data) => {
 export const AgencyList = () => {
   return (dispatch, getState) => {
     axios
-      .get("http://localhost:5000/api/admin/agencymember")
+      .get(Heroku.concat("api/admin/agencymember"))
       .then((user) => {
         console.log(user.data);
         dispatch({ type: "AGENCY_MEMBERS", payload: user.data });

@@ -2,12 +2,14 @@ import axios from "axios";
 
 import { ADD_OPPORTUNITY } from "./types";
 import { MANAGE_OPPORTUNITY } from "./types";
+const Heroku = "https://ivol-server.herokuapp.com/";
+const Local = "http://localhost:5000/";
 export const opportunityUpdate = (data) => {
   console.log("this is the data of Opp Edit that we are sendig to api", data);
   return (dispatch, getState) => {
     axios
       .post(
-        "http://localhost:5000/api/opportunity/update",
+        Heroku.concat("api/opportunity/update"),
 
         { data }
         // headers: {
@@ -57,7 +59,7 @@ export const opportunityData = (formData) => {
 export const ActiveOpportunity = (id) => {
   return (dispatch, getState) => {
     axios
-      .get("http://localhost:5000/api/opportunity/all/active")
+      .get(Heroku.concat("api/opportunity/all/active"))
       .then((res) => {
         console.log("Active opps", res);
         dispatch({
@@ -73,7 +75,7 @@ export const ActiveOpportunity = (id) => {
 export const CurrentOpportunity = (id) => {
   return (dispatch, getState) => {
     axios
-      .get("http://localhost:5000/api/opportunity/all/current")
+      .get(Heroku.concat("api/opportunity/all/current"))
       .then((res) => {
         console.log("current opps", res);
         dispatch({
@@ -123,7 +125,7 @@ export const updateOpportunity = (id, data) => {
   console.log("opp update action", id, data);
   return (dispatch, getState) => {
     axios
-      .put("http://localhost:5000/api/opportunity/update/" + id, {
+      .put(Heroku.concat("api/opportunity/update/") + id, {
         data,
       })
       .then((res) => {

@@ -89,7 +89,7 @@ export default (state = initialState, action) => {
         agencySignupMessage: action.payload,
       };
     case "ADMIN_LOGIN_FAIL":
-      localStorage.setItem({ loginadmin: false });
+      // localStorage.setItem(("loginadmin" = false));
       console.log("login reducer fail and payload is:", action.payload);
       return {
         ...state,
@@ -98,14 +98,15 @@ export default (state = initialState, action) => {
         adminLoginStatus: false,
       };
     case "ADMIN_LOGIN_SUCCESS":
-      console.log("login reducer success and the payload is :", action.payload);
-      localStorage.setItem({ loginadmin: true });
+      // console.log("login reducer success and the payload is :", action.payload);
+      // localStorage.setItem(("loginadmin" = true));
       return {
         ...state,
         adminLoginStatus: false,
         adminLoginMessage: "Login Success",
         messagel: true,
       };
+
     case "SIGN_IN_LOADING":
       return {
         ...state,
