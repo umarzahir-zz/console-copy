@@ -27,9 +27,9 @@ class AppRouter extends Component {
       <div>
         <Switch>
           <Route exact path="/register" component={Register} />
-          <Route exact path="/singleopp" component={SingleOPP} />
+          <Route exact path="/singleopp" component={Authhoc(SingleOPP)} />
           <Route exact path="/authhoc" component={Authhoc} />
-          <Route exact path="/login" component={Login} />
+          {/* <Route exact path="/login" component={Login} /> */}
           <Route exact path="/newadmin" component={Auth(NewAdmin)} />
           <Route exact path="/dashboard" component={Auth(AdminDashboard)} />
           <Route
@@ -51,12 +51,12 @@ class AppRouter extends Component {
             component={Auth(ManageVolunteer)}
           />
           <Route exact path="/manageskills" component={Auth(ManageSkills)} />
-          <Route exact path="/imageupload" component={ImageUpload} />
-          {this.props.LoginMessage === "Login Success" ? (
-            <Route exact path="/managetask" component={Auth(ManageTask)} />
-          ) : (
-            <Route exact path="/" component={Login} />
-          )}
+          <Route exact path="/imageupload" component={Authhoc(ImageUpload)} />
+          {/* {this.props.LoginMessage === "Login Success" ? ( */}
+          <Route exact path="/managetask" component={Auth(ManageTask)} />
+          {/* ) : ( */}
+          <Route exact path="/" component={Login} />
+          {/* )} */}
 
           <Route exact path="/forgotpassword" component={ForgotPassword} />
           <Route exact path="/newcredentials" component={NewPassword} />

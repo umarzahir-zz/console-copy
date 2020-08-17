@@ -19,6 +19,7 @@ class Login extends Component {
     }
   }
   componentDidUpdate = () => {
+    console.log(this.props.LoginMessage);
     console.log("did update", this.props.LoginMessage);
     if (this.props.LoginMessage === "Login Success") {
       console.log("***********   true");
@@ -101,6 +102,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     loginStatus: state.admin.adminLoginStatus,
     visible: state.admin.messagel,
