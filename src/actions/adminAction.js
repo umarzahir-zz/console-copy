@@ -63,7 +63,7 @@ export const creatAdmin = (data) => {
   return (dispatch, getState) => {
     dispatch({ type: "SIGN_UP_LOADING" });
     axios
-      .post(Heroku.concat("api/admin/register"), imageData, {})
+      .post(Heroku.concat("api/admin/createagency"), imageData, {})
       .then((text) => {
         console.log("then axios");
         console.log(text);

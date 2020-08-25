@@ -12,8 +12,8 @@ class Register extends Component {
     this.state = {
       name: "",
       email: "",
-      password: "",
-      confirmPassword: "",
+      password1: "",
+      password2: "",
       imageUrl: null,
       selectedFile: null,
       imageData: null,
@@ -92,9 +92,9 @@ class Register extends Component {
               <label htmlFor="password1">Password</label>
               <input
                 onChange={this.handleChange}
-                name="password"
+                name="password1"
                 type="password"
-                value={this.state.password}
+                value={this.state.password1}
                 className="form-control"
                 id="password1"
                 required
@@ -103,9 +103,9 @@ class Register extends Component {
               <label htmlFor="password2">Repeat Password</label>
               <input
                 onChange={this.handleChange}
-                name="confirmPassword"
+                name="password2"
                 type="password"
-                value={this.state.confirmPassword}
+                value={this.state.password2}
                 className="form-control"
                 id="password2"
                 required
