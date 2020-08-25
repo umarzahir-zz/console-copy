@@ -229,13 +229,13 @@ export const ResetPassword = (data) => {
 export const AgencyList = () => {
   return (dispatch, getState) => {
     axios
-      .get(Heroku.concat("api/admin/agencymember"))
+      .get(Heroku.concat("api/admin/agency"))
       .then((user) => {
-        console.log(user.data);
+        console.log("agency all tehen",user.data);
         dispatch({ type: "AGENCY_MEMBERS", payload: user.data });
       })
       .catch((err) => {
-        console.log(err);
+        console.log("agnecy all err",err);
       });
   };
 };

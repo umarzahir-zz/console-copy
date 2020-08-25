@@ -10,13 +10,17 @@ import Availablity from "../../components/oppMangment/availabliy";
 class EditModal extends Component {
   state = {
     oppId: null,
-    date: new Date(),
+    
     title: null,
+    latitude: null,
+    longitude: null,
     updateTitle: "",
     showCal: false,
     mondaymorning: null,
     mondaymidday: null,
     mondayevening: null,
+    date: null,
+    
 
     tuesdaymorning: null,
     tuesdaymidday: null,
@@ -46,8 +50,12 @@ class EditModal extends Component {
     console.log("edit model mount", this.props.opp);
     this.setState({
       updateTitle: this.props.opp,
-
+      title: this.props.opp.title,
       oppId: this.props.opp._id,
+
+      latitude: this.props.opp.location[0],
+      longitude: this.props.opp.location[1],
+      date: this.props.opp.date,
 
       mondaymorning: this.props.opp.days.monday[0].morning,
       mondaymidday: this.props.opp.days.monday[0].midday,
@@ -98,6 +106,10 @@ class EditModal extends Component {
   handleChange1 = (event) => {
     this.setState({ [event.target.id]: event.target.value });
   };
+  handleDate = (date) => {
+console.log(date)
+this.setState({date: new Date(date)})
+  }
   handleChange = (event, day) => {
     const fullName = day + event.target.name;
     this.setState({ [fullName]: !this.state[fullName] });
@@ -270,6 +282,9 @@ class EditModal extends Component {
       days: { ...days },
       preferences: { ...preferences },
       title: this.state.title,
+      location: [this.state.latitude, this.state.longitude],
+      date: this.state.date
+      
     };
     this.props.updateOpp(this.state.oppId, data);
   };
@@ -321,7 +336,7 @@ class EditModal extends Component {
                       type="text"
                       name="updateTitle"
                       id="latitude"
-                      onChange={this.handleChange}
+                      onChange={this.handleChange1}
                     ></input>
                   </Col>
                   <Col sm="1">
@@ -334,7 +349,7 @@ class EditModal extends Component {
                       type="text"
                       name="updateTitle"
                       id="longitude"
-                      onChange={this.handleChange}
+                      onChange={this.handleChange1}
                     ></input>{" "}
                   </Col>
                 </Row>
@@ -359,7 +374,7 @@ class EditModal extends Component {
                   {this.state.showCal ? (
                     <Col sm="4">
                       <Calendar
-                        onChange={this.onChange}
+                        onChange={this.handleDate}
                         value={this.state.date}
                       />
                     </Col>
