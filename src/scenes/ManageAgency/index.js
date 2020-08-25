@@ -40,7 +40,7 @@ class ManageAgency extends Component {
     this.setState({ showModel: true });
   };
   componentDidMount = () => {
-    // this.props.getAgencyMember();
+     this.props.getAgencyMember();
     // window.addEventListener("beforeunload", this.callEvent);
     // console.log("did mount", this.props.agencyMembersList);
   };
@@ -76,8 +76,8 @@ class ManageAgency extends Component {
                         <div className=" col-auto">
                           <div className="result overflow-auto h-50">
                             <ul className="list-group result-list ">
-                              {/* this.props.agencyMembersList */}
-                              {false ? (
+                             
+                              {this.props.agencyMembersList ? (
                                 this.props.agencyMembersList.map((member) => {
                                   return (
                                     <li

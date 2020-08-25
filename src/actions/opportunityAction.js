@@ -35,7 +35,7 @@ export const opportunityData = (formData) => {
   return (dispatch, getState) => {
     axios
       .post(
-        "https://ivol-server.herokuapp.com/api/opportunity/create",
+        Heroku.concat("api/opportunity/create"),
         formData,
         {}
         // headers: {
@@ -68,7 +68,7 @@ export const ActiveOpportunity = (id) => {
         });
       })
       .catch((err) => {
-        console.log(err);
+        console.log("acive opps err",err);
       });
   };
 };
@@ -77,14 +77,14 @@ export const CurrentOpportunity = (id) => {
     axios
       .get(Heroku.concat("api/opportunity/all/current"))
       .then((res) => {
-        console.log("current opps", res);
+        console.log("current opps ", res);
         dispatch({
           type: "CURRENT_OPPORTUNITY",
           payload: res,
         });
       })
       .catch((err) => {
-        console.log(err);
+        console.log("current opps err",err);
       });
   };
 };
@@ -107,12 +107,20 @@ export const deleteOpportunity = (id) => {
   console.log(id);
   return (dispatch, getState) => {
     axios
-      .delete("https://ivol-server.herokuapp.com/api/opportunity/delete/" + id)
+      .delete(Heroku.concat("api/opportunity/delete/") + id)
       .then((res) => {
+        axios.get(Heroku.concat("api/opportunity/all/current")).then(res => {
+          dispatch({
+            type: "CURRENT_OPPORTUNITY",
+            payload: res,
+          })
+        }).catch(err => {
+          console.log(err)
+        })
         axios
-          .get("https://ivol-server.herokuapp.com/api/opportunity")
+          .get(Heroku.concat("api/opportunity/all/active"))
           .then((res) => {
-            dispatch({ type: "UPDATE_OPP", payload: res.data });
+            dispatch({ type: "ACTIVE_OPPORTUNITY", payload: res });
           });
       })
       .catch((err) => {
@@ -129,10 +137,18 @@ export const updateOpportunity = (id, data) => {
         data,
       })
       .then((res) => {
+        axios.get(Heroku.concat("api/opportunity/all/current")).then(res => {
+          dispatch({
+            type: "CURRENT_OPPORTUNITY",
+            payload: res,
+          })
+        }).catch(err => {
+          console.log(err)
+        })
         axios
-          .get("https://ivol-server.herokuapp.com/api/opportunity")
+          .get(Heroku.concat("api/opportunity/all/active"))
           .then((res) => {
-            dispatch({ type: "UPDATE_OPP", payload: res.data });
+            dispatch({ type: "ACTIVE_OPPORTUNITY", payload: res });
           });
       })
       .catch((err) => {
