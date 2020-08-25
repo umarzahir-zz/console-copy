@@ -51,9 +51,13 @@ class Register extends Component {
     console.log("image upload", e.target.files[0]);
   }
   render() {
-    return (
+    return ( 
+     
       <div className="d-flex m-auto form-container text-left flex-wrap">
         <div className="w-100">
+        {this.props.visible && this.props.signupMessage.trim() === "Admin Created." ?
+        setTimeout(() =>{  this.props.history.push("/") }, 3000)
+        : null}
           <div className="">
             <h1>New Agency Account</h1>
           </div>
@@ -147,7 +151,7 @@ class Register extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    signupState: state.admin.adminSignupStaus,
+    signupState: state.admin.isAdminLoding,
     signupMessage: state.admin.adminSignupMessage,
     visible: state.admin.message,
   };

@@ -239,3 +239,9 @@ export const AgencyList = () => {
       });
   };
 };
+
+export const AfterSignup = () => {
+  return (dispatch, getState) => {
+    dispatch({type: "AFTER_SINGUP"})
+  };
+};
