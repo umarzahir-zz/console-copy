@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { adminLogin } from "../../actions/adminAction";
+import { adminLogin,AfterSignup } from "../../actions/adminAction";
 import { Alert } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
@@ -10,6 +10,7 @@ import { Button } from "react-bootstrap";
 class Login extends Component {
   state = { email: "", password: "" };
   componentDidMount() {
+    this.props.as()
     console.log("did mount", this.props.LoginMessage);
     if (this.props.LoginMessage === "Login Success") {
       console.log("***********   true");
@@ -113,6 +114,7 @@ const mapStateToProps = (state) => {
 const mapDisptachToProps = (dispatch) => {
   return {
     sendData: (data) => dispatch(adminLogin(data)),
+    as: () => dispatch(AfterSignup())
   };
 };
 

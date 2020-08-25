@@ -14,6 +14,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case "AFTER_SINGUP":
+    return{
+      adminSignupMessage: null,
+      message: false
+    };
     case "AGENCY_MEMBERS":
       return {
         ...state,
