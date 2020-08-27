@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faTimes, faPen } from "@fortawesome/free-solid-svg-icons";
+import {  faPen } from "@fortawesome/free-solid-svg-icons";
 import Calendar from "react-calendar";
 import { Button, Modal, Row, Col, ButtonGroup } from "react-bootstrap";
 import { updateOpportunity } from "../../actions/opportunityAction";
@@ -10,7 +10,6 @@ import Availablity from "../../components/oppMangment/availabliy";
 class EditModal extends Component {
   state = {
     oppId: null,
-    
     title: null,
     latitude: null,
     longitude: null,
@@ -20,6 +19,7 @@ class EditModal extends Component {
     mondaymidday: null,
     mondayevening: null,
     date: null,
+    show: false,
     
 
     tuesdaymorning: null,
@@ -49,58 +49,58 @@ class EditModal extends Component {
   componentDidMount = () => {
     console.log("edit model mount", this.props.opp);
     this.setState({
-      updateTitle: this.props.opp,
-      title: this.props.opp.title,
-      oppId: this.props.opp._id,
+      updateTitle: "title",
+      title: "title",
+      oppId: 1,
 
-      latitude: this.props.opp.location[0],
-      longitude: this.props.opp.location[1],
-      date: this.props.opp.date,
+      latitude: "1.2.2",
+      longitude: "334.343",
+      date: "10/10/2020",
 
-      mondaymorning: this.props.opp.days.monday[0].morning,
-      mondaymidday: this.props.opp.days.monday[0].midday,
-      mondayevening: this.props.opp.days.monday[0].evening,
+      mondaymorning: "dummy",
+      mondaymidday:"dummy",
+      mondayevening:"dummy",
 
-      tuesdaymorning: this.props.opp.days.tuesday[0].morning,
-      tuesdaymidday: this.props.opp.days.tuesday[0].midday,
-      thursdayevening: this.props.opp.days.tuesday[0].evening,
+      tuesdaymorning: "dummy",
+      tuesdaymidday:"dummy",
+      thursdayevening:"dummy",
 
-      wednesdaymorning: this.props.opp.days.wednesday[0].morning,
-      wednesdaymidday: this.props.opp.days.wednesday[0].midday,
-      wednesdayevening: this.props.opp.days.wednesday[0].evening,
+      wednesdaymorning: "dummy",
+      wednesdaymidday: "dummy",
+      wednesdayevening: "dummy",
 
-      thursdaymorning: this.props.opp.days.thursday[0].morning,
-      thursdaymidday: this.props.opp.days.thursday[0].midday,
-      thursdayevening: this.props.opp.days.thursday[0].evening,
+      thursdaymorning: "dummy",
+      thursdaymidday: "dummy",
+      thursdayevening: "dummy",
 
-      fridaymorning: this.props.opp.days.friday[0].morning,
-      fridaymidday: this.props.opp.days.friday[0].midday,
-      fridayevening: this.props.opp.days.friday[0].evening,
+      fridaymorning: "dummy",
+      fridaymidday: "dummy",
+      fridayevening: "dummy",
 
-      saturdaymorning: this.props.opp.days.satarday[0].morning,
-      saturdaymidday: this.props.opp.days.satarday[0].midday,
-      saturdayevening: this.props.opp.days.satarday[0].evening,
+      saturdaymorning: "dummy",
+      saturdaymidday: "dummy",
+      saturdayevening:"dummy",
 
-      sundaymorning: this.props.opp.days.sunday[0].morning,
-      sundaymidday: this.props.opp.days.sunday[0].midday,
-      sundayevening: this.props.opp.days.sunday[0].evening,
+      sundaymorning:"dummy",
+      sundaymidday: "dummy",
+      sundayevening: "dummy",
 
       //disabled status
-      one0: this.props.opp.preferences.one[0],
-      one1: this.props.opp.preferences.one[1],
-      one2: this.props.opp.preferences.one[2],
+      one0: "dummy day",
+      one1: "dummy day",
+      one2: "dummy day",
 
-      two0: this.props.opp.preferences.two[0],
-      two1: this.props.opp.preferences.two[1],
-      two2: this.props.opp.preferences.two[2],
+      two0: "dummy day",
+      two1: "dummy day",
+      two2: "dummy day",
 
-      three0: this.props.opp.preferences.three[0],
-      three1: this.props.opp.preferences.three[1],
-      three2: this.props.opp.preferences.three[2],
+      three0: "dummy day",
+      three1: "dummy day",
+      three2: "dummy day",
 
-      four0: this.props.opp.preferences.four[0],
-      four1: this.props.opp.preferences.four[1],
-      four2: this.props.opp.preferences.four[2],
+      four0: "dummy day",
+      four1: "dummy day",
+      four2: "dummy day",
     });
   };
   handleChange1 = (event) => {
@@ -117,59 +117,59 @@ this.setState({date: new Date(date)})
   handleClickModel = (day, avail) => {
     console.log(day, avail);
   };
-  componentDidUpdate = (prevProps, prevState) => {
-    console.log("edit update");
-    if (prevProps.opp._id !== this.props.opp._id) {
-      //disabled statuss
-      this.setState({
-        oppId: this.props.opp._id,
+  // componentDidUpdate = (prevProps, prevState) => {
+  //   console.log("edit update");
+  //   if (prevProps.opp._id !== this.props.opp._id) {
+  //     //disabled statuss
+  //     this.setState({
+  //       oppId: this.props.opp._id,
 
-        mondaymorning: this.props.opp.days.monday[0].morning,
-        mondaymidday: this.props.opp.days.monday[0].midday,
-        mondayevening: this.props.opp.days.monday[0].evening,
+  //       mondaymorning: this.props.opp.days.monday[0].morning,
+  //       mondaymidday: this.props.opp.days.monday[0].midday,
+  //       mondayevening: this.props.opp.days.monday[0].evening,
 
-        tuesdaymorning: this.props.opp.days.tuesday[0].morning,
-        tuesdaymidday: this.props.opp.days.tuesday[0].midday,
-        thursdayevening: this.props.opp.days.tuesday[0].evening,
+  //       tuesdaymorning: this.props.opp.days.tuesday[0].morning,
+  //       tuesdaymidday: this.props.opp.days.tuesday[0].midday,
+  //       thursdayevening: this.props.opp.days.tuesday[0].evening,
 
-        wednesdaymorning: this.props.opp.days.wednesday[0].morning,
-        wednesdaymidday: this.props.opp.days.wednesday[0].midday,
-        wednesdayevening: this.props.opp.days.wednesday[0].evening,
+  //       wednesdaymorning: this.props.opp.days.wednesday[0].morning,
+  //       wednesdaymidday: this.props.opp.days.wednesday[0].midday,
+  //       wednesdayevening: this.props.opp.days.wednesday[0].evening,
 
-        thursdaymorning: this.props.opp.days.thursday[0].morning,
-        thursdaymidday: this.props.opp.days.thursday[0].midday,
-        thursdayevening: this.props.opp.days.thursday[0].evening,
+  //       thursdaymorning: this.props.opp.days.thursday[0].morning,
+  //       thursdaymidday: this.props.opp.days.thursday[0].midday,
+  //       thursdayevening: this.props.opp.days.thursday[0].evening,
 
-        fridaymorning: this.props.opp.days.friday[0].morning,
-        fridaymidday: this.props.opp.days.friday[0].midday,
-        fridayevening: this.props.opp.days.friday[0].evening,
+  //       fridaymorning: this.props.opp.days.friday[0].morning,
+  //       fridaymidday: this.props.opp.days.friday[0].midday,
+  //       fridayevening: this.props.opp.days.friday[0].evening,
 
-        saturdaymorning: this.props.opp.days.satarday[0].morning,
-        saturdaymidday: this.props.opp.days.satarday[0].midday,
-        saturdayevening: this.props.opp.days.satarday[0].evening,
+  //       saturdaymorning: this.props.opp.days.satarday[0].morning,
+  //       saturdaymidday: this.props.opp.days.satarday[0].midday,
+  //       saturdayevening: this.props.opp.days.satarday[0].evening,
 
-        sundaymorning: this.props.opp.days.sunday[0].morning,
-        sundaymidday: this.props.opp.days.sunday[0].midday,
-        sundayevening: this.props.opp.days.sunday[0].evening,
+  //       sundaymorning: this.props.opp.days.sunday[0].morning,
+  //       sundaymidday: this.props.opp.days.sunday[0].midday,
+  //       sundayevening: this.props.opp.days.sunday[0].evening,
 
-        one0: this.props.opp.preferences.one[0],
-        one1: this.props.opp.preferences.one[1],
-        one2: this.props.opp.preferences.one[2],
+  //       one0: this.props.opp.preferences.one[0],
+  //       one1: this.props.opp.preferences.one[1],
+  //       one2: this.props.opp.preferences.one[2],
 
-        two0: this.props.opp.preferences.two[0],
-        two1: this.props.opp.preferences.two[1],
-        two2: this.props.opp.preferences.two[2],
+  //       two0: this.props.opp.preferences.two[0],
+  //       two1: this.props.opp.preferences.two[1],
+  //       two2: this.props.opp.preferences.two[2],
 
-        three0: this.props.opp.preferences.three[0],
-        three1: this.props.opp.preferences.three[1],
-        three2: this.props.opp.preferences.three[2],
+  //       three0: this.props.opp.preferences.three[0],
+  //       three1: this.props.opp.preferences.three[1],
+  //       three2: this.props.opp.preferences.three[2],
 
-        four0: this.props.opp.preferences.four[0],
-        four1: this.props.opp.preferences.four[1],
-        four2: this.props.opp.preferences.four[2],
-      });
-    }
-  };
+  //       four0: this.props.opp.preferences.four[0],
+  //       four1: this.props.opp.preferences.four[1],
+  //       four2: this.props.opp.preferences.four[2],
+  //     });
+  //   }
+  // };
   handleDisabled = (event) => {
     console.log("disblae clicked");
     console.log(event.target.name);
@@ -286,7 +286,7 @@ this.setState({date: new Date(date)})
       date: this.state.date
       
     };
-    this.props.updateOpp(this.state.oppId, data);
+    // this.props.updateOpp(this.state.oppId, data);
   };
   render() {
     console.log(".................", this.state);
@@ -298,8 +298,8 @@ this.setState({date: new Date(date)})
               size="lg"
               backdrop="static"
               centered
-              show={this.props.show}
-              onHide={this.props.handleClose}
+              show={true}
+              onHide={this.state.show}
             >
               <Modal.Header closeButton>
                 <Modal.Title>Edit Opportunity</Modal.Title>
@@ -314,7 +314,7 @@ this.setState({date: new Date(date)})
                     {" "}
                     <input
                       style={{ width: "100%" }}
-                      defaultValue={this.props.opp.title}
+                      defaultValue={"opp title"}
                       type="text"
                       name="updateTitle"
                       id="title"
@@ -332,7 +332,7 @@ this.setState({date: new Date(date)})
                   <Col sm="4">
                     <input
                       style={{ width: "100%" }}
-                      defaultValue={this.props.opp.location[0]}
+                      defaultValue={"dummy"}
                       type="text"
                       name="updateTitle"
                       id="latitude"
@@ -345,7 +345,7 @@ this.setState({date: new Date(date)})
                   <Col sm="4">
                     <input
                       style={{ width: "100%" }}
-                      defaultValue={this.props.opp.location[1]}
+                      defaultValue="1.2.2.2"
                       type="text"
                       name="updateTitle"
                       id="longitude"
@@ -360,7 +360,7 @@ this.setState({date: new Date(date)})
                   </Col>
                   <Col sm="4">
                     {" "}
-                    <p>{this.props.opp.date}</p>
+                    <p>10/10/2020</p>
                   </Col>
                   <Col sm="2">
                     <FontAwesomeIcon
@@ -555,10 +555,10 @@ this.setState({date: new Date(date)})
                 ></Availablity>
               </Modal.Body>
               <Modal.Footer>
-                <Button variant="secondary" onClick={this.props.handleClose}>
+                <Button variant="secondary" onClick={()=>this.setState({show: false})}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={this.handleUpdate}>
+                <Button variant="primary" onClick={console.log("dummy")}>
                   Save Changes
                 </Button>
               </Modal.Footer>

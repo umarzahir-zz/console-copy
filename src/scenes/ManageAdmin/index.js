@@ -145,22 +145,22 @@ class ManageAdmin extends Component {
                   </Modal>
                   {/* admin list */}
                   <div className="col-6">
-                    {this.props.allAdmins ? (
-                      this.props.allAdmins.map((admin) => {
+                    {true? (
+                      ["admin1", "admin2", "admin3", "admin4", "admin5"].map((admin) => {
                         return (
-                          <ListGroup key={admin._id} variant="flush">
+                          <ListGroup key={admin} variant="flush">
                             <div className="row justify-content-between ">
                               <div className="col-10">
                                 <ListGroup.Item
                                   action
                                   onClick={() => this.handleShow(admin)}
                                 >
-                                  <p>{admin.name}</p>
+                                  <p>{admin}</p>
                                 </ListGroup.Item>
                               </div>
                               <div className="col-1 pt-2 ">
                                 <button
-                                  onClick={() => this.handleShow2(admin._id)}
+                                  onClick={() => this.handleShow2(admin)}
                                   className="btn btn-primary"
                                 >
                                   <FontAwesomeIcon icon={faUserEdit} />

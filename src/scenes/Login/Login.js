@@ -33,7 +33,8 @@ class Login extends Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.sendData(this.state);
+    // this.props.sendData(this.state);
+    this.props.history.push("/dashboard")
   };
   render() {
     console.log("login");

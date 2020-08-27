@@ -27,33 +27,33 @@ class AppRouter extends Component {
       <div>
         <Switch>
           <Route exact path="/register" component={Register} />
-          <Route exact path="/singleopp" component={Authhoc(SingleOPP)} />
+          <Route exact path="/singleopp" component={SingleOPP} />
           <Route exact path="/authhoc" component={Authhoc} />
           {/* <Route exact path="/login" component={Login} /> */}
-          <Route exact path="/newadmin" component={Auth(NewAdmin)} />
-          <Route exact path="/dashboard" component={Auth(AdminDashboard)} />
+          <Route exact path="/newadmin" component={NewAdmin} />
+          <Route exact path="/dashboard" component={AdminDashboard} />
           <Route
             exact
             path="/addopportunity"
-            component={Auth(AddOpportunity)}
+            component={AddOpportunity}
           />
           <Route
             exact
             path="/manageopportunity"
-            component={Auth(ManageOpportunity)}
+            component={ManageOpportunity}
           />
-          <Route exact path="/manageadmin" component={Auth(ManageAdmin)} />
-          <Route exact path="/manageagency" component={Auth(ManageAgency)} />
-          <Route exact path="/profile" component={Auth(Profile)} />
+          <Route exact path="/manageadmin" component={ManageAdmin} />
+          <Route exact path="/manageagency" component={ManageAgency} />
+          <Route exact path="/profile" component={Profile} />
           <Route
             exact
             path="/managevolunteer"
-            component={Auth(ManageVolunteer)}
+            component={ManageVolunteer}
           />
-          <Route exact path="/manageskills" component={Auth(ManageSkills)} />
-          <Route exact path="/imageupload" component={Authhoc(ImageUpload)} />
+          <Route exact path="/manageskills" component={ManageSkills} />
+          <Route exact path="/imageupload" component={ImageUpload} />
           {/* {this.props.LoginMessage === "Login Success" ? ( */}
-          <Route exact path="/managetask" component={Auth(ManageTask)} />
+          <Route exact path="/managetask" component={ManageTask} />
           {/* ) : ( */}
           <Route exact path="/" component={Login} />
           {/* )} */}

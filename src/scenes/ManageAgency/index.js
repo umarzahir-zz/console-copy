@@ -73,19 +73,19 @@ class ManageAgency extends Component {
                   <div className="center-content">
                     <div className="opportunity-form col-12 p-0">
                       <div className="row">
-                        <div className=" col-auto">
+                        <div className=" col-6">
                           <div className="result overflow-auto h-50">
                             <ul className="list-group result-list ">
                              
-                              {this.props.agencyMembersList ? (
-                                this.props.agencyMembersList.map((member) => {
+                              {true ? (
+                                ["agency1","agency2", "agency3", "agency4"].map((member) => {
                                   return (
                                     <li
-                                      key={member._id}
+                                      key={member}
                                       className="list-group-item d-flex justify-content-between align-items-center"
                                     >
                                       <p className="list-title">
-                                        {member.name}
+                                        {member}
                                       </p>
                                       <div className="list-button">
                                         <button className="btn btn-primary gray-button">

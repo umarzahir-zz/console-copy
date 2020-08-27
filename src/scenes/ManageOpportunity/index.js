@@ -84,12 +84,12 @@ class ManageOpprtunity extends Component {
                         <div className=" col-6">
                           <div className="result">
                             <ul className="list-group result-list">
-                              {this.props.ActiveOpportunityData ? (
-                                this.props.ActiveOpportunityData.map(
+                              {true ? (
+                               ["opp1", "opp2", "opp3", "opp4"].map(
                                   (opportunity) => {
                                     return (
                                       <li
-                                        key={opportunity._id}
+                                        key={opportunity}
                                         className="list-group-item d-flex bg-success justify-content-between align-items-center"
                                       >
                                         <p
@@ -98,7 +98,7 @@ class ManageOpprtunity extends Component {
                                           }
                                           className="list-title text-white "
                                         >
-                                          {opportunity.title}
+                                          {opportunity}
                                         </p>
                                         <div className="list-button">
                                           <button
@@ -112,7 +112,7 @@ class ManageOpprtunity extends Component {
                                           <button
                                             onClick={() =>
                                               this.handleOppDelete(
-                                                opportunity._id
+                                                opportunity
                                               )
                                             }
                                             className="btn btn-primary gray-button"

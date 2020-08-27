@@ -90,10 +90,10 @@ class ManageVolunteer extends Component {
                                                 <div className=" col-6">
                                                     <div className="result">
                                                         <ul className="list-group result-list">
-                                                            {this.props.allVol && this.props.allVol.map((vol) => {
+                                                            {["vol1","vol2", "vol3", "vol4"].map((vol) => {
                                                                 return (
                                                                     <li className="list-group-item d-flex justify-content-between align-items-center">
-                                                                        <p className="list-title">{vol.name}</p>
+                                                                        <p className="list-title">{vol}</p>
                                                                         <div className="list-button">
                                                                             <button className="btn btn-primary gray-button">
                                                                                 <FontAwesomeIcon icon={faPen} />
