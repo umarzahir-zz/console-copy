@@ -87,7 +87,7 @@ class Login extends Component {
                 {this.props.LoginMessage}
               </Alert>
               <Button variant="primary" type="submit">
-                {this.props.loginStatus ? "Loading..." : "Login"}
+                {this.props.loginStatus ? "Loading......." : "Login"}
               </Button>
             </div>
           </form>
